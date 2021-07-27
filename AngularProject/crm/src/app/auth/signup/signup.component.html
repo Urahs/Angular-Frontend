@@ -1,0 +1,41 @@
+
+    <body>
+        <div class="container">
+      <!-- Material form register -->
+      <form [formGroup]="cardForm">
+        <p class="h4 text-center py-4">Sign up</p>
+  
+        <!-- Material input text -->
+        <div class="md-form">
+          <input type="text" id="materialFormCardNameEx" formControlName="materialFormCardNameEx" class="form-control" mdbInput>
+          <label for="materialFormCardNameEx" class="font-weight-light">Your name</label>
+        </div>
+  
+        <!-- Material input email -->
+        <div class="md-form">
+          <input type="email" id="materialFormCardEmailEx" formControlName="materialFormCardEmailEx" class="form-control" mdbInput>
+          <label for="materialFormCardEmailEx" class="font-weight-light">Your email</label>
+        </div>
+  
+        <!-- Material input email -->
+        <div class="md-form">
+          <input type="email" id="materialFormCardConfirmEx" formControlName="materialFormCardConfirmEx" class="form-control" mdbInput>
+          <label for="materialFormCardConfirmEx" class="font-weight-light">Confirm your email</label>
+        </div>
+  
+        <!-- Material input password -->
+        <div class="md-form">
+          <input type="password" id="materialFormCardPasswordEx" formControlName="materialFormCardPasswordEx" class="form-control"
+            mdbInput>
+          <label for="materialFormCardPasswordEx" class="font-weight-light">Your password</label>
+        </div>
+  
+        <div class="text-center py-4 mt-3">
+          <button mdbBtn color="cyan" class="waves-light" type="submit" mdbWavesEffect>Register</button>
+        </div>
+      </form>
+    </div>
+      <!-- Material form register -->
+    </body>
+
+    

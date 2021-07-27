@@ -25,6 +25,7 @@
     "devextreme": "21.1.4",
     "devextreme-angular": "21.1.4",
     "devextreme-schematics": "^1.2.18",
+    "mdb-ui-kit": "^3.9.0",
     "ngx-bootstrap": "^6.2.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
