@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxButtonModule, DxDataGridModule, DxPieChartModule } from 'devextreme-angular';
+import { DxButtonModule, DxDataGridModule, DxPieChartModule,  DxPopupModule, DxScrollViewModule, DxToolbarModule } from 'devextreme-angular';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TableComponent } from './table/table.component';
@@ -10,8 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
-import { CustomerresComponent } from './customerres/customerres.component';
-import { DxDropDownButtonModule} from 'devextreme-angular';
+import { PopUpComponent } from './pop-up/pop-up.component';
 
 const routes: Routes = [];
 
@@ -22,18 +22,20 @@ const routes: Routes = [];
     TableComponent,
     LeftsideComponent,
     CustomerComponent,
-    CustomerresComponent,
     FooterComponent,
     HomeComponent,
+    PopUpComponent,
   ],
   imports: [
-    DxDropDownButtonModule,
+    DxScrollViewModule,
     DxPieChartModule,
     AppRoutingModule,
     BrowserModule,
     DxButtonModule,
     DxDataGridModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    DxPopupModule,
+    DxToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -11,4 +11,6 @@ export class AppComponent {
   helloWorld(){
     console.log("deneme");
   }
+
+  
 }

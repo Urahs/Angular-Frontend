@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-   pointClickHandler(e: { target: any; }) {
+  pointClickHandler(e: { target: any; }) {
       this.toggleVisibility(e.target);
   }
 
@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
       } else { 
           item.show();
       }
-  } 
+  }
 
 }
 
