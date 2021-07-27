@@ -7,14 +7,16 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 })
 export class CustomerComponent implements OnInit {
 
-    openModal = false;
+    openModal: boolean;
     
     constructor(private cdr: ChangeDetectorRef) {
         this.OpenModal = this.OpenModal.bind(this);
+        this.postMessage = this.postMessage.bind(this);
     }
 
-
-    ngOnInit(){}
+    ngOnInit(){
+        this.openModal = false;
+    }
 
     /* ngAfterViewInit(){
         this.cdr.detectChanges();
@@ -29,6 +31,10 @@ export class CustomerComponent implements OnInit {
         console.log(this.openModal);
         // this.cdr.detectChanges();
         // this.cdr.markForCheck();
+    }
+
+    postMessage(messageFromChild: any){
+        this.openModal = messageFromChild;
     }
 
   dataSource: Employee[] = [{

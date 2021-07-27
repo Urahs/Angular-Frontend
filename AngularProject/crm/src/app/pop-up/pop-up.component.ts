@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Input } from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'pop-up',
@@ -7,10 +7,18 @@ import { Component, EventEmitter, OnInit, Input } from '@angular/core';
 })
 export class PopUpComponent implements OnInit {
 
-  @Input() isPopupVisible: any;
+  @Input() isPopupVisible: boolean;
+  @Output() postMessageEvent = new EventEmitter<boolean>();
   
   constructor(){
     this.isPopupVisible = true;
+    this.closeModal = this.closeModal.bind(this);
+  }
+
+  closeModal(){
+    this.isPopupVisible = false;
+    this.postMessageEvent.emit(false);
+    //console.log(this.isPopupVisible);
   }
 
   ngOnInit(): void {

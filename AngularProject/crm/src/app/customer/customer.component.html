@@ -2,9 +2,7 @@
     <div class="card shadow mb-5">
         <div class="card-header py-3" >
             <h6 class="m-0 font-weight-bold" style="color: #ED1B2E; text-align: center;"><font size="+3" >Müşteri Listesi {{openModal}}</font></h6>
-            Müşteri Listesi {{openModal}}
         </div>
-        <button style="height: 50px;" (click) = "OpenModal()">test</button>
         <div class="card-body">
             <div class="table-responsive">
                 <div id="data-grid-demo">
@@ -113,23 +111,13 @@
                         
                     </dx-data-grid>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
 
-
-<!-- <div *ngIf="true">
-    <pop-up (isPopupVisible)="false"></pop-up> 
-</div> -->
-
 <div *ngIf = "openModal">
-    <pop-up [isPopupVisible] = "openModal"></pop-up>
+    <pop-up [isPopupVisible] = "openModal" (postMessageEvent) = "postMessage($event)"></pop-up>
 </div>
-
-
-
-
 
 
