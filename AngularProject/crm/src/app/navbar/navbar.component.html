@@ -1,0 +1,24 @@
+
+<nav class="navbar navbar-light" style="background-color: #ED1B2E;">
+    <div class="container">
+        <nav class="navbar navbar-expand-xl navbar-light">
+                <ul class="navbar-nav">
+                    <li>
+                      <div class="dx-field-value"  >
+                      <dx-drop-down-button
+                        style="background-color:#ED1B2E; border: none;"
+                        [splitButton]="true"
+                        [useSelectMode]="false"
+                        text="Batuhan ÖZÜNALAN" 
+                        icon="card"
+                        [items]="profileSettings"
+                        displayExpr="name"
+                        keyExpr="id"
+                        (onItemClick)="onItemClick($event)"
+                      ></dx-drop-down-button>
+                    </div>
+                  </li>
+                </ul>
+          </nav>
+      </div>
+</nav>
