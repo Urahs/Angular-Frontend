@@ -1,0 +1,15 @@
+
+<div class="container-fluid">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <div class="card shadow mb-3">
+        
+        <div class="card-body">
+            <div class="table-responsive">
+    <dx-data-grid
+            id="gridContainer"
+            [dataSource]="customers"
+            keyExpr="ID"
+            [columns]="['CompanyName', 'City', 'State', 'Phone', 'Fax']"
+            [showBorders]="true">
+    </dx-data-grid>
+</div></div></div></div></div>
