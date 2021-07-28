@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-customer',
@@ -6,6 +6,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
+
+    openModal: boolean;
+    
+    constructor(private cdr: ChangeDetectorRef) {
+        this.OpenModal = this.OpenModal.bind(this);
+        this.postMessage = this.postMessage.bind(this);
+    }
+
+    ngOnInit(){
+        this.openModal = false;
+    }
+
+    /* ngAfterViewInit(){
+        this.cdr.detectChanges();
+    } */
+
+    savePopup(){
+        console.log('on save');
+    }
+
+    OpenModal() {
+        this.openModal = true;
+        console.log(this.openModal);
+        // this.cdr.detectChanges();
+        // this.cdr.markForCheck();
+    }
+
+    postMessage(messageFromChild: any){
+        this.openModal = messageFromChild;
+    }
 
   dataSource: Employee[] = [{
     "ID": 1,
@@ -320,8 +350,7 @@ export class CustomerComponent implements OnInit {
 
     
 
-  ngOnInit(): void {
-  }
+  
 
 }
 
@@ -342,3 +371,10 @@ export class State {
   ID: number;
   Name: string;
 }
+
+
+
+
+
+
+
