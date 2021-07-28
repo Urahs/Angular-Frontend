@@ -18,7 +18,7 @@ const routes: Routes = [
     {path: "customerres",component: CustomerresComponent},
     {path: "home", component: HomeComponent},
     {path: "table", component: TableComponent},
-    {path: "chatbot",component: ChatbotComponent}
+    {path: "chatbot",component: ChatbotComponent},
   ]}
   
 ];
