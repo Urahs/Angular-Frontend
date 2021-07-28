@@ -3,40 +3,35 @@ import { BrowserModule } from '@angular/platform-browser';
 import { DxButtonModule, DxDataGridModule, DxPieChartModule,  DxPopupModule, DxScrollViewModule, DxToolbarModule } from 'devextreme-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { TableComponent } from './table/table.component';
-import { LeftsideComponent } from './leftside/leftside.component';
-import { CustomerComponent } from './customer/customer.component';
-import { FooterComponent } from './footer/footer.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './home/home.component';
-import { PopUpComponent } from './pop-up/pop-up.component';
+
+import { DxDropDownButtonModule} from 'devextreme-angular';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthModule } from './auth/auth.module';
+import { PagesModule } from './pages/pages.module';
+
 
 const routes: Routes = [];
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent,
-    TableComponent,
-    LeftsideComponent,
-    CustomerComponent,
-    FooterComponent,
-    HomeComponent,
-    PopUpComponent,
+    AppComponent,  
   ],
   imports: [
-    DxScrollViewModule,
+    PagesModule,
+    AuthModule,
+    DxDropDownButtonModule,
     DxPieChartModule,
     AppRoutingModule,
     BrowserModule,
     HttpClientModule,
     DxButtonModule,
     DxDataGridModule,
-    RouterModule.forRoot(routes),
-    DxPopupModule,
-    DxToolbarModule
+
+    ReactiveFormsModule,
+    
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent],
