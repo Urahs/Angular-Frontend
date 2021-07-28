@@ -10,9 +10,10 @@ import { CustomerresComponent } from './customerres/customerres.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
-import { DxButtonModule, DxDataGridModule, DxDropDownButtonModule, DxPieChartModule } from 'devextreme-angular';
+import { DxButtonModule, DxDataGridModule, DxDropDownButtonModule, DxPieChartModule, DxPopupModule, DxScrollViewModule, DxToolbarModule } from 'devextreme-angular';
 import { AppRoutingModule } from '../app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { PopUpComponent } from './pop-up/pop-up.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { BrowserModule } from '@angular/platform-browser';
     FooterComponent,
     HomeComponent,
     ChatbotComponent,
+    PopUpComponent
   ],
   imports: [
     CommonModule,
@@ -36,6 +38,9 @@ import { BrowserModule } from '@angular/platform-browser';
     BrowserModule,
     DxButtonModule,
     DxDataGridModule,
+    DxPopupModule,
+    DxToolbarModule,
+    DxScrollViewModule
   ]
 })
 export class PagesModule { }
