@@ -9,7 +9,7 @@
                     <dx-data-grid 
                         id="gridContainer"
                         [dataSource]="dataSource"
-                        keyExpr="ID"
+                        keyExpr="CustomerId"
                         [showBorders]="true">
                         <dxo-export [enabled]="true"></dxo-export>
                         <!-- [allowExportSelectedData]="true" -->
@@ -29,21 +29,18 @@
                                 [showTitle]="true"
                                 [width]="700"
                                 [height]="525">
+                                <dxi-toolbar-item widget="dxButton"
+                                    toolbar="bottom"  
+                                    location="after"  
+                                    [options]="{text: 'Conferma', type:'success', onClick: savePopup }">  
+                                </dxi-toolbar-item>
                             </dxo-popup>
-                            <dxo-form>
-                                <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
-                                    <dxi-item dataField="FirstName"></dxi-item>
-                                    <dxi-item dataField="LastName"></dxi-item>
-                                    <dxi-item dataField="Prefix"></dxi-item>
-                                    <dxi-item dataField="BirthDate"></dxi-item>
-                                    <dxi-item dataField="Position"></dxi-item>
-                                    <dxi-item dataField="HireDate"></dxi-item>
-                                    <dxi-item
-                                        dataField="Notes"
-                                        editorType="dxTextArea"
-                                        [colSpan]="2"
-                                        [editorOptions]="{ height: 100 }">
-                                    </dxi-item>
+                            <dxo-form [(formData)]="dataPost">
+                                <dxi-item itemType="group" [colCount]="2" [colSpan]="2" >
+                                    <dxi-item dataField="name"></dxi-item>
+                                    <dxi-item dataField="lastName"></dxi-item>
+                                    <dxi-item dataField="dateOfBirth"></dxi-item>
+                                    <dxi-item dataField="identificationNumber"></dxi-item>
                                 </dxi-item>
                                 
                                 <dxi-item itemType="group" caption="Home Address" [colCount]="2" [colSpan]="2">
@@ -53,43 +50,20 @@
                             </dxo-form>
                         </dxo-editing>
 
-                        <dxi-column dataField="Prefix" caption="Title" [width]="70"></dxi-column>
-                        <dxi-column dataField="FirstName"></dxi-column>
+                        <dxi-column dataField="CustomerId" caption="ID" [width]="70"></dxi-column>
+                        <dxi-column dataField="Name"></dxi-column>
                         <dxi-column dataField="LastName"></dxi-column>
                         <dxo-paging [enabled]="true" [pageSize]="10"></dxo-paging>
                         <dxi-column
-                            dataField="BirthDate"
+                            dataField="DateOfBirth"
                             dataType="date">
                         </dxi-column>
                         <dxi-column
-                            dataField="Position"
+                            dataField="IdentificationNumber"
                             [width]="170">
-                        </dxi-column>
-                        <dxi-column
-                            dataField="HireDate"
-                            dataType="date">
-                        </dxi-column>
-                        <dxi-column
-                            dataField="StateID"
-                            caption="State"
-                            [width]="125">
-                            <dxo-lookup
-                                [dataSource]="states"
-                                displayExpr="Name"
-                                valueExpr="ID">
-                            </dxo-lookup>
-                        </dxi-column>
-                        <dxi-column
-                            dataField="Address"
-                            [visible]="false">
-                        </dxi-column>
-                        <dxi-column
-                            dataField="Notes"
-                            [visible]="false">
                         </dxi-column>
                     </dx-data-grid>
                 </div>
-
             </div>
         </div>
     </div>
