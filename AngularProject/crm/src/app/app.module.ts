@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { DxButtonModule, DxDataGridModule, DxPieChartModule,  DxPopupModule, DxScrollViewModule, DxToolbarModule } from 'devextreme-angular';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TableComponent } from './table/table.component';
@@ -31,6 +31,7 @@ const routes: Routes = [];
     DxPieChartModule,
     AppRoutingModule,
     BrowserModule,
+    HttpClientModule,
     DxButtonModule,
     DxDataGridModule,
     RouterModule.forRoot(routes),
