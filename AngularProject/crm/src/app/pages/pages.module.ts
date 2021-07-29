@@ -14,6 +14,7 @@ import { DxButtonModule, DxDataGridModule, DxDropDownButtonModule, DxPieChartMod
 import { AppRoutingModule } from '../app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { PopUpComponent } from './pop-up/pop-up.component';
+import { EditPopUpComponent } from './edit-pop-up/edit-pop-up.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { PopUpComponent } from './pop-up/pop-up.component';
     FooterComponent,
     HomeComponent,
     ChatbotComponent,
-    PopUpComponent
+    PopUpComponent,
+    EditPopUpComponent
   ],
   imports: [
     CommonModule,
