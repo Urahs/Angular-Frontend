@@ -52,15 +52,8 @@
                         <dxi-column dataField="CustomerId" caption="ID" [width]="70"></dxi-column>
                         <dxi-column dataField="Name"></dxi-column>
                         <dxi-column dataField="LastName"></dxi-column>
-                        <dxo-paging [enabled]="true" [pageSize]="10"></dxo-paging>
-                        <dxi-column
-                            dataField="DateOfBirth"
-                            dataType="date">
-                        </dxi-column>
-                        <dxi-column
-                            dataField="IdentificationNumber"
-                            [width]="170">
-                        </dxi-column>
+                        <dxi-column dataField="DateOfBirth" dataType="date"></dxi-column>
+                        <dxi-column dataField="IdentificationNumber" [width]="170"></dxi-column>
 
                         <dxi-column type="buttons" [width]="110">
                             <dxi-button icon="user" [onClick]= "OpenPreviewModal"></dxi-button>
@@ -68,6 +61,7 @@
                             <dxi-button name="delete"></dxi-button>
                         </dxi-column>
 
+                        <dxo-paging [enabled]="true" [pageSize]="10"></dxo-paging>
                     </dx-data-grid>
                 </div>
             </div>
@@ -76,10 +70,20 @@
 </div>
 
 <div *ngIf = "openPreviewModal">	
-    <pop-up  [employee] = "dataSource[0]" [isPopupVisible] = "openPreviewModal" (postMessageEvent) = "postMessagePreview($event)"></pop-up>	
+    <pop-up  [employee] = "dataSource[0]"
+        [isPopupVisible] = "openPreviewModal"
+        (postMessageEvent) = "postMessagePreview($event)">
+    </pop-up>	
 </div>
 
-<div *ngIf = "openEditModal">	
-    <edit-pop-up [isPopupVisible] = "openEditModal" (postMessageEvent) = "postMessageEdit($event)"></edit-pop-up>	
+<div *ngIf = "openEditModal">
+    <edit-pop-up 
+        [isPopupVisible] = "openEditModal" 
+        (postMessageEvent) = "postMessageEdit($event)">
+    </edit-pop-up>	
 </div>
 
+
+<div>
+    {{nameOfCus}}
+</div>
