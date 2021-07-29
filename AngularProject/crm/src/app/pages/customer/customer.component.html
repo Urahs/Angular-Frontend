@@ -1,0 +1,81 @@
+<div class="container-fluid" style="margin-top: 2%;">
+    <div class="card shadow mb-5">
+        <div class="card-header py-3" >
+            <h6 class="m-0 font-weight-bold" style="color: #ED1B2E; text-align: center;"><font size="+3" >Müşteri Listesi</font></h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="data-grid-demo">
+                    <dx-data-grid 
+                        id="gridContainer"
+                        [dataSource]="dataSource"
+                        keyExpr="CustomerId"
+                        [showBorders]="true">
+                        <dxo-export [enabled]="true"></dxo-export>
+                        <!-- [allowExportSelectedData]="true" -->
+                        <dxo-paging [enabled]="true" [pageSize]="15"></dxo-paging>
+                        <dxo-search-panel [visible]="true"></dxo-search-panel>
+                        <dxo-paging [enabled]="false"></dxo-paging>
+                        
+                        <dxo-editing
+                            mode="popup"
+                            [allowUpdating]="true"
+                            [allowAdding]="true"
+                            [allowDeleting]="true"
+                            [useIcons] = "true"
+                            >
+                            <dxo-popup
+                                title="Employee Info"
+                                [showTitle]="true"
+                                [width]="700"
+                                [height]="525">
+                                <dxi-toolbar-item widget="dxButton"
+                                    toolbar="bottom"  
+                                    location="after"  
+                                    [options]="{text: 'Conferma', type:'success', onClick: savePopup }">  
+                                </dxi-toolbar-item>
+                            </dxo-popup>
+                            <dxo-form [(formData)]="dataPost">
+                                <dxi-item itemType="group" [colCount]="2" [colSpan]="2" >
+                                    <dxi-item dataField="name"></dxi-item>
+                                    <dxi-item dataField="lastName"></dxi-item>
+                                    <dxi-item dataField="dateOfBirth"></dxi-item>
+                                    <dxi-item dataField="identificationNumber"></dxi-item>
+                                </dxi-item>
+                                
+                                <dxi-item itemType="group" caption="Home Address" [colCount]="2" [colSpan]="2">
+                                    <dxi-item dataField="StateID"></dxi-item>
+                                    <dxi-item dataField="Address"></dxi-item>
+                                </dxi-item>
+                            </dxo-form>
+                        </dxo-editing>
+
+                        <dxi-column dataField="CustomerId" caption="ID" [width]="70"></dxi-column>
+                        <dxi-column dataField="Name"></dxi-column>
+                        <dxi-column dataField="LastName"></dxi-column>
+                        <dxo-paging [enabled]="true" [pageSize]="10"></dxo-paging>
+                        <dxi-column
+                            dataField="DateOfBirth"
+                            dataType="date">
+                        </dxi-column>
+                        <dxi-column
+                            dataField="IdentificationNumber"
+                            [width]="170">
+                        </dxi-column>
+
+                        <dxi-column type="buttons" [width]="110">
+                            <dxi-button icon="user" [onClick]= "OpenModal"></dxi-button>
+                            <dxi-button name="edit"></dxi-button>
+                            <dxi-button name="delete"></dxi-button>
+                        </dxi-column>
+
+                    </dx-data-grid>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf = "openModal">	
+    <pop-up [isPopupVisible] = "openModal" (postMessageEvent) = "postMessage($event)"></pop-up>	
+</div>
