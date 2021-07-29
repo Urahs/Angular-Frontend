@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import { Employee } from 'src/app/models/Employee';
 
 @Component({
   selector: 'pop-up',
@@ -8,6 +9,7 @@ import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 export class PopUpComponent implements OnInit {
 
   @Input() isPopupVisible: boolean;
+  @Input() employee: Employee;
   @Output() postMessageEvent = new EventEmitter<boolean>();
   
   constructor(){

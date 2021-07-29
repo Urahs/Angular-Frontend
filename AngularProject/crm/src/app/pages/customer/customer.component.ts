@@ -15,6 +15,7 @@ export class CustomerComponent implements OnInit {
   openPreviewModal: boolean;
   openEditModal: boolean;
   dataSource: Employee[];
+  employee: Employee;
 
   dataPost:Data=new Data();  
   constructor(
