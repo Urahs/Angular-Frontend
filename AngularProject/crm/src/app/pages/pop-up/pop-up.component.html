@@ -1,5 +1,4 @@
 <dx-popup
-    contentTemplate = "popup-content"
     [visible]= "isPopupVisible"
     [closeOnOutsideClick]="true"
     [showTitle]="true"
@@ -17,43 +16,38 @@
     </dxi-toolbar-item>
 
 
-    <div *dxTemplate="let data of 'popup-content'">
-        
-        <dx-scroll-view
+    <dx-scroll-view
             width="100%"
             height="100%">
-        
-        <p>
 
-            Mauris rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar. Neque volutpat ac tincidunt vitae semper quis lectus.
-            Sed sed risus pretium quam vulputate dignissim suspendisse in. Urna nec tincidunt praesent semper feugiat nibh sed pulvinar.
-            Ultricies lacus sed turpis tincidunt id aliquet risus feugiat. Amet cursus sit amet dictum sit amet justo donec enim.
-            Vestibulum rhoncus est pellentesque elit ullamcorper. Id aliquet risus feugiat in ante metus dictum at.
-            Mauris rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar. Neque volutpat ac tincidunt vitae semper quis lectus.
-            Sed sed risus pretium quam vulputate dignissim suspendisse in. Urna nec tincidunt praesent semper feugiat nibh sed pulvinar.
-            Ultricies lacus sed turpis tincidunt id aliquet risus feugiat. Amet cursus sit amet dictum sit amet justo donec enim.
-            Vestibulum rhoncus est pellentesque elit ullamcorper. Id aliquet risus feugiat in ante metus dictum at.
-            Mauris rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar. Neque volutpat ac tincidunt vitae semper quis lectus.
-            Sed sed risus pretium quam vulputate dignissim suspendisse in. Urna nec tincidunt praesent semper feugiat nibh sed pulvinar.
-            Ultricies lacus sed turpis tincidunt id aliquet risus feugiat. Amet cursus sit amet dictum sit amet justo donec enim.
-            Vestibulum rhoncus est pellentesque elit ullamcorper. Id aliquet risus feugiat in ante metus dictum at.
-            Mauris rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar. Neque volutpat ac tincidunt vitae semper quis lectus.
-            Sed sed risus pretium quam vulputate dignissim suspendisse in. Urna nec tincidunt praesent semper feugiat nibh sed pulvinar.
-            Ultricies lacus sed turpis tincidunt id aliquet risus feugiat. Amet cursus sit amet dictum sit amet justo donec enim.
-            Vestibulum rhoncus est pellentesque elit ullamcorper. Id aliquet risus feugiat in ante metus dictum at.
-            Mauris rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar. Neque volutpat ac tincidunt vitae semper quis lectus.
-            Sed sed risus pretium quam vulputate dignissim suspendisse in. Urna nec tincidunt praesent semper feugiat nibh sed pulvinar.
-            Ultricies lacus sed turpis tincidunt id aliquet risus feugiat. Amet cursus sit amet dictum sit amet justo donec enim.
-            Vestibulum rhoncus est pellentesque elit ullamcorper. Id aliquet risus feugiat in ante metus dictum at. 
-        </p>
+            <!-- <p>
+                İsim{{employee.Name}}
+            </p>
+            <hr>
+            <p>
+                {{employee.LastName}}
+            </p> -->
 
-        {{employee.Name}}
-
+            <div>
+                <ul>
+                    <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                        {{employee.Name}}
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">sdf</li>
+                </ul>
+            </div>
+    
         </dx-scroll-view>
-    </div>
+
+        
+    
+
+
 </dx-popup>
 
 <!-- <dx-button
     text="Open popup"
     (onClick)="togglePopup()">
 </dx-button> -->
+
+

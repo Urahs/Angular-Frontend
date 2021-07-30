@@ -3,6 +3,7 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Employee } from 'src/app/models/Employee';
 import { Data } from 'src/app/models/Data';
+import { PostService } from 'src/app/services/PostService';
 
 
 @Component({
@@ -10,6 +11,7 @@ import { Data } from 'src/app/models/Data';
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.css']
 })
+
 export class CustomerComponent implements OnInit {
   
   openPreviewModal: boolean;
@@ -36,8 +38,6 @@ export class CustomerComponent implements OnInit {
   OpenPreviewModal() {
     this.openPreviewModal = true;
     console.log(this.openPreviewModal);
-    // this.cdr.detectChanges();
-    // this.cdr.markForCheck();
     }
 
   OpenEditModal(){
@@ -86,23 +86,8 @@ export class CustomerComponent implements OnInit {
 }
 
 
-@Injectable({
-    providedIn: 'any'
-})
-export class PostService{
-  constructor(private httpClient: HttpClient){}
-  
-  public postData(data: any): Observable<any>{//Observable<any>
-    //   return this.httpClient.post<any>('https://localhost:5001/api/customers', data, {headers: {}});
-    return this.httpClient.post<any>('https://localhost:5001/api/customers', data, {headers:{'Content-Type':  'application/json'}});
-  }
-
-  get(): Observable<any>{
-      return this.httpClient.get<any>('https://localhost:5001/api/customers');
-  }
 
 
-}
 
 
 
