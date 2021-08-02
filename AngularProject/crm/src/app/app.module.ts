@@ -11,13 +11,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
 import { PagesModule } from './pages/pages.module';
 import { DxoPopupModule, DxoToolbarModule } from 'devextreme-angular/ui/nested';
+import { AuthServiceService } from './auth-service.service';
 
 
 const routes: Routes = [];
 
 @NgModule({
   declarations: [
-    AppComponent,  
+    AppComponent,
   ],
   imports: [
     PagesModule,
@@ -34,7 +35,9 @@ const routes: Routes = [];
     DxoToolbarModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+    AuthServiceService
+  ],
   bootstrap: [AppComponent],
   exports: [RouterModule]
 })
