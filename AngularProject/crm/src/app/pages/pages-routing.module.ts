@@ -6,20 +6,20 @@ import { CustomerresComponent } from './customerres/customerres.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { LeftsideComponent } from './leftside/leftside.component';
+import { MainComponent } from './main/main.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TableComponent } from './table/table.component';
 
 const routes: Routes = [
-    {path:"pages", children:[
-    {path: "leftside", component: LeftsideComponent},
-    {path: "navbar", component: NavbarComponent},
-    {path: "footer", component: FooterComponent},
+  {path:"main",
+  component: MainComponent, 
+  children:[
     {path: "customer",component: CustomerComponent},
     {path: "customerres",component: CustomerresComponent},
     {path: "home", component: HomeComponent},
-    {path: "table", component: TableComponent},
+    {path: "", component: HomeComponent},
     {path: "chatbot",component: ChatbotComponent}
-  ]}
+]}
   
 ];
 
