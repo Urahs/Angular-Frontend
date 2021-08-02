@@ -12,11 +12,15 @@ export class CustomerresComponent implements OnInit {
     dataSource: Employee[];
     openPreviewModal: boolean;
     selectedCusRes!: Employee;
+    openAddModal: boolean;
+
 
     constructor(
         private postService: PostService
     ){
         this.openPreviewModal = false;
+        this.openAddModal = false;
+        this.OpenAddModal = this.OpenAddModal.bind(this);
     }
 
     postMessagePreview(messageFromChild: any){
@@ -37,14 +41,16 @@ export class CustomerresComponent implements OnInit {
       }
 
     OpenPreviewModal() {
-        console.log("test");
         this.openPreviewModal = true;
     }
 
     CusResSelected(inputData: Employee){
         this.selectedCusRes = inputData;
     }
-
+    OpenAddModal(){
+        this.openAddModal = true;
+        console.log("test");
+    }
 
     ngOnInit(): void {
         this.getCustomers();
