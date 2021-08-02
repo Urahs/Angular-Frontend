@@ -1,4 +1,5 @@
 <dx-popup
+    contentTemplate = "popup-content"
     [visible]= "isPopupVisible"
     [closeOnOutsideClick]="true"
     [showTitle]="true"
@@ -16,7 +17,7 @@
     </dxi-toolbar-item>
 
 
-    <div >
+    <div *dxTemplate="let data of 'popup-content'">
         
         <dx-scroll-view
             width="100%"
@@ -48,8 +49,3 @@
         </dx-scroll-view>
     </div>
 </dx-popup>
-
-<!-- <dx-button
-    text="Open popup"
-    (onClick)="togglePopup()">
-</dx-button> -->

@@ -15,6 +15,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { EditPopUpComponent } from './edit-pop-up/edit-pop-up.component';
+import { MainComponent } from './main/main.component';
 import { AddPopUpComponent } from './add-pop-up/add-pop-up.component';
 
 
@@ -31,6 +32,7 @@ import { AddPopUpComponent } from './add-pop-up/add-pop-up.component';
     ChatbotComponent,
     PopUpComponent,
     EditPopUpComponent,
+    MainComponent,
     AddPopUpComponent
   ],
   imports: [
