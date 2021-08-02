@@ -27,6 +27,11 @@ export class CustomerresComponent implements OnInit {
         this.openPreviewModal = messageFromChild;
     }
 
+    
+    postMessageAdd(messageFromChild: any){
+        this.openAddModal = messageFromChild;
+    }
+
     getCustomers(){
         this.postService.get().subscribe(
             (data) => {

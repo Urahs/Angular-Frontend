@@ -70,7 +70,6 @@
 <div *ngIf = "openAddModal">	
     <app-add-pop-up
         [isPopupVisible] = "openAddModal"
-        (postMessageEvent) = "postMessagePreview($event)">
+        (postMessageEvent) = "postMessageAdd($event)">
     </app-add-pop-up>	
 </div>
-<app-leftside></app-leftside>
