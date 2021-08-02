@@ -16,6 +16,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { EditPopUpComponent } from './edit-pop-up/edit-pop-up.component';
 import { MainComponent } from './main/main.component';
+import { AddPopUpComponent } from './add-pop-up/add-pop-up.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { MainComponent } from './main/main.component';
     ChatbotComponent,
     PopUpComponent,
     EditPopUpComponent,
-    MainComponent
+    MainComponent,
+    AddPopUpComponent
   ],
   imports: [
     CommonModule,

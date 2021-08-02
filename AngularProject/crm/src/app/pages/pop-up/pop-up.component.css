@@ -1,5 +1,8 @@
-a:hover {
-    background-color: #F5F5F5;
-    width: 20px;
-    height: 20px;
+
+a:hover{
+    background-color: #c2c2c2;
+}
+a{
+    margin-left: 70%;
+    margin-bottom: 10%;
 }
