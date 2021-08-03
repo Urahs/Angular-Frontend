@@ -17,6 +17,8 @@ import { PopUpComponent } from './pop-up/pop-up.component';
 import { EditPopUpComponent } from './edit-pop-up/edit-pop-up.component';
 import { MainComponent } from './main/main.component';
 import { AddPopUpComponent } from './add-pop-up/add-pop-up.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -36,6 +38,7 @@ import { AddPopUpComponent } from './add-pop-up/add-pop-up.component';
     AddPopUpComponent
   ],
   imports: [
+    FormsModule,
     CommonModule,
     PagesRoutingModule,
     DxDropDownButtonModule,
@@ -46,7 +49,8 @@ import { AddPopUpComponent } from './add-pop-up/add-pop-up.component';
     DxDataGridModule,
     DxPopupModule,
     DxToolbarModule,
-    DxScrollViewModule
+    DxScrollViewModule,
+    HttpClientModule 
   ]
 })
 export class PagesModule { }

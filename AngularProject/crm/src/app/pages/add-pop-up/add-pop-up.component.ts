@@ -14,10 +14,20 @@ export class AddPopUpComponent implements OnInit {
   @Input() isPopupVisible: boolean;
   @Input() employee: Employee;
   @Output() postMessageEvent = new EventEmitter<boolean>();
+  @Output() outputPerson = new EventEmitter<Employee>();
+  tempPerson: Employee = {
+    Name: "",
+    LastName: "",
+    CustomerId: 0,
+    DateOfBirth: "",
+    IdentificationNumber: ""
+  };
+
   
   dataPost:Data=new Data();  
-  constructor(private postService: PostService) {
-    
+  constructor(private postService: PostService
+              
+    ) {
     this.isPopupVisible = true;
     this.closeModal = this.closeModal.bind(this);
     this.savePopup=this.savePopup.bind(this);
@@ -26,7 +36,7 @@ export class AddPopUpComponent implements OnInit {
   closeModal(){
     this.isPopupVisible = false;
     this.postMessageEvent.emit(false);
-    //console.log(this.isPopupVisible);
+    console.log(this.isPopupVisible);
   }
 
   ngOnInit(): void {
@@ -34,16 +44,12 @@ export class AddPopUpComponent implements OnInit {
   
 
   savePopup(){
-    console.log('on save');
-
-
-    this.postService.postData(this.dataPost).subscribe(//this.dataPost
+    this.postService.postData(this.tempPerson).subscribe(//this.dataPost
         (response) => {
             console.log(response);
         },
         (err) => {
             console.log(err);
-            
         }
     );
 }

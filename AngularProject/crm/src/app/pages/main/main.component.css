@@ -1,5 +1,6 @@
 .push-blankarea-md {
     padding-left: 220px;
+    padding-right: 10px;
     padding-top: 10px;
     position: relative;
 }
@@ -9,7 +10,7 @@
 }
 
 .footer {
-    position: fixed;
+    position: relative;
     bottom: 0%;
     width: 100%;
     padding-left: 225px;
