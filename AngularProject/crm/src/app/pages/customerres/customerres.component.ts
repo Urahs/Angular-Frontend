@@ -13,7 +13,7 @@ export class CustomerresComponent implements OnInit {
     openPreviewModal: boolean;
     selectedCusRes!: Employee;
     openAddModal: boolean;
-
+    deleteId: number;
 
     constructor(
         private postService: PostService
@@ -21,6 +21,7 @@ export class CustomerresComponent implements OnInit {
         this.openPreviewModal = false;
         this.openAddModal = false;
         this.OpenAddModal = this.OpenAddModal.bind(this);
+        this.test = this.test.bind(this);
     }
 
     postMessagePreview(messageFromChild: any){
@@ -58,6 +59,28 @@ export class CustomerresComponent implements OnInit {
 
     ngOnInit(): void {
         this.getCustomers();
+    }
+
+    /* deleteCustomer(contactId: any){
+        this.postService.deleteCustomer(contactId).subscribe(data => {
+            console.log(data);
+        })
+        
+    } */
+
+
+    deleteCustomer(inputData: Employee){
+        this.deleteId = inputData.CustomerId;
+        this.postService.deleteCustomer(this.deleteId).subscribe(data => {
+            console.log(data);
+        })
+        
+    }
+
+
+    test(inputData: Employee){
+        this.selectedCusRes = inputData;
+        console.log(this.selectedCusRes.Name);
     }
 
 }
