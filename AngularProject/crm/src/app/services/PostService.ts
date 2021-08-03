@@ -17,4 +17,6 @@ export class PostService{
     get(): Observable<any>{
         return this.httpClient.get<any>('https://localhost:5001/api/customers');
     }
+    
   }
+  

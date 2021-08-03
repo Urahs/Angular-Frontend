@@ -25,7 +25,6 @@ export class CustomerComponent implements OnInit {
   {
     this.savePopup = this.savePopup.bind(this);    
     this.OpenPreviewModal = this.OpenPreviewModal.bind(this);
-    this.OpenEditModal = this.OpenEditModal.bind(this);
     this.postMessageEdit = this.postMessageEdit.bind(this);  
     this.postMessagePreview = this.postMessagePreview.bind(this);  
   }
@@ -39,10 +38,6 @@ export class CustomerComponent implements OnInit {
     this.openPreviewModal = true;
     console.log(this.openPreviewModal);
     }
-
-  OpenEditModal(){
-    this.openEditModal = true;
-  }
 
     postMessagePreview(messageFromChild: any){
         this.openPreviewModal = messageFromChild;

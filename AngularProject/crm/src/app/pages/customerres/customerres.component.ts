@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from 'src/app/models/Employee';
 import { PostService } from 'src/app/services/PostService';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-customerres',
@@ -13,6 +14,7 @@ export class CustomerresComponent implements OnInit {
     openPreviewModal: boolean;
     selectedCusRes!: Employee;
     openAddModal: boolean;
+    openEditModal: boolean;
 
 
     constructor(
@@ -20,6 +22,7 @@ export class CustomerresComponent implements OnInit {
     ){
         this.openPreviewModal = false;
         this.openAddModal = false;
+        this.OpenEditModal = this.OpenEditModal.bind(this);
         this.OpenAddModal = this.OpenAddModal.bind(this);
     }
 
@@ -30,6 +33,10 @@ export class CustomerresComponent implements OnInit {
     
     postMessageAdd(messageFromChild: any){
         this.openAddModal = messageFromChild;
+    }
+    
+    postMessageEdit(messageFromChild: any){
+        this.openEditModal = messageFromChild;
     }
 
     getCustomers(){
@@ -48,17 +55,22 @@ export class CustomerresComponent implements OnInit {
     OpenPreviewModal() {
         this.openPreviewModal = true;
     }
-
     CusResSelected(inputData: Employee){
         this.selectedCusRes = inputData;
     }
     OpenAddModal(){
         this.openAddModal = true;
-        console.log("test");
+    }
+    OpenEditModal(){
+        this.openEditModal = true;
     }
 
     ngOnInit(): void {
         this.getCustomers();
     }
 
+    ExportExcel() {
+        const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.dataSource);
+        console.log("test");
+      }
 }

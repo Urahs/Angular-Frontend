@@ -1,14 +1,14 @@
 <dx-popup
     [visible]= "isPopupVisible"
-    [height]="700"
-    [width]="1000"
+    [height]="600"
+    [width]="700"
     position="center">
 
     <div *dxTemplate="let data of 'title'" style="color: #ED1B2E; text-align: center;">
         <font size="+3">Müşteri Ekle</font>
 
 
-        <a role="button" style="margin-right: -50px; padding-left: 540px;" (click)="closeModal()" >
+        <a role="button" style="margin-right: -50px; padding-left: 500px;" (click)="closeModal()" >
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" class="bi bi-x-md" viewBox="0 0 23 23" >
                 <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
               </svg>

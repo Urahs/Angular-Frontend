@@ -1,4 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Data } from 'src/app/models/Data';
+import { Employee } from 'src/app/models/Employee';
+import { PostService } from 'src/app/services/PostService';
 
 @Component({
   selector: 'edit-pop-up',
@@ -8,11 +11,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class EditPopUpComponent implements OnInit {
 
   @Input() isPopupVisible: boolean;
+  @Input() employee: Employee;
   @Output() postMessageEvent = new EventEmitter<boolean>();
   
-  constructor(){
+  dataPost:Data=new Data();
+  constructor(private postService: PostService){
     this.isPopupVisible = true;
     this.closeModal = this.closeModal.bind(this);
+    this.savePopup=this.savePopup.bind(this);
   }
 
   closeModal(){
@@ -20,6 +26,19 @@ export class EditPopUpComponent implements OnInit {
     this.postMessageEvent.emit(false);
     //console.log(this.isPopupVisible);
   }
+  
+  savePopup(){
+    console.log('on save');
+    this.postService.postData(this.dataPost).subscribe(//this.dataPost
+        (response) => {
+            console.log(response);
+        },
+        (err) => {
+            console.log(err);
+            
+        }
+    );
+}
 
   ngOnInit(): void {
   }
