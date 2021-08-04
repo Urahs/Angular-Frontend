@@ -4,6 +4,7 @@ import { PostService } from 'src/app/services/PostService';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DeletePopUpComponent } from '../delete-pop-up/delete-pop-up.component';
 import * as XLSX from 'xlsx'; 
+import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
 
 @Component({
   selector: 'app-customerres',
@@ -25,7 +26,6 @@ export class CustomerresComponent implements OnInit {
         this.openPreviewModal = false;
         this.openAddModal = false;
         this.OpenAddModal = this.OpenAddModal.bind(this);
-        this.test = this.test.bind(this);
     }
 
     postMessagePreview(messageFromChild: any){
@@ -34,16 +34,6 @@ export class CustomerresComponent implements OnInit {
 
     postMessageAdd(messageFromChild: any){
         this.openAddModal = messageFromChild;
-    }
-
-    postMessageDelete(messageFromChild: any){
-        console.log("aaaaaaaaaa");
-        
-        if(messageFromChild){
-            console.log("True");
-        }
-        else
-            console.log("False");
     }
 
     getCustomers(){
@@ -75,14 +65,6 @@ export class CustomerresComponent implements OnInit {
         this.getCustomers();
     }
 
-    /* deleteCustomer(contactId: any){
-        this.postService.deleteCustomer(contactId).subscribe(data => {
-            console.log(data);
-        })
-        
-    } */
-
-
     deleteCustomer(inputData: Employee){
         this.deleteId = inputData.CustomerId;
         this.postService.deleteCustomer(this.deleteId).subscribe(data => {
@@ -90,21 +72,23 @@ export class CustomerresComponent implements OnInit {
         })   
     }
 
-    open() {
-        const modalRef = this.modalService.open(DeletePopUpComponent, {centered:true, size: 'sm',});
-        modalRef.componentInstance.name = 'World';
+    OpenDeleteModal() {
+        const modalRef = this.modalService.open(DeletePopUpComponent, {centered:true, size: 'sm'});
         modalRef.componentInstance.event.subscribe((rec: any) => {
             if(rec) this.deleteCustomer(this.selectedCusRes);
         })
     }
 
-
-    test(inputData: Employee){
-        this.selectedCusRes = inputData;
-        console.log(this.selectedCusRes.Name);
+    OpenEditModal() {
+        const modalRef = this.modalService.open(EditPopUpComponent, {centered:true, size: 'lg'});
+        modalRef.componentInstance.employee = this.selectedCusRes;
+        modalRef.componentInstance.event.subscribe((rec: any) => {
+            this.selectedCusRes = rec;
+        })
     }
 
-    exportexcel(): void 
+
+    ExportExcel(): void 
     {
        /* table id is passed over here */   
        let element = document.getElementById('cus-table'); 

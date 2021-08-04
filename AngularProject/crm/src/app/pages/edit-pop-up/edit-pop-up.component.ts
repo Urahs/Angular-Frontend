@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Employee } from 'src/app/models/Employee';
 
 @Component({
   selector: 'edit-pop-up',
@@ -7,21 +9,19 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class EditPopUpComponent implements OnInit {
 
-  @Input() isPopupVisible: boolean;
-  @Output() postMessageEvent = new EventEmitter<boolean>();
+  @Input() employee: Employee;
+  @Output() postEmployeeBack = new EventEmitter<Employee>();
   
-  constructor(){
-    this.isPopupVisible = true;
-    this.closeModal = this.closeModal.bind(this);
-  }
-
-  closeModal(){
-    this.isPopupVisible = false;
-    this.postMessageEvent.emit(false);
-    //console.log(this.isPopupVisible);
+  constructor(public activeModal: NgbActiveModal){
+    
   }
 
   ngOnInit(): void {
+  }
+
+  Save(){
+    this.postEmployeeBack.emit(this.employee);
+    this.activeModal.close('Close click')
   }
 
 }
