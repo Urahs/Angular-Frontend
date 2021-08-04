@@ -3,6 +3,7 @@ import { Employee } from 'src/app/models/Employee';
 import { PostService } from 'src/app/services/PostService';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DeletePopUpComponent } from '../delete-pop-up/delete-pop-up.component';
+import * as XLSX from 'xlsx'; 
 
 @Component({
   selector: 'app-customerres',
@@ -103,4 +104,20 @@ export class CustomerresComponent implements OnInit {
         console.log(this.selectedCusRes.Name);
     }
 
+    exportexcel(): void 
+    {
+       /* table id is passed over here */   
+       let element = document.getElementById('cus-table'); 
+       const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+
+       /* generate workbook and add the worksheet */
+       const wb: XLSX.WorkBook = XLSX.utils.book_new();
+       XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+       /* save to file */
+       XLSX.writeFile(wb, "test.xlsx");
+			
+    }
 }
+
+
