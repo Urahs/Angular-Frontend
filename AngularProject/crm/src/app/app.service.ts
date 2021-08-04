@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { Customer } from './pages/table/table.component';
 
 
 let customers: Customer[] = [{
@@ -11,7 +11,7 @@ let customers: Customer[] = [{
     "Zipcode": 72716,
     "Phone": "(800) 555-2797",
     "Fax": "(800) 555-2171",
-    "Website": "http://www.nowebsitesupermart.com"
+    "Website": "http://www.nowebsitesupermart.com",
 }, {
     "ID": 2,
     "CompanyName": "Electronics Depot",
@@ -126,7 +126,13 @@ let customers: Customer[] = [{
 
 @Injectable()
 export class Service {
+    static getEmployees(): import("./models/Employee").Employee[] {
+      throw new Error('Method not implemented.');
+    }
     getCustomers() {
+        return customers;
+    }
+    getEmployees(): Customer[] {
         return customers;
     }
 }

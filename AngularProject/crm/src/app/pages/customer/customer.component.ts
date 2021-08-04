@@ -1,10 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Injectable, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, enableProdMode, Injectable, OnInit } from '@angular/core';
 import { Employee } from 'src/app/models/Employee';
 import { Data } from 'src/app/models/Data';
 import { PostService } from 'src/app/services/PostService';
-
 
 @Component({
   selector: 'app-customer',
@@ -57,15 +55,10 @@ export class CustomerComponent implements OnInit {
             console.log(err);
         }
     );
-
   }
-
-
 
   savePopup(){
     console.log('on save');
-
-
     this.postService.postData(this.dataPost).subscribe(//this.dataPost
         (response) => {
             console.log(response);
@@ -76,8 +69,6 @@ export class CustomerComponent implements OnInit {
         }
     );
 }
-
-
 }
 
 

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,ViewChild, ElementRef, OnInit } from '@angular/core';
 import { Employee } from 'src/app/models/Employee';
 import { PostService } from 'src/app/services/PostService';
 import * as XLSX from 'xlsx';
+
 
 @Component({
   selector: 'app-customerres',
@@ -9,12 +10,15 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./customerres.component.css']
 })
 export class CustomerresComponent implements OnInit {
+   
+    @ViewChild('TABLE')
 
     dataSource: Employee[];
     openPreviewModal: boolean;
     selectedCusRes!: Employee;
     openAddModal: boolean;
     openEditModal: boolean;
+    table: ElementRef;
 
 
     constructor(
@@ -69,8 +73,13 @@ export class CustomerresComponent implements OnInit {
         this.getCustomers();
     }
 
-    ExportExcel() {
-        const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.dataSource);
-        console.log("test");
+    ExportExcel() {const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.table.nativeElement);//converts a DOM TABLE element to a worksheet
+        const wb: XLSX.WorkBook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+  
+        /* save to file */
+        XLSX.writeFile(wb, 'SheetJS.xlsx');
       }
+      
 }
+

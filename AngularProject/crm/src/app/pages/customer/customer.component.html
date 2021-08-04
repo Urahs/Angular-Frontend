@@ -7,10 +7,14 @@
             <div class="table-responsive">
                 <div id="data-grid-demo">
                     <dx-data-grid 
+                        #grid
                         id="gridContainer"
                         [dataSource] = "dataSource"
                         keyExpr="CustomerId"
-                        [showBorders]="true">
+                        [hoverStateEnabled]="true"
+                        [showBorders]="true"
+                        [selectedRowKeys]="[]">
+                        <dxo-selection mode="single"></dxo-selection>
                         <dxo-export [enabled]="true"></dxo-export>
                         <dxo-paging [enabled]="true" [pageSize]="15"></dxo-paging>
                         <dxo-search-panel [visible]="true"></dxo-search-panel>
@@ -60,9 +64,16 @@
                             <dxi-button name="edit" ></dxi-button>
                             <dxi-button name="delete"></dxi-button>
                         </dxi-column>
-
                         <dxo-paging [enabled]="true" [pageSize]="10"></dxo-paging>
                     </dx-data-grid>
+                        <div id="employeeInfo" *ngIf="grid.selectedRowKeys.length">
+                        <p class="employeeNotes"> 
+                             {{grid.instance.getSelectedRowsData()[0].Name}} 
+                             {{grid.instance.getSelectedRowsData()[0].LastName}} 
+                             {{grid.instance.getSelectedRowsData()[0].DateOfBirth}} 
+                             {{grid.instance.getSelectedRowsData()[0].IdentificationNumber}} 
+                        </p> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -70,7 +81,8 @@
 </div>
 
 <div *ngIf = "openPreviewModal">	
-    <pop-up  [employee] = "dataSource[0]"
+    <pop-up  
+        [employee] = "dataSource[0]"
         [isPopupVisible] = "openPreviewModal"
         (postMessageEvent) = "postMessagePreview($event)">
     </pop-up>	
