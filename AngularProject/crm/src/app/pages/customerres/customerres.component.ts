@@ -43,7 +43,6 @@ export class CustomerresComponent implements OnInit {
         }
         else
             console.log("False");
-            
     }
 
     getCustomers(){
@@ -93,6 +92,9 @@ export class CustomerresComponent implements OnInit {
     open() {
         const modalRef = this.modalService.open(DeletePopUpComponent, {centered:true, size: 'sm',});
         modalRef.componentInstance.name = 'World';
+        modalRef.componentInstance.event.subscribe((rec: any) => {
+            if(rec) this.deleteCustomer(this.selectedCusRes);
+        })
     }
 
 

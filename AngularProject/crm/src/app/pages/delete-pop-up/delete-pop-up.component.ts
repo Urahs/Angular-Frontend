@@ -17,7 +17,7 @@ export class DeletePopUpComponent implements OnInit {
   }
 
   closeMethod(choice: boolean){
-    this.event.emit(false);
+    this.event.emit(choice);
     this.activeModal.close('Close click');
   }
 
