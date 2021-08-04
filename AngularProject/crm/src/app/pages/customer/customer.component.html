@@ -57,7 +57,7 @@
 
                         <dxi-column type="buttons" [width]="110">
                             <dxi-button icon="user" [onClick]= "OpenPreviewModal"></dxi-button>
-                            <dxi-button name="edit" [onClick]= "OpenEditModal"></dxi-button>
+                            <dxi-button name="edit" ></dxi-button>
                             <dxi-button name="delete"></dxi-button>
                         </dxi-column>
 
@@ -76,11 +76,6 @@
     </pop-up>	
 </div>
 
-<div *ngIf = "openEditModal">
-    <edit-pop-up 
-        [isPopupVisible] = "openEditModal" 
-        (postMessageEvent) = "postMessageEdit($event)">
-    </edit-pop-up>	
-</div>
+
 
 

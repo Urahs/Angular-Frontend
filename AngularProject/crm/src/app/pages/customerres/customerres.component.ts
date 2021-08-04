@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from 'src/app/models/Employee';
 import { PostService } from 'src/app/services/PostService';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DeletePopUpComponent } from '../delete-pop-up/delete-pop-up.component';
 
 @Component({
   selector: 'app-customerres',
@@ -16,7 +18,8 @@ export class CustomerresComponent implements OnInit {
     deleteId: number;
 
     constructor(
-        private postService: PostService
+        private postService: PostService,
+        private modalService: NgbModal
     ){
         this.openPreviewModal = false;
         this.openAddModal = false;
@@ -30,6 +33,17 @@ export class CustomerresComponent implements OnInit {
 
     postMessageAdd(messageFromChild: any){
         this.openAddModal = messageFromChild;
+    }
+
+    postMessageDelete(messageFromChild: any){
+        console.log("aaaaaaaaaa");
+        
+        if(messageFromChild){
+            console.log("True");
+        }
+        else
+            console.log("False");
+            
     }
 
     getCustomers(){
@@ -73,8 +87,12 @@ export class CustomerresComponent implements OnInit {
         this.deleteId = inputData.CustomerId;
         this.postService.deleteCustomer(this.deleteId).subscribe(data => {
             console.log(data);
-        })
-        
+        })   
+    }
+
+    open() {
+        const modalRef = this.modalService.open(DeletePopUpComponent, {centered:true, size: 'sm',});
+        modalRef.componentInstance.name = 'World';
     }
 
 

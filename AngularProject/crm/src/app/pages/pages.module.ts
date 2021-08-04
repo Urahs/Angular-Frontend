@@ -19,6 +19,7 @@ import { MainComponent } from './main/main.component';
 import { AddPopUpComponent } from './add-pop-up/add-pop-up.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DeletePopUpComponent } from './delete-pop-up/delete-pop-up.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     PopUpComponent,
     EditPopUpComponent,
     MainComponent,
-    AddPopUpComponent
+    AddPopUpComponent,
+    DeletePopUpComponent
   ],
   imports: [
     FormsModule,
