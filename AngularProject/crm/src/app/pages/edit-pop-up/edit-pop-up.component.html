@@ -8,7 +8,7 @@
     <div class="row">
         <div class="form-group col-md-6">
           <label for="inputEmail4">İsim</label>
-          <input type="text" class="form-control" id="name" [value]=employee.Name>
+          <input type="text" class="form-control" id="name" [value]=employee.Name [(ngModel)]="employee.Name">
         </div>
         <div class="form-group col-md-6">
           <label for="inputPassword4">Soyisim</label>
@@ -17,11 +17,11 @@
         <div class="row">
       <div class="form-group col-md-6">
         <label for="inputEmail4">Doğum Günü</label>
-        <input type="text" class="form-control" id="DateOfBirth" placeholder="Doğum Günü" [value]=employee.DateOfBirth>
+        <input type="text" class="form-control" id="DateOfBirth" placeholder="Doğum Günü" [value]=employee.DateOfBirth [(ngModel)]="employee.DateOfBirth">
       </div>
       <div class="form-group col-md-6">
         <label for="inputPassword4">Müşteri Numarası</label>
-        <input type="text" class="form-control" id="IdentificationNumber"placeholder="ID" [value]=employee.IdentificationNumber>
+        <input type="text" class="form-control" id="IdentificationNumber"placeholder="ID" [value]=employee.IdentificationNumber [(ngModel)]="employee.IdentificationNumber">
       </div> </div>
   </div>
   <div class="modal-footer">

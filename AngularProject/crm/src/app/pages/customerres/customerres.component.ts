@@ -79,12 +79,12 @@ export class CustomerresComponent implements OnInit {
         })
     }
 
-    OpenEditModal() {
+    OpenEditModal(inputData:number) {
         const modalRef = this.modalService.open(EditPopUpComponent, {centered:true, size: 'lg'});
-        modalRef.componentInstance.employee = this.selectedCusRes;
-        modalRef.componentInstance.event.subscribe((rec: any) => {
+        modalRef.componentInstance.employeeId = inputData;
+        /* modalRef.componentInstance.event.subscribe((rec: any) => {
             this.selectedCusRes = rec;
-        })
+        }) */
     }
 
 

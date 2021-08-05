@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { Employee } from "../models/Employee";
 
 @Injectable({
     providedIn: "any"
@@ -16,6 +17,14 @@ export class PostService{
   
     get(): Observable<any>{
         return this.httpClient.get<any>('https://localhost:5001/api/customers');
+    }
+
+    UpdateCustomer(cusId: number, data:Employee){
+      return this.httpClient.put('https://localhost:5001/api/customers/' + cusId, data);
+    }
+
+    getCustomer(cusId: number): Observable<Employee>{
+      return this.httpClient.get<Employee>("https://localhost:5001/api/customers/" + cusId);
     }
 
     public deleteCustomer(deleteId: any){

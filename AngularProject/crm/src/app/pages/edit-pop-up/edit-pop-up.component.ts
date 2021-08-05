@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Employee } from 'src/app/models/Employee';
+import { PostService } from 'src/app/services/PostService';
 
 @Component({
   selector: 'edit-pop-up',
@@ -9,19 +10,34 @@ import { Employee } from 'src/app/models/Employee';
 })
 export class EditPopUpComponent implements OnInit {
 
-  @Input() employee: Employee;
+  employee: Employee = {
+    "Name" : "",
+    "LastName": "",
+    "DateOfBirth": "",
+    "IdentificationNumber": "",
+    "CustomerId": 0
+  };
+
+  @Input() employeeId: number;
   @Output() postEmployeeBack = new EventEmitter<Employee>();
   
-  constructor(public activeModal: NgbActiveModal){
-    
-  }
+  constructor(
+    public activeModal: NgbActiveModal,
+    private postService: PostService)
+    {
+
+    }
 
   ngOnInit(): void {
+    this.postService.getCustomer(this.employeeId).subscribe((result) => {
+      this.employee = result;
+    });
   }
 
   Save(){
-    this.postEmployeeBack.emit(this.employee);
+    this.postService.UpdateCustomer(this.employee.CustomerId, this.employee).subscribe(() => {
+      
+    })
     this.activeModal.close('Close click')
   }
-
 }
