@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Data } from 'src/app/models/Data';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Employee } from 'src/app/models/Employee';
 import { PostService } from 'src/app/services/PostService';
 
@@ -10,37 +11,33 @@ import { PostService } from 'src/app/services/PostService';
 })
 export class EditPopUpComponent implements OnInit {
 
-  @Input() isPopupVisible: boolean;
-  @Input() employee: Employee;
-  @Output() postMessageEvent = new EventEmitter<boolean>();
-  
-  dataPost:Data=new Data();
-  constructor(private postService: PostService){
-    this.isPopupVisible = true;
-    this.closeModal = this.closeModal.bind(this);
-    this.savePopup=this.savePopup.bind(this);
-  }
+  employee: Employee = {
+    "Name" : "",
+    "LastName": "",
+    "DateOfBirth": "",
+    "IdentificationNumber": "",
+    "CustomerId": 0
+  };
 
-  closeModal(){
-    this.isPopupVisible = false;
-    this.postMessageEvent.emit(false);
-    //console.log(this.isPopupVisible);
-  }
+  @Input() employeeId: number;
+  @Output() postEmployeeBack = new EventEmitter<Employee>();
   
-  savePopup(){
-    console.log('on save');
-    this.postService.postData(this.dataPost).subscribe(//this.dataPost
-        (response) => {
-            console.log(response);
-        },
-        (err) => {
-            console.log(err);
-            
-        }
-    );
-}
+  constructor(
+    public activeModal: NgbActiveModal,
+    private postService: PostService)
+    {
+    }
 
   ngOnInit(): void {
+    this.postService.getCustomer(this.employeeId).subscribe((result) => {
+      this.employee = result;
+    });
   }
 
+  Save(){
+    this.postService.UpdateCustomer(this.employee.CustomerId, this.employee).subscribe(() => {
+      
+    })
+    this.activeModal.close('Close click')
+  }
 }
