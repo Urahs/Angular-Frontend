@@ -20,10 +20,8 @@ const routes: Routes = [
     {path: "", component: HomeComponent},
     {path: "chatbot",component: ChatbotComponent}
 ]},
-{path:"",
-  component: MainComponent, 
-  children:[
-    {path: "", component: HomeComponent},
+{path:"",component: MainComponent, children:[
+{path: "", component: HomeComponent},
 ]}
   
 ];

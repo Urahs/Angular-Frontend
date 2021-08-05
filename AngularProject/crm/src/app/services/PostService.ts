@@ -8,6 +8,7 @@ import { Employee } from "../models/Employee";
   })
   
 export class PostService{
+   
     constructor(private httpClient: HttpClient){}
     
     public postData(data: any): Observable<any>{//Observable<any>

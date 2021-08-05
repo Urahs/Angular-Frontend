@@ -1,10 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Injectable, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, enableProdMode, Injectable, OnInit } from '@angular/core';
 import { Employee } from 'src/app/models/Employee';
 import { Data } from 'src/app/models/Data';
 import { PostService } from 'src/app/services/PostService';
-
 
 @Component({
   selector: 'app-customer',
@@ -25,7 +23,6 @@ export class CustomerComponent implements OnInit {
   {
     this.savePopup = this.savePopup.bind(this);    
     this.OpenPreviewModal = this.OpenPreviewModal.bind(this);
-    this.OpenEditModal = this.OpenEditModal.bind(this);
     this.postMessageEdit = this.postMessageEdit.bind(this);  
     this.postMessagePreview = this.postMessagePreview.bind(this);  
   }
@@ -39,10 +36,6 @@ export class CustomerComponent implements OnInit {
     this.openPreviewModal = true;
     console.log(this.openPreviewModal);
     }
-
-  OpenEditModal(){
-    this.openEditModal = true;
-  }
 
     postMessagePreview(messageFromChild: any){
         this.openPreviewModal = messageFromChild;
@@ -62,15 +55,10 @@ export class CustomerComponent implements OnInit {
             console.log(err);
         }
     );
-
   }
-
-
 
   savePopup(){
     console.log('on save');
-
-
     this.postService.postData(this.dataPost).subscribe(//this.dataPost
         (response) => {
             console.log(response);
@@ -81,8 +69,6 @@ export class CustomerComponent implements OnInit {
         }
     );
 }
-
-
 }
 
 

@@ -37,6 +37,7 @@ export class AddPopUpComponent implements OnInit {
     this.isPopupVisible = false;
     this.postMessageEvent.emit(false);
     console.log(this.isPopupVisible);
+
   }
 
   ngOnInit(): void {
@@ -45,6 +46,7 @@ export class AddPopUpComponent implements OnInit {
 
   savePopup(){
     this.postService.postData(this.tempPerson).subscribe(//this.dataPost
+
         (response) => {
             console.log(response);
         },

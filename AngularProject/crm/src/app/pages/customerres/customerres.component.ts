@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,ViewChild, ElementRef, OnInit } from '@angular/core';
 import { Employee } from 'src/app/models/Employee';
 import { PostService } from 'src/app/services/PostService';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -6,12 +6,15 @@ import { DeletePopUpComponent } from '../delete-pop-up/delete-pop-up.component';
 import * as XLSX from 'xlsx'; 
 import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
 
+
 @Component({
   selector: 'app-customerres',
   templateUrl: './customerres.component.html',
   styleUrls: ['./customerres.component.css']
 })
 export class CustomerresComponent implements OnInit {
+   
+    @ViewChild('TABLE')
 
     dataSource: Employee[];
     openPreviewModal: boolean;
@@ -19,12 +22,14 @@ export class CustomerresComponent implements OnInit {
     openAddModal: boolean;
     deleteId: number;
 
+
     constructor(
         private postService: PostService,
         private modalService: NgbModal
     ){
         this.openPreviewModal = false;
         this.openAddModal = false;
+
         this.OpenAddModal = this.OpenAddModal.bind(this);
     }
 
@@ -35,7 +40,6 @@ export class CustomerresComponent implements OnInit {
     postMessageAdd(messageFromChild: any){
         this.openAddModal = messageFromChild;
     }
-
     getCustomers(){
         this.postService.get().subscribe(
             (data) => {
@@ -52,13 +56,13 @@ export class CustomerresComponent implements OnInit {
     OpenPreviewModal() {
         this.openPreviewModal = true;
     }
-
     CusResSelected(inputData: Employee){
         this.selectedCusRes = inputData;
     }
     OpenAddModal(){
         this.openAddModal = true;
         console.log("test");
+
     }
 
     ngOnInit(): void {
@@ -103,5 +107,4 @@ export class CustomerresComponent implements OnInit {
 			
     }
 }
-
 

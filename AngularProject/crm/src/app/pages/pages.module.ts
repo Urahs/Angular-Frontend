@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DeletePopUpComponent } from './delete-pop-up/delete-pop-up.component';
 
 
+
 @NgModule({
   declarations: [
     
@@ -38,6 +39,7 @@ import { DeletePopUpComponent } from './delete-pop-up/delete-pop-up.component';
     MainComponent,
     AddPopUpComponent,
     DeletePopUpComponent
+
   ],
   imports: [
     FormsModule,
