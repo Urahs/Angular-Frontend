@@ -1,7 +1,10 @@
 import { Component,ViewChild, ElementRef, OnInit } from '@angular/core';
 import { Employee } from 'src/app/models/Employee';
 import { PostService } from 'src/app/services/PostService';
-import * as XLSX from 'xlsx';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DeletePopUpComponent } from '../delete-pop-up/delete-pop-up.component';
+import * as XLSX from 'xlsx'; 
+import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
 
 
 @Component({
@@ -17,16 +20,16 @@ export class CustomerresComponent implements OnInit {
     openPreviewModal: boolean;
     selectedCusRes!: Employee;
     openAddModal: boolean;
-    openEditModal: boolean;
-    table: ElementRef;
+    deleteId: number;
 
 
     constructor(
-        private postService: PostService
+        private postService: PostService,
+        private modalService: NgbModal
     ){
         this.openPreviewModal = false;
         this.openAddModal = false;
-        this.OpenEditModal = this.OpenEditModal.bind(this);
+
         this.OpenAddModal = this.OpenAddModal.bind(this);
     }
 
@@ -34,15 +37,9 @@ export class CustomerresComponent implements OnInit {
         this.openPreviewModal = messageFromChild;
     }
 
-    
     postMessageAdd(messageFromChild: any){
         this.openAddModal = messageFromChild;
     }
-    
-    postMessageEdit(messageFromChild: any){
-        this.openEditModal = messageFromChild;
-    }
-
     getCustomers(){
         this.postService.get().subscribe(
             (data) => {
@@ -64,17 +61,50 @@ export class CustomerresComponent implements OnInit {
     }
     OpenAddModal(){
         this.openAddModal = true;
-    }
-    OpenEditModal(){
-        this.openEditModal = true;
+        console.log("test");
+
     }
 
     ngOnInit(): void {
         this.getCustomers();
     }
 
-    ExportExcel() {
-     }
-      
+    deleteCustomer(inputData: Employee){
+        this.deleteId = inputData.CustomerId;
+        this.postService.deleteCustomer(this.deleteId).subscribe(data => {
+            console.log(data);
+        })   
+    }
+
+    OpenDeleteModal() {
+        const modalRef = this.modalService.open(DeletePopUpComponent, {centered:true, size: 'sm'});
+        modalRef.componentInstance.event.subscribe((rec: any) => {
+            if(rec) this.deleteCustomer(this.selectedCusRes);
+        })
+    }
+
+    OpenEditModal(inputData:number) {
+        const modalRef = this.modalService.open(EditPopUpComponent, {centered:true, size: 'lg'});
+        modalRef.componentInstance.employeeId = inputData;
+        /* modalRef.componentInstance.event.subscribe((rec: any) => {
+            this.selectedCusRes = rec;
+        }) */
+    }
+
+
+    ExportExcel(): void 
+    {
+       /* table id is passed over here */   
+       let element = document.getElementById('cus-table'); 
+       const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+
+       /* generate workbook and add the worksheet */
+       const wb: XLSX.WorkBook = XLSX.utils.book_new();
+       XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+       /* save to file */
+       XLSX.writeFile(wb, "test.xlsx");
+			
+    }
 }
 

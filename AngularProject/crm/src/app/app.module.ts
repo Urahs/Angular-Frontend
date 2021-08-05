@@ -6,12 +6,11 @@ import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { DxDropDownButtonModule} from 'devextreme-angular';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
 import { PagesModule } from './pages/pages.module';
 import { DxoPopupModule, DxoToolbarModule } from 'devextreme-angular/ui/nested';
 import { AuthServiceService } from './auth-service.service';
-
 
 const routes: Routes = [];
 
@@ -20,6 +19,7 @@ const routes: Routes = [];
     AppComponent,
   ],
   imports: [
+    FormsModule,
     PagesModule,
     AuthModule,
     DxDropDownButtonModule,
