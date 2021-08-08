@@ -21,7 +21,7 @@ const routes: Routes = [
     {path: "chatbot",component: ChatbotComponent}
 ]},
 {path:"",component: MainComponent, children:[
-{path: "", component: HomeComponent},
+  {path: "", component: HomeComponent}
 ]}
   
 ];

@@ -61,7 +61,7 @@
 
                         <dxi-column type="buttons" [width]="110">
                             <dxi-button icon="user" [onClick]= "OpenPreviewModal"></dxi-button>
-                            <dxi-button name="edit" ></dxi-button>
+                            <dxi-button name="edit" [onClick]= "OpenEditModal"></dxi-button>
                             <dxi-button name="delete"></dxi-button>
                         </dxi-column>
                         <dxo-paging [enabled]="true" [pageSize]="10"></dxo-paging>
@@ -87,6 +87,8 @@
         (postMessageEvent) = "postMessagePreview($event)">
     </pop-up>	
 </div>
+
+<button (click)="OpenEditModal()">POPUP AC</button>
 
 
 

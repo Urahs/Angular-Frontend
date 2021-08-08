@@ -3,6 +3,8 @@ import { Component, enableProdMode, Injectable, OnInit } from '@angular/core';
 import { Employee } from 'src/app/models/Employee';
 import { Data } from 'src/app/models/Data';
 import { PostService } from 'src/app/services/PostService';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
 
 @Component({
   selector: 'app-customer',
@@ -16,10 +18,12 @@ export class CustomerComponent implements OnInit {
   openEditModal: boolean;
   dataSource: Employee[];
   nameOfCus: string;
+  modalReference: NgbModalRef;
 
   dataPost:Data=new Data();  
   constructor(
-    private postService: PostService)
+    private postService: PostService,
+    private modalService: NgbModal)
   {
     this.savePopup = this.savePopup.bind(this);    
     this.OpenPreviewModal = this.OpenPreviewModal.bind(this);
@@ -69,7 +73,42 @@ export class CustomerComponent implements OnInit {
         }
     );
 }
+
+  OpenEditModal(){
+    this.modalReference = this.modalService.open(EditPopUpComponent);
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+I used a method call inside of dx-button which triggers ng-modal to open it. But, whenever method is called, program routes to #. I'm very confused about it. Can you please help me?
+
+Here is the code I wrote...
+
+//customer.component.html
+      <dxi-button name="edit" [onClick]= "OpenEditModal"></dxi-button>
+      
+//customer.component.ts
+modalReference: NgbModalRef;
+  constructor(private modalService: NgbModal){}
+
+OpenEditModal(){
+    this.modalReference = this.modalService.open(EditPopUpComponent);
+}
+
+I used this guide to use bootsrap modal: https://ng-bootstrap.github.io/#/components/modal/examples
+*/
 
 
 

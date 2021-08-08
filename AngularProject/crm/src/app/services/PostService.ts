@@ -13,7 +13,7 @@ export class PostService{
     
     public postData(data: any): Observable<any>{//Observable<any>
       //   return this.httpClient.post<any>('https://localhost:5001/api/customers', data, {headers: {}});
-      return this.httpClient.post<any>('https://localhost:5001/api/customers', data, {headers:{'Content-Type':  'application/json'}});
+      return this.httpClient.post<any>('https://localhost:5001/api/customers', data, {headers:{'Content-Type':  'application/json'}})   
     }
   
     get(): Observable<any>{
