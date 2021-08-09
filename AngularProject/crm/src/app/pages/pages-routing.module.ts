@@ -14,14 +14,14 @@ import { SigninComponent } from '../auth/signin/signin.component';
 import { SignupComponent } from '../auth/signup/signup.component';
 
 const routes: Routes = [
-  {path:"main", component: MainComponent, 
+  {path:"main",
+  component: MainComponent, 
   children:[
     {path: "customer",component: CustomerComponent,canActivate:[LoginGuard]},
     {path: "customerres",component: CustomerresComponent,canActivate:[LoginGuard]},
     {path: "home", component: HomeComponent,canActivate:[LoginGuard]},
     {path: "chatbot",component: ChatbotComponent,canActivate:[LoginGuard]}
-]}
-  
+]},
 ];
 
 @NgModule({

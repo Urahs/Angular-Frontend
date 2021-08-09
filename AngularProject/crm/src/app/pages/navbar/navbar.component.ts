@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 export class SimpleObject {
   value: number | string;
   name: string;
@@ -15,17 +16,23 @@ export class NavbarComponent implements OnInit {
     { value: 1, name: "Profile", icon: "user" },
     { value: 4, name: "Messages", icon: "email", badge: "5" },
     { value: 2, name: "Friends", icon: "group" },
-    { value: 3, name: "Exit", icon: "runner" }
+    { value: 3, name: "Exit", icon: "runner"}
 ];
-  constructor() { }
+  constructor(private router: Router) { }
   ngOnInit(): void {
   }
 	onItemClick(e: { itemData: { name: any; }; }) {
-		if(e.itemData.name === "Exit")
-      console.log("aaaaaaaa");
-      
+    if ( e.itemData.name === "Exit")
+      this.onLogout(); 
 	}
+
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/signin']);
+  }
 }
+
 function notify(arg0: any, arg1: string, arg2: number) {
   throw new Error('Function not implemented.');
 }
+

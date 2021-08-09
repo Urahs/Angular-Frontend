@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InitialComponent } from './initial/initial.component';
-
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
-  { path:"", component: InitialComponent, 
+  { path:"",
+    component: InitialComponent, 
     children:[
-      {path: "signin", component: SigninComponent},
       {path: "", component: SigninComponent},
+      {path: "signin", component: SigninComponent},
       {path: "signup", component: SignupComponent},
   ]}
 ];
