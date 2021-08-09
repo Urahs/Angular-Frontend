@@ -6,6 +6,10 @@
     </button>
   </div>
   <div class="modal-body">
+    <header>
+      <h2> Müşteri bilgileri</h2>
+   </header>
+   <hr>
     <div class="row">
         <div class="form-group col-md-6">
           <label for="inputEmail4">İsim</label>
@@ -24,8 +28,23 @@
         <label for="inputPassword4">Müşteri Numarası</label>
         <input type="text" class="form-control" id="IdentificationNumber"placeholder="ID" [value]=employee.IdentificationNumber [(ngModel)]="employee.IdentificationNumber">
       </div> </div>
+      <br>
+                  <header>
+                     <h2> Adres bilgileri</h2>
+                  </header>
+                  <hr>
+                <div class="form-group">
+                  <label for="inputAddress">Adres</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="Adres">
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputCity">Şehir</label>
+                    <input type="text" class="form-control" id="inputCity" placeholder="Şehir">
+                  </div>
+                </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="Save()">Kaydet</button>
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Kapat</button>
+    <button type="button" class="btn btn-outline-dark" (click)="Save()" onclick="window.location.reload(false)"> Kaydet</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')" >Kapat</button>
   </div>

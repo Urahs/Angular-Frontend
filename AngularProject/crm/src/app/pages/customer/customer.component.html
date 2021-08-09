@@ -22,9 +22,7 @@
                         
                         <dxo-editing
                             mode="popup"
-                            [allowUpdating]="true"
                             [allowAdding]="true"
-                            [allowDeleting]="true"
                             [useIcons] = "true"
                             >
                             <dxo-popup
@@ -39,6 +37,7 @@
                                 </dxi-toolbar-item>
                             </dxo-popup>
                             <dxo-form [(formData)]="dataPost">
+                                
                                 <dxi-item itemType="group" [colCount]="2" [colSpan]="2" >
                                     <dxi-item dataField="name"></dxi-item>
                                     <dxi-item dataField="lastName"></dxi-item>
@@ -58,14 +57,16 @@
                         <dxi-column dataField="LastName"></dxi-column>
                         <dxi-column dataField="DateOfBirth" dataType="date"></dxi-column>
                         <dxi-column dataField="IdentificationNumber" [width]="170"></dxi-column>
-
                         <dxi-column type="buttons" [width]="110">
                             <dxi-button icon="user" [onClick]= "OpenPreviewModal"></dxi-button>
-                            <dxi-button name="edit" ></dxi-button>
-                            <dxi-button name="delete"></dxi-button>
+                            <dxi-button icon="edit" [onClick]= "OpenEditModal"></dxi-button>
+                            <dxi-button icon="trash" [onClick]= "OpenDeleteModal"></dxi-button>
                         </dxi-column>
+
+                        
                         <dxo-paging [enabled]="true" [pageSize]="10"></dxo-paging>
                     </dx-data-grid>
+                    
                         <div id="employeeInfo" *ngIf="grid.selectedRowKeys.length">
                         <p class="employeeNotes"> 
                              {{grid.instance.getSelectedRowsData()[0].Name}} 

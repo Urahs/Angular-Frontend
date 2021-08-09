@@ -5,6 +5,8 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DeletePopUpComponent } from '../delete-pop-up/delete-pop-up.component';
 import * as XLSX from 'xlsx'; 
 import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
+import { AddPopUpComponent } from '../add-pop-up/add-pop-up.component';
+import { Data } from 'src/app/models/Data';
 
 
 @Component({
@@ -14,6 +16,7 @@ import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
 })
 export class CustomerresComponent implements OnInit {
    
+
     @ViewChild('TABLE')
 
     dataSource: Employee[];
@@ -22,7 +25,7 @@ export class CustomerresComponent implements OnInit {
     openAddModal: boolean;
     deleteId: number;
 
-
+    dataPost:Data=new Data(); 
     constructor(
         private postService: PostService,
         private modalService: NgbModal
@@ -51,6 +54,9 @@ export class CustomerresComponent implements OnInit {
             }
         );
     
+      }
+      open() {
+        const modalRef = this.modalService.open(AddPopUpComponent,{size:"lg"});
       }
 
     OpenPreviewModal() {
@@ -90,6 +96,20 @@ export class CustomerresComponent implements OnInit {
             this.selectedCusRes = rec;
         }) */
     }
+    
+    
+  savePopup(){
+    console.log('on save');
+    this.postService.postData(this.dataPost).subscribe(//this.dataPost
+        (response) => {
+            console.log(response);
+        },
+        (err) => {
+            console.log(err);
+            
+        }
+    );
+}
 
 
     ExportExcel(): void 
