@@ -81,7 +81,6 @@ export class CustomerComponent implements OnInit {
     this.modalReference = this.modalService.open(EditPopUpComponent);
   }
 
-
   onLogout() {
     localStorage.removeItem('token');
     this.router.navigate(['/signin']);

@@ -21,7 +21,9 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 	onItemClick(e: { itemData: { name: any; }; }) {
-		notify(e.itemData.name || e.itemData, "success", 600);
+		if(e.itemData.name === "Exit")
+      console.log("aaaaaaaa");
+      
 	}
 }
 function notify(arg0: any, arg1: string, arg2: number) {

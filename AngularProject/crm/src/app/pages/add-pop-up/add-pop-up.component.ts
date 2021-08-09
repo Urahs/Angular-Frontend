@@ -16,11 +16,11 @@ export class AddPopUpComponent implements OnInit {
   @Output() postMessageEvent = new EventEmitter<boolean>();
   @Output() outputPerson = new EventEmitter<Employee>();
   tempPerson: Employee = {
-    Name: "",
-    LastName: "",
-    CustomerId: 0,
-    DateOfBirth: "",
-    IdentificationNumber: ""
+    name: "",
+    lastName: "",
+    customerId: 0,
+    dateOfBirth: "",
+    identificationNumber: ""
   };
 
   
