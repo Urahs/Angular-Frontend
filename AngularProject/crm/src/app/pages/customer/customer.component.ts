@@ -2,9 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component, enableProdMode, Injectable, OnInit } from '@angular/core';
 import { Employee } from 'src/app/models/Employee';
 import { Data } from 'src/app/models/Data';
-import { PostService } from 'src/app/services/PostService';
+// import { PostService } from 'src/app/services/PostService.service';
+import { PostService } from 'src/app/services/PostService.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer',
@@ -22,6 +24,7 @@ export class CustomerComponent implements OnInit {
 
   dataPost:Data=new Data();  
   constructor(
+    private router: Router,
     private postService: PostService,
     private modalService: NgbModal)
   {
@@ -77,6 +80,13 @@ export class CustomerComponent implements OnInit {
   OpenEditModal(){
     this.modalReference = this.modalService.open(EditPopUpComponent);
   }
+
+
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/signin']);
+  }
+
 }
 
 

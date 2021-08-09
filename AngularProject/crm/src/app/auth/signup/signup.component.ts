@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'signup',
@@ -9,18 +10,37 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class SignupComponent implements OnInit {
 
-  cardForm: FormGroup;
+  constructor(public service: AuthService, private toastr: ToastrService) { }
 
-  constructor(private fb: FormBuilder) {
-    this.cardForm = fb.group({
-      materialFormCardNameEx: ['', Validators.required],
-      materialFormCardEmailEx: ['', [Validators.email, Validators.required]],
-      materialFormCardConfirmEx: ['', Validators.required],
-      materialFormCardPasswordEx: ['', Validators.required]
-    });
+  ngOnInit() {
+    this.service.formModel.reset();
   }
 
-  ngOnInit(): void {
+  onSubmit() {
+    this.service.register().subscribe(
+      (res: any) => {
+        if (res.succeeded) {
+          this.service.formModel.reset();
+          this.toastr.success('New user created!', 'Registration successful.');
+        } else {
+          res.errors.forEach((element:any) => {
+            switch (element.code) {
+              case 'DuplicateUserName':
+                this.toastr.error('Username is already taken','Registration failed.');
+                break;
+
+              default:
+              this.toastr.error(element.description,'Registration failed.');
+                break;
+            }
+          }
+          );
+        }
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
 }

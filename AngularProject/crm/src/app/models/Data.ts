@@ -1,7 +1,7 @@
 export class Data{
-    CustomerId?: number;
-    Name: string;
-    LastName: string;
-    DateOfBirth: string;
-    IdentificationNumber: string;
+    customerId: number;
+    name: string;
+    lastName: string;
+    dateOfBirth: string;
+    identificationNumber: string;
 }

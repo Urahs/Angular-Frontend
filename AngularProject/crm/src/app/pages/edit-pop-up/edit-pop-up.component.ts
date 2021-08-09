@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Employee } from 'src/app/models/Employee';
-import { PostService } from 'src/app/services/PostService';
+import { PostService } from 'src/app/services/PostService.service';
 
 @Component({
   selector: 'edit-pop-up',
