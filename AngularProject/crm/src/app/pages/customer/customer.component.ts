@@ -77,7 +77,7 @@ export class CustomerComponent implements OnInit {
     );
 }
 
-  OpenEditModal(){
+  OpenEditModal = () => {
     this.modalReference = this.modalService.open(EditPopUpComponent);
   }
 
