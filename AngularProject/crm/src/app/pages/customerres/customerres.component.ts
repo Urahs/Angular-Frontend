@@ -1,11 +1,12 @@
 import { Component,ViewChild, ElementRef, OnInit } from '@angular/core';
 import { Employee } from 'src/app/models/Employee';
-import { PostService } from 'src/app/services/PostService';
+import { PostService } from 'src/app/services/PostService.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DeletePopUpComponent } from '../delete-pop-up/delete-pop-up.component';
 import * as XLSX from 'xlsx'; 
 import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
 
+import { Data } from 'src/app/models/Data';
 
 @Component({
   selector: 'app-customerres',
@@ -21,7 +22,7 @@ export class CustomerresComponent implements OnInit {
     selectedCusRes!: Employee;
     openAddModal: boolean;
     deleteId: number;
-
+    isim:string="burak";
 
     constructor(
         private postService: PostService,
@@ -31,6 +32,10 @@ export class CustomerresComponent implements OnInit {
         this.openAddModal = false;
 
         this.OpenAddModal = this.OpenAddModal.bind(this);
+    }
+
+    ngOnInit(): void {
+        this.getCustomers();
     }
 
     postMessagePreview(messageFromChild: any){
@@ -65,9 +70,7 @@ export class CustomerresComponent implements OnInit {
 
     }
 
-    ngOnInit(): void {
-        this.getCustomers();
-    }
+    
 
     deleteCustomer(inputData: Employee){
         this.deleteId = inputData.CustomerId;

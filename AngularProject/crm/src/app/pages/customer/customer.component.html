@@ -3,6 +3,8 @@
         <div class="card-header py-3" >
             <h6 class="m-0 font-weight-bold" style="color: #ED1B2E; text-align: center;"><font size="+3" >Müşteri Listesi</font></h6>
         </div>
+
+
         <div class="card-body">
             <div class="table-responsive">
                 <div id="data-grid-demo">
@@ -10,7 +12,7 @@
                         #grid
                         id="gridContainer"
                         [dataSource] = "dataSource"
-                        keyExpr="CustomerId"
+                        keyExpr="customerId"
                         [hoverStateEnabled]="true"
                         [showBorders]="true"
                         [selectedRowKeys]="[]">
@@ -53,11 +55,11 @@
                             </dxo-form>
                         </dxo-editing>
 
-                        <dxi-column dataField="CustomerId" caption="ID" [width]="70"></dxi-column>
-                        <dxi-column dataField="Name"></dxi-column>
-                        <dxi-column dataField="LastName"></dxi-column>
-                        <dxi-column dataField="DateOfBirth" dataType="date"></dxi-column>
-                        <dxi-column dataField="IdentificationNumber" [width]="170"></dxi-column>
+                        <dxi-column dataField="customerId" caption="ID" [width]="70"></dxi-column>
+                        <dxi-column dataField="name"></dxi-column>
+                        <dxi-column dataField="lastName"></dxi-column>
+                        <dxi-column dataField="dateOfBirth" dataType="date"></dxi-column>
+                        <dxi-column dataField="identificationNumber" [width]="170"></dxi-column>
 
                         <dxi-column type="buttons" [width]="110">
                             <dxi-button icon="user" [onClick]= "OpenPreviewModal"></dxi-button>
@@ -88,7 +90,6 @@
     </pop-up>	
 </div>
 
-<button (click)="OpenEditModal()">POPUP AC</button>
 
 
 
