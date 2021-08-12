@@ -73,7 +73,7 @@ export class CustomerresComponent implements OnInit {
     
 
     deleteCustomer(inputData: Employee){
-        this.deleteId = inputData.CustomerId;
+        this.deleteId = inputData.customerId;
         this.postService.deleteCustomer(this.deleteId).subscribe(data => {
             console.log(data);
         })   

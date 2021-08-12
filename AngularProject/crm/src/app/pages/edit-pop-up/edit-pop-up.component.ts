@@ -11,11 +11,11 @@ import { PostService } from 'src/app/services/PostService.service';
 export class EditPopUpComponent implements OnInit {
 
   employee: Employee = {
-    "Name" : "",
-    "LastName": "",
-    "DateOfBirth": "",
-    "IdentificationNumber": "",
-    "CustomerId": 0
+    "name" : "",
+    "lastName": "",
+    "dateOfBirth": "",
+    "identificationNumber": "",
+    "customerId": 0
   };
 
   @Input() employeeId: number;
@@ -34,7 +34,7 @@ export class EditPopUpComponent implements OnInit {
   }
 
   Save(){
-    this.postService.UpdateCustomer(this.employee.CustomerId, this.employee).subscribe(() => {
+    this.postService.UpdateCustomer(this.employee.customerId, this.employee).subscribe(() => {
       
     })
     this.activeModal.close('Close click')

@@ -1,0 +1,16 @@
+<div class="card shadow mb-5">
+    <div class="card-header py-3" >
+        <h6 class="m-0 font-weight-bold" style="color: #ED1B2E; text-align: center;"><font size="+3" >Kullanıcı Bilgileri</font></h6>
+    </div>
+    <div class="card-body">
+        <div id="form-container">
+            <dx-form id="form"
+                [colCount]="1"
+                [formData]="userDetails">
+                <dxi-item dataField="userName" ></dxi-item>
+                <dxi-item dataField="fullName" ></dxi-item>
+                <dxi-item dataField="email" ></dxi-item>
+            </dx-form>
+        </div>
+    </div>
+</div>
