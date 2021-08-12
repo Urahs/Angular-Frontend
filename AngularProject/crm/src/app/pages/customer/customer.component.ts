@@ -7,6 +7,7 @@ import { PostService } from 'src/app/services/PostService.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
 import { Router } from '@angular/router';
+import { DeletePopUpComponent } from '../delete-pop-up/delete-pop-up.component';
 
 @Component({
   selector: 'app-customer',
@@ -19,6 +20,8 @@ export class CustomerComponent implements OnInit {
   openPreviewModal: boolean;
   openEditModal: boolean;
   dataSource: Employee[];
+  selectedCus!: Employee;
+  deleteId: number;
   nameOfCus: string;
   modalReference: NgbModalRef;
 
@@ -51,7 +54,7 @@ export class CustomerComponent implements OnInit {
     postMessageEdit(messageFromChild: any){
       this.openEditModal = messageFromChild;
   }
-
+  
   getCustomers(){
     this.postService.get().subscribe(
         (data) => {
@@ -80,6 +83,20 @@ export class CustomerComponent implements OnInit {
     this.modalReference = this.modalService.open(EditPopUpComponent);
   }
 
+  deleteCustomer(inputData: Employee){
+    this.deleteId = inputData.customerId;
+    this.postService.deleteCustomer(this.deleteId).subscribe(data => {
+        console.log(data);
+    })   
+}
+
+  OpenDeleteModal = () => {
+    const modalRef = this.modalService.open(DeletePopUpComponent, {centered:true, size: 'sm'});
+    modalRef.componentInstance.event.subscribe((rec: any) => {
+        if(rec) this.deleteCustomer(this.selectedCus);
+    })
+}
+
 
   onLogout() {
     localStorage.removeItem('token');
@@ -100,6 +117,10 @@ export class CustomerComponent implements OnInit {
 
 
 
+
+function getSelectedRowsData(): Employee {
+  throw new Error('Function not implemented.');
+}
 /*
 I used a method call inside of dx-button which triggers ng-modal to open it. But, whenever method is called, program routes to #. I'm very confused about it. Can you please help me?
 

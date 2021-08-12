@@ -7,6 +7,7 @@ import * as XLSX from 'xlsx';
 import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
 
 import { Data } from 'src/app/models/Data';
+import { AddPopUpComponent } from '../add-pop-up/add-pop-up.component';
 
 @Component({
   selector: 'app-customerres',
@@ -65,7 +66,8 @@ export class CustomerresComponent implements OnInit {
         this.selectedCusRes = inputData;
     }
     OpenAddModal(){
-        this.openAddModal = true;
+         const modalRef = this.modalService.open(AddPopUpComponent, {centered:true, size: 'lg'});
+
         console.log("test");
 
     }
