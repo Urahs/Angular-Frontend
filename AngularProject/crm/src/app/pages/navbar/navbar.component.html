@@ -1,23 +1,30 @@
-<nav class="navbar navbar-light" style="background-color: #ED1B2E;">
+<nav class="navbar navbar-light" style="background-color: #ed1b2e">
   <div class="container">
-      <!-- <nav class="navbar"> -->
-              <ul class="navbar-nav">
-                <li>
-                    <div class="dx-field-value">
-                      <!-- margin-left: 700px; -->
-                    <dx-drop-down-button
-                      style="background-color:white;margin-left: 700px; position: relative;"
-                      [splitButton]="true"
-                      [useSelectMode]="false"
-                      text={{userName.fullName}} 
-                      icon="aligncenter"
-                      [items]="profileSettings"
-                      displayExpr="name"
-                      keyExpr="id"
-                      (onItemClick)="onItemClick($event)"></dx-drop-down-button>
-                  </div>
-                </li>
-              </ul>
-        <!-- </nav> -->
-    </div>
+    <!-- <nav class="navbar"> -->
+    <ul class="navbar-nav">
+      <li>
+        <div class="dx-field-value">
+          <!-- margin-left: 700px; -->
+          <dx-drop-down-button 
+            style="
+              background: #ed1b2e;
+              border-color: #ed1b2e;
+              margin-left: 825px;
+              position: relative;
+              
+            "
+            [splitButton]="true"
+            [useSelectMode]="false"
+            text="{{ userName.fullName }}"
+            icon="aligncenter"
+            [items]="profileSettings"
+            displayExpr="name"
+            keyExpr="id"
+            (onItemClick)="onItemClick($event)"
+          ></dx-drop-down-button>
+        </div>
+      </li>
+    </ul>
+    <!-- </nav> -->
+  </div>
 </nav>
