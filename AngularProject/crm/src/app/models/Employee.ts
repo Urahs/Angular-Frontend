@@ -7,9 +7,9 @@ export class Employee {
     //   public DateOfBirth: string
     //   ){
     // }
-    CustomerId:number;
-    Name:string;
-    LastName:string;
-    IdentificationNumber:string;
-    DateOfBirth:string;
+    customerId:number;
+    name:string;
+    lastName:string;
+    identificationNumber:string;
+    dateOfBirth:string;
   }

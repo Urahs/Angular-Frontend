@@ -55,7 +55,6 @@ export class CustomerComponent implements OnInit {
   getCustomers(){
     this.postService.get().subscribe(
         (data) => {
-            console.log(data);
             this.dataSource = data;
         },
         (err) => {
@@ -77,7 +76,7 @@ export class CustomerComponent implements OnInit {
     );
 }
 
-  OpenEditModal(){
+  OpenEditModal=()=>{
     this.modalReference = this.modalService.open(EditPopUpComponent);
   }
 
