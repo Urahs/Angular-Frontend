@@ -41,8 +41,11 @@ export class CustomerComponent implements OnInit {
       this.getCustomers();
   }
 
-  OpenPreviewModal() {
+  OpenPreviewModal(data: any) {
     const modalRef = this.modalService.open(PreviewPopUpComponent, {centered:true, size: 'lg'});
+    modalRef.componentInstance.employee = data;
+    console.log(data);
+    
   }
 
     postMessagePreview(messageFromChild: any){

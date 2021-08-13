@@ -10,7 +10,7 @@ import { Employee } from 'src/app/models/Employee';
 export class PreviewPopUpComponent implements OnInit {
 
   @Input() isPopupVisible: boolean;
-  @Input() employee: Employee;
+  @Input() employee: any;
   @Output() postMessageEvent = new EventEmitter<boolean>();
   
   constructor( public activeModal: NgbActiveModal){
@@ -21,7 +21,6 @@ export class PreviewPopUpComponent implements OnInit {
   closeModal(){
     this.isPopupVisible = false;
     this.postMessageEvent.emit(false);
-    //console.log(this.isPopupVisible);
   }
 
   ngOnInit(): void {
