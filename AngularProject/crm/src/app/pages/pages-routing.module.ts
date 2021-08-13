@@ -12,6 +12,7 @@ import { TableComponent } from './table/table.component';
 import { LoginGuard } from '../guards/login.guard';
 import { SigninComponent } from '../auth/signin/signin.component';
 import { SignupComponent } from '../auth/signup/signup.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {path:"main",
@@ -20,13 +21,9 @@ const routes: Routes = [
     {path: "customer",component: CustomerComponent,canActivate:[LoginGuard]},
     {path: "customerres",component: CustomerresComponent,canActivate:[LoginGuard]},
     {path: "home", component: HomeComponent,canActivate:[LoginGuard]},
-    {path: "", component: SigninComponent},
-    {path: "chatbot",component: ChatbotComponent,canActivate:[LoginGuard]}
+    {path: "chatbot",component: ChatbotComponent,canActivate:[LoginGuard]},
+    {path: "user-profile",component: UserProfileComponent,canActivate:[LoginGuard]}
 ]},
-{path:"",component: MainComponent, children:[
-  {path: "", component: SigninComponent}
-]}
-  
 ];
 
 @NgModule({

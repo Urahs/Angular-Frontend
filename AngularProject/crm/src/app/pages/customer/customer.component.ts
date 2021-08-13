@@ -6,6 +6,7 @@ import { Data } from 'src/app/models/Data';
 import { PostService } from 'src/app/services/PostService.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
+import { DeletePopUpComponent } from '../delete-pop-up/delete-pop-up.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -21,6 +22,8 @@ export class CustomerComponent implements OnInit {
   dataSource: Employee[];
   nameOfCus: string;
   modalReference: NgbModalRef;
+  deleteId: number;
+  selectedCusRes!: Employee;
 
   dataPost:Data=new Data();  
   constructor(
@@ -55,7 +58,6 @@ export class CustomerComponent implements OnInit {
   getCustomers(){
     this.postService.get().subscribe(
         (data) => {
-            console.log(data);
             this.dataSource = data;
         },
         (err) => {
@@ -77,7 +79,20 @@ export class CustomerComponent implements OnInit {
     );
 }
 
-  OpenEditModal(){
+
+OpenDeleteModal() {
+  const modalRef = this.modalService.open(DeletePopUpComponent, {centered:true, size: 'sm'});
+  modalRef.componentInstance.event.subscribe((rec: any) => {
+      if(rec) this.deleteCustomer(this.selectedCusRes);
+  })
+}
+deleteCustomer(inputData: Employee){
+  this.deleteId = inputData.customerId;
+  this.postService.deleteCustomer(this.deleteId).subscribe(data => {
+      console.log(data);
+  })   
+}
+  OpenEditModal=()=>{
     this.modalReference = this.modalService.open(EditPopUpComponent);
   }
 

@@ -32,7 +32,7 @@ export class SigninComponent implements OnInit {
       },
       err => {
         if (err.status == 400)
-          this.toastr.error('Gerçersiz kullanıcı adı ya da şifre.', 'Giriş başarısız.');
+          this.toastr.info('Gerçersiz kullanıcı adı ya da şifre.', 'Giriş başarısız.');
         else
           console.log(err);
       }

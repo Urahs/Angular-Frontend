@@ -1,19 +1,7 @@
-<div class="container-fluid">
-    <div class="card shadow mb-5">
+  <div class="card shadow mb-5">
         <div class="card-header py-3" >
             <h6 class="m-0 font-weight-bold" style="color: #ED1B2E; text-align: center;"><font size="+3" >Müşteri Listesi</font></h6>
         </div>
-
-
-
-        <nav class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand text-white">JWT Auth System</a>
-            <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
-        </nav>
-          
-
-
-
         <div class="card-body">
             <div class="table-responsive">
                 <div id="data-grid-demo">
@@ -33,9 +21,7 @@
                         
                         <dxo-editing
                             mode="popup"
-                            [allowUpdating]="true"
                             [allowAdding]="true"
-                            [allowDeleting]="true"
                             [useIcons] = "true"
                             >
                             <dxo-popup
@@ -72,25 +58,23 @@
 
                         <dxi-column type="buttons" [width]="110">
                             <dxi-button icon="user" [onClick]= "OpenPreviewModal"></dxi-button>
-                            <dxi-button name="edit" [onClick]= "OpenEditModal"></dxi-button>
-                            <dxi-button name="delete"></dxi-button>
+                            <dxi-button icon="edit" [onClick]= "OpenEditModal"></dxi-button>
+                            <dxi-button icon="trash" [onClick]="OpenDeleteModal"></dxi-button>
                         </dxi-column>
                         <dxo-paging [enabled]="true" [pageSize]="10"></dxo-paging>
                     </dx-data-grid>
                         <div id="employeeInfo" *ngIf="grid.selectedRowKeys.length">
                         <p class="employeeNotes"> 
-                             {{grid.instance.getSelectedRowsData()[0].Name}} 
-                             {{grid.instance.getSelectedRowsData()[0].LastName}} 
-                             {{grid.instance.getSelectedRowsData()[0].DateOfBirth}} 
-                             {{grid.instance.getSelectedRowsData()[0].IdentificationNumber}} 
+                             {{grid.instance.getSelectedRowsData()[0].name}} 
+                             {{grid.instance.getSelectedRowsData()[0].lastName}} 
+                             {{grid.instance.getSelectedRowsData()[0].dateOfBirth}} 
+                             {{grid.instance.getSelectedRowsData()[0].identificationNumber}} 
                         </p> 
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </div>
-
 <div *ngIf = "openPreviewModal">	
     <pop-up  
         [employee] = "dataSource[0]"
@@ -99,7 +83,6 @@
     </pop-up>	
 </div>
 
-<button (click)="OpenEditModal()">POPUP AC</button>
 
 
 
