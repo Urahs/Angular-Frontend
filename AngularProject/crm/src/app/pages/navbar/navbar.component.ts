@@ -22,6 +22,7 @@ export class NavbarComponent implements OnInit {
     // { value: 2, name: "Friends", icon: "group" },
     { value: 3, name: "Exit", icon: "runner"}
 ];
+  downloads: string[] = ["Download Trial For Visual Studio", "Download Trial For All Platforms", "Package Managers"];
   userName:any;
   constructor(private router: Router, private service: CrudService) { }
   ngOnInit(): void {

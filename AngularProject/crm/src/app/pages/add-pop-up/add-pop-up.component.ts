@@ -4,6 +4,7 @@ import { Data } from 'src/app/models/Data';
 import { Employee } from 'src/app/models/Employee';
 import { PostService } from 'src/app/services/PostService.service';
 
+
 @Component({
   selector: 'app-add-pop-up',
   templateUrl: './add-pop-up.component.html',

@@ -3,8 +3,8 @@
       <!-- <nav class="navbar"> -->
               <ul class="navbar-nav">
                 <li>
-                    <div class="dx-field-value">
-                      <!-- margin-left: 700px; -->
+
+                  <div class="dx-field-value">
                     <dx-drop-down-button
                       style="background-color:white;margin-left: 500px; position: relative;"
                       [splitButton]="true"
@@ -15,7 +15,24 @@
                       displayExpr="name"
                       keyExpr="id"
                       (onItemClick)="onItemClick($event)"></dx-drop-down-button>
+
                   </div>
+
+
+                  <!-- <div class="dx-field-value">
+                  <dx-drop-down-button
+                    style="background-color:white;margin-left: 700px; position: relative;"
+                    [splitButton]="true"
+                    [useSelectMode]="false"
+                    text={{userName.fullName}} 
+                    icon="aligncenter"
+                    [items]="profileSettings"
+                    displayExpr="name"
+                    keyExpr="id"
+                    (onItemClick)="onItemClick($event)"></dx-drop-down-button>
+                </div> -->
+
+
                 </li>
               </ul>
         <!-- </nav> -->
