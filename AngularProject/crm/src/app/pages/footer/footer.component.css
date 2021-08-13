@@ -1,4 +1,6 @@
 footer{
-    position: relative;
+    position: sticky;
     clear:both;
+    bottom: 0;
+    padding-left: 225px;
 }

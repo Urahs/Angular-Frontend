@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder, NgForm  } from "@angular/forms";
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -9,15 +9,23 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css']
 })
-export class SigninComponent implements OnInit {
+export class SigninComponent implements OnInit , AfterViewInit{
+
+  imagePath = "../../assets/oyak.png"
 
   formModel = {
     UserName: '',
     Password: ''
   }
-  constructor(private service: AuthService, private router: Router, private toastr: ToastrService) {
+  constructor(private service: AuthService, private router: Router, private toastr: ToastrService, private elementRef: ElementRef) {
+
     // this.onSubmit=this.onSubmit.bind(this);
    }
+   ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument
+        .body.style.backgroundColor = '#ED1B2E';
+        
+}
 
   ngOnInit() {
     if (localStorage.getItem('token') != null)

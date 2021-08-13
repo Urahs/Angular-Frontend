@@ -60,7 +60,7 @@ export class CustomerresComponent implements OnInit {
       }
 
     OpenPreviewModal() {
-        this.openPreviewModal = true;
+        const modalRef = this.modalService.open(AddPopUpComponent, {centered:true, size: 'lg'});
     }
     CusResSelected(inputData: Employee){
         this.selectedCusRes = inputData;
