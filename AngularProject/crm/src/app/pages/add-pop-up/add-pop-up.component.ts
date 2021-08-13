@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Data } from 'src/app/models/Data';
 import { Employee } from 'src/app/models/Employee';
 import { PostService } from 'src/app/services/PostService.service';
+
 
 @Component({
   selector: 'app-add-pop-up',
@@ -9,53 +11,42 @@ import { PostService } from 'src/app/services/PostService.service';
   styleUrls: ['./add-pop-up.component.css']
 })
 
+
 export class AddPopUpComponent implements OnInit {
-  
-  @Input() isPopupVisible: boolean;
-  @Input() employee: Employee;
-  @Output() postMessageEvent = new EventEmitter<boolean>();
-  @Output() outputPerson = new EventEmitter<Employee>();
-  tempPerson: Employee = {
-    name: "",
-    lastName: "",
-    customerId: 0,
-    dateOfBirth: "",
-    identificationNumber: ""
+
+  employee: Employee = {
+    "name" : "",
+    "lastName": "",
+    "dateOfBirth": "",
+    "identificationNumber": "",
+    "customerId": 0
   };
-
   
-  dataPost:Data=new Data();  
-  constructor(private postService: PostService
-              
-    ) {
-    this.isPopupVisible = true;
-    this.closeModal = this.closeModal.bind(this);
+  @Input() employeeId: number;
+
+  dataPost:Data=new Data(); 
+
+  constructor(
+    private postService: PostService,
+    public activeModal: NgbActiveModal ) {
     this.savePopup=this.savePopup.bind(this);
-   }
-   
-  closeModal(){
-    this.isPopupVisible = false;
-    this.postMessageEvent.emit(false);
-    console.log(this.isPopupVisible);
-
   }
-
+  
   ngOnInit(): void {
   }
   
-
+  
   savePopup(){
-    this.postService.postData(this.tempPerson).subscribe(//this.dataPost
-
-        (response) => {
+    console.log('on save');
+    this.postService.postData(this.employee).subscribe(//this.dataPost
+        (response: any) => {
             console.log(response);
         },
-        (err) => {
+        (err: any) => {
             console.log(err);
+            
         }
     );
 }
-
-  
 
 }

@@ -67,24 +67,11 @@ export class CustomerresComponent implements OnInit {
     OpenAddModal(){
         this.openAddModal = true;
         console.log("test");
-
     }
 
     
 
-    deleteCustomer(inputData: Employee){
-        this.deleteId = inputData.customerId;
-        this.postService.deleteCustomer(this.deleteId).subscribe(data => {
-            console.log(data);
-        })   
-    }
-
-    OpenDeleteModal() {
-        const modalRef = this.modalService.open(DeletePopUpComponent, {centered:true, size: 'sm'});
-        modalRef.componentInstance.event.subscribe((rec: any) => {
-            if(rec) this.deleteCustomer(this.selectedCusRes);
-        })
-    }
+    
 
     OpenEditModal(inputData:number) {
         const modalRef = this.modalService.open(EditPopUpComponent, {centered:true, size: 'lg'});

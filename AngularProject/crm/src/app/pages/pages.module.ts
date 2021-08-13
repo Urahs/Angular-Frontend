@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DeletePopUpComponent } from './delete-pop-up/delete-pop-up.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { PreviewPopUpComponent } from './preview-pop-up/preview-pop-up.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     MainComponent,
     AddPopUpComponent,
     DeletePopUpComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    PreviewPopUpComponent
 
   ],
   imports: [

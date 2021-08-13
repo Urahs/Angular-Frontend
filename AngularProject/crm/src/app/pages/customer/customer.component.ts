@@ -7,6 +7,8 @@ import { PostService } from 'src/app/services/PostService.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
 import { Router } from '@angular/router';
+import { DeletePopUpComponent } from '../delete-pop-up/delete-pop-up.component';
+import { PreviewPopUpComponent } from '../preview-pop-up/preview-pop-up.component';
 
 @Component({
   selector: 'app-customer',
@@ -40,9 +42,8 @@ export class CustomerComponent implements OnInit {
   }
 
   OpenPreviewModal() {
-    this.openPreviewModal = true;
-    console.log(this.openPreviewModal);
-    }
+    const modalRef = this.modalService.open(PreviewPopUpComponent, {centered:true, size: 'lg'});
+  }
 
     postMessagePreview(messageFromChild: any){
         this.openPreviewModal = messageFromChild;
@@ -76,8 +77,10 @@ export class CustomerComponent implements OnInit {
     );
 }
 
-  OpenEditModal=()=>{
-    this.modalReference = this.modalService.open(EditPopUpComponent);
+  OpenEditModal=(data: any)=>{
+    const modalRef = this.modalReference = this.modalService.open(EditPopUpComponent, {size: "lg"});
+    modalRef.componentInstance.employeeId = data[0];
+    
   }
 
 
@@ -85,6 +88,24 @@ export class CustomerComponent implements OnInit {
     localStorage.removeItem('token');
     this.router.navigate(['/signin']);
   }
+
+  myCommand(data: any){
+    console.log(data);
+    
+  }
+
+  deleteCustomer(inputData: any){
+    this.postService.deleteCustomer(inputData[0]).subscribe(data => {
+        console.log(data);
+    })   
+}
+
+OpenDeleteModal(data: any) {
+    const modalRef = this.modalService.open(DeletePopUpComponent, {centered:true, size: 'sm'});
+    modalRef.componentInstance.event.subscribe((rec: any) => {
+        if(rec) this.deleteCustomer(data);
+    })
+}
 
 }
 
