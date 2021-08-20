@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <h2 class="modal-title">MÜŞTERİ ATA </h2>
+    <button type="button" class="close" aria-label="Close" >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <header>
+      <h4> Müşteri temsilcisi seçiniz</h4>
+   </header>
+
+   <div class="modal-body">
+    <div class="dx-field">
+     <div class="dx-field-label">Müşteri temsilcisi seçiniz:</div>
+       <div class="dx-field-value">
+         <dx-select-box
+             
+             placeholder="Müşteri temsilcileri"
+             [showClearButton]="true"
+         ></dx-select-box>
+      </div>
+   </div>
+ </div>
+    
+        
+                  
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="Assign()">Ata</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Kapat</button>
+  </div>

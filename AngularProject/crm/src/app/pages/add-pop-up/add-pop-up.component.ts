@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Data } from 'src/app/models/Data';
 import { Employee } from 'src/app/models/Employee';
-import { PostService } from 'src/app/services/PostService.service';
+import { CrudService } from 'src/app/services/crud.service';
 
 
 @Component({
@@ -27,7 +27,7 @@ export class AddPopUpComponent implements OnInit {
   dataPost:Data=new Data(); 
 
   constructor(
-    private postService: PostService,
+    private crudService: CrudService,
     public activeModal: NgbActiveModal ) {
     this.savePopup=this.savePopup.bind(this);
   }
@@ -37,14 +37,12 @@ export class AddPopUpComponent implements OnInit {
   
   
   savePopup(){
-    console.log('on save');
-    this.postService.postData(this.employee).subscribe(//this.dataPost
+    this.crudService.postData(this.employee).subscribe(//this.dataPost
         (response: any) => {
             console.log(response);
         },
         (err: any) => {
             console.log(err);
-            
         }
     );
 }
