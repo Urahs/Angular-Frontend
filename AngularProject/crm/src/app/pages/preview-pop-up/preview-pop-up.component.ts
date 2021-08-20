@@ -3,14 +3,14 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Employee } from 'src/app/models/Employee';
 
 @Component({
-  selector: 'pop-up',
-  templateUrl: './pop-up.component.html',
-  styleUrls: ['./pop-up.component.css']
+  selector: 'preview-pop-up',
+  templateUrl: './preview-pop-up.component.html',
+  styleUrls: ['./preview-pop-up.component.css']
 })
-export class PopUpComponent implements OnInit {
+export class PreviewPopUpComponent implements OnInit {
 
   @Input() isPopupVisible: boolean;
-  @Input() employee: Employee;
+  @Input() employee: any;
   @Output() postMessageEvent = new EventEmitter<boolean>();
   
   constructor( public activeModal: NgbActiveModal){
@@ -21,7 +21,6 @@ export class PopUpComponent implements OnInit {
   closeModal(){
     this.isPopupVisible = false;
     this.postMessageEvent.emit(false);
-    //console.log(this.isPopupVisible);
   }
 
   ngOnInit(): void {

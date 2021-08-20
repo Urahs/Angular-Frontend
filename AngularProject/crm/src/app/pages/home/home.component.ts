@@ -1,40 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
   areas: Area[] = [{
-    country: "Russia",
+    country: "Kurumsal",
     area: 12
     }, {
-        country: "Canada",
+        country: "Bireysel",
         area: 7
     }, {
-        country: "USA",
+        country: "Özel",
         area: 7
     }, {
-        country: "China",
+        country: "Aktif",
         area: 7
     }, {
-        country: "Brazil",
+        country: "Pasif",
         area: 6
     }, {
-        country: "Australia",
-        area: 5
-    }, {
-        country: "India",
-        area: 2
-    }, {
-        country: "Others",
-        area: 55
+        country: "Diğer",
+        area: 15
     }];
 
-  constructor() { }
+  constructor(private elementRef: ElementRef) { 
+      
+  }
 
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument
+        .body.style.backgroundColor = '#ffffff';
+        
+}
   ngOnInit(): void {
   }
 

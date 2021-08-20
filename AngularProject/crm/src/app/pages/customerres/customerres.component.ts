@@ -1,13 +1,10 @@
 import { Component,ViewChild, ElementRef, OnInit } from '@angular/core';
 import { Employee } from 'src/app/models/Employee';
-import { PostService } from 'src/app/services/PostService';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DeletePopUpComponent } from '../delete-pop-up/delete-pop-up.component';
 import * as XLSX from 'xlsx'; 
 import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
-import { AddPopUpComponent } from '../add-pop-up/add-pop-up.component';
-import { Data } from 'src/app/models/Data';
-
+import { CrudService } from 'src/app/services/crud.service';
 
 @Component({
   selector: 'app-customerres',
@@ -16,7 +13,6 @@ import { Data } from 'src/app/models/Data';
 })
 export class CustomerresComponent implements OnInit {
    
-
     @ViewChild('TABLE')
 
     dataSource: Employee[];
@@ -25,15 +21,18 @@ export class CustomerresComponent implements OnInit {
     openAddModal: boolean;
     deleteId: number;
 
-    dataPost:Data=new Data(); 
     constructor(
-        private postService: PostService,
+        private crudService: CrudService,
         private modalService: NgbModal
     ){
         this.openPreviewModal = false;
         this.openAddModal = false;
 
         this.OpenAddModal = this.OpenAddModal.bind(this);
+    }
+
+    ngOnInit(): void {
+        this.getCustomers();
     }
 
     postMessagePreview(messageFromChild: any){
@@ -44,7 +43,7 @@ export class CustomerresComponent implements OnInit {
         this.openAddModal = messageFromChild;
     }
     getCustomers(){
-        this.postService.get().subscribe(
+        this.crudService.get().subscribe(
             (data) => {
                 console.log(data);
                 this.dataSource = data;
@@ -54,9 +53,6 @@ export class CustomerresComponent implements OnInit {
             }
         );
     
-      }
-      open() {
-        const modalRef = this.modalService.open(AddPopUpComponent,{size:"lg"});
       }
 
     OpenPreviewModal() {
@@ -68,16 +64,13 @@ export class CustomerresComponent implements OnInit {
     OpenAddModal(){
         this.openAddModal = true;
         console.log("test");
-
     }
 
-    ngOnInit(): void {
-        this.getCustomers();
-    }
+    
 
     deleteCustomer(inputData: Employee){
-        this.deleteId = inputData.CustomerId;
-        this.postService.deleteCustomer(this.deleteId).subscribe(data => {
+        this.deleteId = inputData.customerId;
+        this.crudService.deleteCustomer(this.deleteId).subscribe(data => {
             console.log(data);
         })   
     }
@@ -92,24 +85,7 @@ export class CustomerresComponent implements OnInit {
     OpenEditModal(inputData:number) {
         const modalRef = this.modalService.open(EditPopUpComponent, {centered:true, size: 'lg'});
         modalRef.componentInstance.employeeId = inputData;
-        /* modalRef.componentInstance.event.subscribe((rec: any) => {
-            this.selectedCusRes = rec;
-        }) */
     }
-    
-    
-  savePopup(){
-    console.log('on save');
-    this.postService.postData(this.dataPost).subscribe(//this.dataPost
-        (response) => {
-            console.log(response);
-        },
-        (err) => {
-            console.log(err);
-            
-        }
-    );
-}
 
 
     ExportExcel(): void 
