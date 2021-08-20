@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DeletePopUpComponent } from './delete-pop-up/delete-pop-up.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PreviewPopUpComponent } from './preview-pop-up/preview-pop-up.component';
+import { DxTextBoxModule,DxValidationGroupModule,DxValidatorModule,DxValidationSummaryModule} from 'devextreme-angular';
 
 
 @NgModule({
@@ -42,7 +43,6 @@ import { PreviewPopUpComponent } from './preview-pop-up/preview-pop-up.component
     DeletePopUpComponent,
     UserProfileComponent,
     PreviewPopUpComponent
-
   ],
   imports: [
     FormsModule,
@@ -61,7 +61,11 @@ import { PreviewPopUpComponent } from './preview-pop-up/preview-pop-up.component
     DxCheckBoxModule,
     DxSelectBoxModule,
     DxNumberBoxModule,
-    DxFormModule
+    DxFormModule,
+    DxTextBoxModule,
+    DxValidatorModule,
+    DxValidationSummaryModule,
+    DxValidationGroupModule
   ]
 })
 export class PagesModule { }

@@ -30,11 +30,36 @@
                                 [showTitle]="true"
                                 [width]="700"
                                 [height]="600">
+
                                 <dxi-toolbar-item widget="dxButton"
                                     toolbar="bottom"  
                                     location="after"  
                                     [options]="{text: 'Conferma', type:'success', onClick: savePopup }">  
                                 </dxi-toolbar-item>
+                                <!-- <div *dxTemplate="let data of 'content'">
+                                    <dx-form id="form"
+                                        [formData]="dataPost"
+                                        [readOnly]="false"
+                                        [showColonAfterLabel]="true"
+                                        [showValidationSummary]="true">
+                                        <dxi-item itemType="group">
+                                            <dxi-item dataField="name" >
+                                                
+                                            </dxi-item>
+                                            <dxi-item dataField="lastName">
+                                                
+                                            </dxi-item>
+                                            <dxi-item dataField="dateOfBirth">
+                                                
+                                            </dxi-item>
+                                            <dxi-item dataField="identificationNumber">
+                                                
+                                            </dxi-item>
+                            
+                                        </dxi-item>
+                                        
+                                    </dx-form>
+                                </div>     -->
                             </dxo-popup>
                             <dxo-form [(formData)]="dataPost">
                                 <dxi-item itemType="group" [colCount]="2" [colSpan]="2" >

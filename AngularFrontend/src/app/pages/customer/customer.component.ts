@@ -9,6 +9,7 @@ import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
 import { Router } from '@angular/router';
 import { DeletePopUpComponent } from '../delete-pop-up/delete-pop-up.component';
 import { PreviewPopUpComponent } from '../preview-pop-up/preview-pop-up.component';
+import { CrudService } from 'src/app/services/crud.service';
 
 @Component({
   selector: 'app-customer',
@@ -25,11 +26,12 @@ export class CustomerComponent implements OnInit {
   deleteId: number;
   nameOfCus: string;
   modalReference: NgbModalRef;
+  dataPost= new Data();
 
-  dataPost:Data=new Data();  
   constructor(
     private router: Router,
     private postService: PostService,
+    private service:CrudService,
     private modalService: NgbModal)
   {
     this.savePopup = this.savePopup.bind(this);    
@@ -69,17 +71,27 @@ export class CustomerComponent implements OnInit {
     );
   }
 
-  savePopup(){
+  savePopup=()=>{
     console.log('on save');
-    this.postService.postData(this.dataPost).subscribe(//this.dataPost
-        (response) => {
-            console.log(response);
-        },
-        (err) => {
-            console.log(err);
+    // this.postService.postData(this.dataPost).subscribe(//this.dataPost
+    //     (response) => {
+    //         console.log(response);
+    //     },
+    //     (err) => {
+    //         console.log(err);
             
-        }
-    );
+    //     }
+    // );
+    this.service.postCustomer(this.dataPost).subscribe(
+      (response) => {
+                console.log(response);
+            },
+            (err) => {
+                console.log(err);
+                
+            }
+    )
+
 }
 
   OpenEditModal=(data: any)=>{
