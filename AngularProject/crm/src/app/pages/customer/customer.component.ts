@@ -14,6 +14,7 @@ import { AddPopUpComponent } from '../add-pop-up/add-pop-up.component';
 import { DxDataGridComponent } from 'devextreme-angular';
 import { AssignCustomerComponent } from '../assign-customer/assign-customer.component';
 
+
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
@@ -52,6 +53,7 @@ export class CustomerComponent implements OnInit {
     private modalService: NgbModal
     )
   {  
+
     this.OpenPreviewModal = this.OpenPreviewModal.bind(this);
     this.postMessageEdit = this.postMessageEdit.bind(this);  
     this.postMessagePreview = this.postMessagePreview.bind(this);
@@ -126,12 +128,15 @@ export class CustomerComponent implements OnInit {
   OpenAddModal = () => {
     console.log("zuhaha");
     const modalRef = this.modalService.open(AddPopUpComponent, {centered:true, size: 'lg'});
+
 }
 
   OpenEditModal=(data: any)=>{
     const modalRef = this.modalReference = this.modalService.open(EditPopUpComponent, {size: "lg"});
     modalRef.componentInstance.employeeId = data[1];
   }
+
+  
 
 
   onLogout() {
@@ -162,6 +167,7 @@ OpenDeleteModal(data: any) {
 
 function getSelectedRowsData(): Employee {
   throw new Error('Function not implemented.');
+
 }
 
 

@@ -47,6 +47,7 @@
                                 <dxi-item
                                     itemType="button"
                                     [buttonOptions] = "submitButtonOptions">
+
                                 </dxi-item>
                             </dxi-item>
                             
@@ -65,7 +66,6 @@
                     <dxi-column dataField="identificationNumber" [width]="170"></dxi-column>
 
                     <dxi-column type="buttons" [width]="110">
-
                         <dxi-button template="myCommand">
                             <div *dxTemplate="let data of 'myCommand'">
                                 <a role="button" (click)="OpenPreviewModal(data.values)">
@@ -86,8 +86,7 @@
                                 </a>
                             </div>
                         </dxi-button>
-                    
-                    </dxi-column>
+Z                    </dxi-column>
                     <dxo-paging [enabled]="true" [pageSize]="10"></dxo-paging>
                 </dx-data-grid>
             </div>

@@ -11,12 +11,11 @@
                     [dataSource] = "tempData"
                     [hoverStateEnabled]="true"
                     [showBorders]="true">
-
                     <dxo-export [enabled]="true"></dxo-export>
                     <dxo-paging [enabled]="true" [pageSize]="15"></dxo-paging>
                     <dxo-search-panel [visible]="true"></dxo-search-panel>
                     <dxo-paging [enabled]="false"></dxo-paging>
-                    <dxi-column dataField="name"></dxi-column>
+                    <dxi-column dataField="userName" text="Name"></dxi-column>
                     <dxi-column dataField="fullName"></dxi-column>
                     <dxi-column dataField="email" [width]="170"></dxi-column>
 

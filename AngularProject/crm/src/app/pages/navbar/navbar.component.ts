@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/User';
 import { CrudService } from 'src/app/services/crud.service';
 import { Observable } from 'rxjs';
+import { NavbarProfileInfoModel } from 'src/app/models/navbarProfileInfoModel';
 
 export class SimpleObject {
   value: number | string;
@@ -22,12 +22,17 @@ export class NavbarComponent implements OnInit {
     // { value: 2, name: "Friends", icon: "group" },
     { value: 3, name: "Exit", icon: "runner"}
 ];
-  userName:any;
-  constructor(private router: Router, private service: CrudService) { }
+
+  profileInfo:NavbarProfileInfoModel;
+  profileName:string;
+
+  constructor(private router: Router, private service: CrudService) {  }
+
   ngOnInit(): void {
     this.service.getUserProfile().subscribe(
-      res => {
-        this.userName = res;
+      (res:any) => {
+        this.profileInfo = res;
+        this.profileName=this.profileInfo.fullName;
       },
       err => {
         console.log(err);

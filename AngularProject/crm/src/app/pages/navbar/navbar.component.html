@@ -3,10 +3,12 @@
               <ul class="navbar-nav">
                 <li>
                     <div class="dx-field-value">
+                      <!-- margin-left: 700px; -->
                     <dx-drop-down-button
-                      style="background-color:white;margin-left: 600px; position: relative;"
+                      style="background-color:white;margin-left: 700px; position: relative;"
+                      [splitButton]="true"
                       [useSelectMode]="false"
-                      text={{userName.fullName}} 
+                      text={{profileName}} 
                       icon="aligncenter"
                       [items]="profileSettings"
                       displayExpr="name"

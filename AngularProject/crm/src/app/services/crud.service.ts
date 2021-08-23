@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Employee } from '../models/Employee';
+import { UserProfileModel } from '../models/userProfileModel';
+import { UserDetailsModel } from '../models/userDetailsModel';
 
 @Injectable({
   providedIn: 'root'
@@ -41,4 +43,20 @@ export class CrudService {
       return this.httpClient.post<any>(this.apiUrl+'/usercustomer', data, {headers:{'Content-Type':  'application/json'}})   
     }
 
+  // async getUserProfile() {
+  getUserProfile() {
+    return this.http.get(this.apiUrl + '/UserProfile');
+  }
+
+  postCustomer(data:any){
+    return this.http.post(this.apiUrl+'/customers', data);
+  }
+
+  changeUserDetails(data: any){
+    return this.http.put(this.apiUrl+'/UserProfile', data);
+  }
+
+  getEmployee(){
+    return this.http.get(this.apiUrl+'/Employees');
+  }
 }
