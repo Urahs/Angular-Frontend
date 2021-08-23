@@ -43,20 +43,16 @@ export class CrudService {
       return this.httpClient.post<any>(this.apiUrl+'/usercustomer', data, {headers:{'Content-Type':  'application/json'}})   
     }
 
-  // async getUserProfile() {
-  getUserProfile() {
-    return this.http.get(this.apiUrl + '/UserProfile');
-  }
 
   postCustomer(data:any){
-    return this.http.post(this.apiUrl+'/customers', data);
+    return this.httpClient.post(this.apiUrl+'/customers', data);
   }
 
   changeUserDetails(data: any){
-    return this.http.put(this.apiUrl+'/UserProfile', data);
+    return this.httpClient.put(this.apiUrl+'/UserProfile', data);
   }
 
   getEmployee(){
-    return this.http.get(this.apiUrl+'/Employees');
+    return this.httpClient.get(this.apiUrl+'/Employees');
   }
 }

@@ -22,7 +22,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { DeletePopUpComponent } from './delete-pop-up/delete-pop-up.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PreviewPopUpComponent } from './preview-pop-up/preview-pop-up.component';
-import { EmployeeComponent } from './employee/employee.component';
 import { AssignCustomerComponent } from './assign-customer/assign-customer.component';
 import { DxTextBoxModule,DxValidationGroupModule,DxValidatorModule,DxValidationSummaryModule} from 'devextreme-angular';
 

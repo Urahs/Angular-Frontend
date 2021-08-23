@@ -42,10 +42,10 @@ export class EmployeeComponent implements OnInit {
   ngOnInit(): void {
 
       this.crudService.getEmployee().subscribe(
-        (res:any) => {
+        (res: any) => {
           this.tempData = res;
         },
-        err => {
+        (err: any) => {
           console.log(err);
         },
       );
@@ -74,4 +74,4 @@ export class EmployeeComponent implements OnInit {
         
     });
   }
-
+}

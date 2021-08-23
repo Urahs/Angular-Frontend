@@ -22,42 +22,6 @@
                     <dxo-paging [enabled]="false"></dxo-paging>
                     <dxo-selection mode="multiple"></dxo-selection>
                     
-
-                    <dxo-editing
-                        mode="popup"
-                        [useIcons] = "true"
-                        >
-                        <dxo-popup
-                            title="Employee Info"
-                            [showTitle]="true"
-                            [width]="700"
-                            [height]="600">
-                            <dxi-toolbar-item widget="dxButton"
-                                toolbar="bottom"  
-                                location="after"  
-                                [options]="{text: 'Conferma', type:'success'}">  
-                            </dxi-toolbar-item>
-                        </dxo-popup>
-                        <dxo-form [(formData)]= "dataPost">
-                            <dxi-item itemType="group" [colCount]="2" [colSpan]="2" >
-                                <dxi-item dataField="name"></dxi-item>
-                                <!-- <dxi-item dataField="lastName" ></dxi-item>
-                                <dxi-item dataField="dateOfBirth"></dxi-item>
-                                <dxi-item dataField="identificationNumber"></dxi-item> -->
-                                <dxi-item
-                                    itemType="button"
-                                    [buttonOptions] = "submitButtonOptions">
-
-                                </dxi-item>
-                            </dxi-item>
-                            
-                            <!-- <dxi-item itemType="group" caption="Home Address" [colCount]="2" [colSpan]="2">
-                                <dxi-item dataField="StateID"></dxi-item>
-                                <dxi-item dataField="Address"></dxi-item>
-                            </dxi-item> -->
-                            
-                        </dxo-form>
-                    </dxo-editing>
                     
                     <dxi-column dataField="customerId" caption="ID" [width]="70"></dxi-column>
                     <dxi-column dataField="name"></dxi-column>

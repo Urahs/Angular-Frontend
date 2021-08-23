@@ -23,45 +23,26 @@ import { AssignCustomerComponent } from '../assign-customer/assign-customer.comp
 
 export class CustomerComponent implements OnInit {
   
-  //@ViewChild(DxDataGridComponent, { static: false }) dataGrid: DxDataGridComponent;
-
   openPreviewModal: boolean;
   openEditModal: boolean;
   dataSource: Employee[];
-  selectedCus!: Employee;
-  deleteId: number;
-  nameOfCus: string;
   modalReference: NgbModalRef;
   submitButtonOptions: any;
   selectedItemKeys: any[] = [];
-  disableButton: boolean;
-
-
-  dataPost: Employee = {
-    name : "",
-    lastName: "",
-    dateOfBirth: "",
-    identificationNumber: "",
-    customerId: 78
-  };
-
-  //dataPost: Employee = new Employee();
 
   constructor(
-    private router: Router,
-    private crudService: CrudService,
-    private modalService: NgbModal
+      private router: Router,
+      private crudService: CrudService,
+      private modalService: NgbModal
     )
-  {  
-
-    this.OpenPreviewModal = this.OpenPreviewModal.bind(this);
-    this.postMessageEdit = this.postMessageEdit.bind(this);  
-    this.postMessagePreview = this.postMessagePreview.bind(this);
-  }
+    {  
+      this.OpenPreviewModal = this.OpenPreviewModal.bind(this);
+      this.postMessageEdit = this.postMessageEdit.bind(this);  
+      this.postMessagePreview = this.postMessagePreview.bind(this);
+    }
 
   
   ngOnInit(): void {
-      this.disableButton = true;
       this.getCustomers();
   }
 
@@ -121,7 +102,6 @@ export class CustomerComponent implements OnInit {
   selectionChanged(data: any) {
     this.selectedItemKeys = data.selectedRowKeys;
     console.log(data);
-    
   }
 
 
@@ -137,8 +117,6 @@ export class CustomerComponent implements OnInit {
   }
 
   
-
-
   onLogout() {
     localStorage.removeItem('token');
     this.router.navigate(['/signin']);
@@ -165,10 +143,6 @@ OpenDeleteModal(data: any) {
 
 }
 
-function getSelectedRowsData(): Employee {
-  throw new Error('Function not implemented.');
-
-}
 
 
 
