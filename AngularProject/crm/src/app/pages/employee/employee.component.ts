@@ -82,6 +82,12 @@ export class EmployeeComponent implements OnInit {
 
   
 
+  deleteRecords() {
+    this.selectedItemKeys.forEach((key) => {
+        console.log(key);
+        
+    });
+  }
 
 
 
@@ -103,6 +109,14 @@ export class USerProfilex {
   email: string;
   fullName: string;
 }
+
+
+
+
+
+
+
+
 
 
 

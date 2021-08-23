@@ -141,7 +141,7 @@ export class CustomerComponent implements OnInit {
 
   OpenEditModal=(data: any)=>{
     const modalRef = this.modalReference = this.modalService.open(EditPopUpComponent, {size: "lg"});
-    modalRef.componentInstance.employeeId = data[1];
+    modalRef.componentInstance.employeeId = data[0];
     
   }
 
@@ -157,7 +157,7 @@ export class CustomerComponent implements OnInit {
   }
 
   deleteCustomer(inputData: any){
-    this.crudService.deleteCustomer(inputData[1]).subscribe(data => {
+    this.crudService.deleteCustomer(inputData[0]).subscribe(data => {
         console.log(data);
     })   
 }

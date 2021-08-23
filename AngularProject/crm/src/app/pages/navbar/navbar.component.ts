@@ -17,10 +17,10 @@ export class SimpleObject {
 })
 export class NavbarComponent implements OnInit {
   profileSettings: SimpleObject[] = [
-    { value: 1, name: "Profil", icon: "user" },
+    { value: 1, name: "Profile", icon: "user" },
     // { value: 4, name: "Messages", icon: "email", badge: "5" },
     // { value: 2, name: "Friends", icon: "group" },
-    { value: 3, name: "Çıkış", icon: "runner"}
+    { value: 3, name: "Exit", icon: "runner"}
 ];
   userName:any;
   constructor(private router: Router, private service: CrudService) { }
@@ -35,9 +35,9 @@ export class NavbarComponent implements OnInit {
     );
   }
 	onItemClick(e: { itemData: { name: any; }; }) {
-    if ( e.itemData.name === "Çıkış")
+    if ( e.itemData.name === "Exit")
       this.onLogout(); 
-    else if(e.itemData.name==="Profil")
+    else if(e.itemData.name==="Profile")
       this.router.navigate(['/main/user-profile']);
 	}
 

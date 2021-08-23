@@ -8,23 +8,29 @@ import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit, AfterViewInit {
 
   areas: Area[] = [{
-    country: "Kurumsal",
+    country: "Russia",
     area: 12
     }, {
-        country: "Bireysel",
+        country: "Canada",
         area: 7
     }, {
-        country: "Özel",
+        country: "USA",
         area: 7
     }, {
-        country: "Aktif",
+        country: "China",
         area: 7
     }, {
-        country: "Pasif",
+        country: "Brazil",
         area: 6
     }, {
-        country: "Diğer",
-        area: 15
+        country: "Australia",
+        area: 5
+    }, {
+        country: "India",
+        area: 2
+    }, {
+        country: "Others",
+        area: 85
     }];
 
   constructor(private elementRef: ElementRef) { 
