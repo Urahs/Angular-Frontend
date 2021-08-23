@@ -23,4 +23,8 @@ export class CrudService {
   changeUserDetails(data: any){
     return this.http.put(this.apiUrl+'/UserProfile', data);
   }
+
+  getEmployee(){
+    return this.http.get(this.apiUrl+'/Employees');
+  }
 }

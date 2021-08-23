@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ChatbotComponent } from './chatbot/chatbot.component';
 import { CustomerComponent } from './customer/customer.component';
-import { CustomerresComponent } from './customerres/customerres.component';
+import { EmployeeComponent } from './employee/employee.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { LeftsideComponent } from './leftside/leftside.component';
@@ -19,7 +19,7 @@ const routes: Routes = [
   component: MainComponent, 
   children:[
     {path: "customer",component: CustomerComponent,canActivate:[LoginGuard]},
-    {path: "customerres",component: CustomerresComponent,canActivate:[LoginGuard]},
+    {path: "employee",component: EmployeeComponent,canActivate:[LoginGuard]},
     {path: "home", component: HomeComponent,canActivate:[LoginGuard]},
     {path: "chatbot",component: ChatbotComponent,canActivate:[LoginGuard]},
     {path: "user-profile",component: UserProfileComponent,canActivate:[LoginGuard]}

@@ -39,9 +39,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   resetValidation(){
-    // event.validationGroup.reset();
     validationEngine.resetGroup('userData');
-    
   }
 
   formValidation=(e:any)=>{
@@ -97,7 +95,7 @@ export class UserProfileComponent implements OnInit {
 
   
 
-
+  //burayı kontrol et gerek yoksa sil
   passwordComparison = () => {
     if(this.userUpdateProfile.formNewPassword == null)
       return "";

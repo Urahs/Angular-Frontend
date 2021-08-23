@@ -5,7 +5,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { TableComponent } from './table/table.component';
 import { LeftsideComponent } from './leftside/leftside.component';
 import { CustomerComponent } from './customer/customer.component';
-import { CustomerresComponent } from './customerres/customerres.component';
+import { EmployeeComponent } from './employee/employee.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DeletePopUpComponent } from './delete-pop-up/delete-pop-up.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PreviewPopUpComponent } from './preview-pop-up/preview-pop-up.component';
+import { DxTextBoxModule,DxValidationGroupModule,DxValidatorModule,DxValidationSummaryModule} from 'devextreme-angular';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { PreviewPopUpComponent } from './preview-pop-up/preview-pop-up.component
     TableComponent,
     LeftsideComponent,
     CustomerComponent,
-    CustomerresComponent,
+    EmployeeComponent,
     FooterComponent,
     HomeComponent,
     ChatbotComponent,
@@ -42,7 +43,6 @@ import { PreviewPopUpComponent } from './preview-pop-up/preview-pop-up.component
     DeletePopUpComponent,
     UserProfileComponent,
     PreviewPopUpComponent
-
   ],
   imports: [
     FormsModule,
@@ -61,7 +61,11 @@ import { PreviewPopUpComponent } from './preview-pop-up/preview-pop-up.component
     DxCheckBoxModule,
     DxSelectBoxModule,
     DxNumberBoxModule,
-    DxFormModule
+    DxFormModule,
+    DxTextBoxModule,
+    DxValidatorModule,
+    DxValidationSummaryModule,
+    DxValidationGroupModule
   ]
 })
 export class PagesModule { }

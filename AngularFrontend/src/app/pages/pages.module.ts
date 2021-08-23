@@ -5,7 +5,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { TableComponent } from './table/table.component';
 import { LeftsideComponent } from './leftside/leftside.component';
 import { CustomerComponent } from './customer/customer.component';
-import { CustomerresComponent } from './customerres/customerres.component';
+import { EmployeeComponent } from './employee/employee.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
@@ -32,7 +32,7 @@ import { DxTextBoxModule,DxValidationGroupModule,DxValidatorModule,DxValidationS
     TableComponent,
     LeftsideComponent,
     CustomerComponent,
-    CustomerresComponent,
+    EmployeeComponent,
     FooterComponent,
     HomeComponent,
     ChatbotComponent,
