@@ -1,37 +1,19 @@
 <nav class="navbar navbar-light" style="background-color: #ED1B2E;">
   <div class="container">
-      <!-- <nav class="navbar"> -->
               <ul class="navbar-nav">
                 <li>
-
-                  <div class="dx-field-value">
+                    <div class="dx-field-value">
                     <dx-drop-down-button
-                      text="Download Trial"
-                      style="border-color: rgb(0, 0, 0); margin-left: 700px; position: relative;"
-                      [dropDownOptions]="{ width: 230 }"
-                      icon="save"
-                      [items]="downloads"
-                      (onItemClick)="onItemClick($event)"
-                    ></dx-drop-down-button>
+                      style="background-color:white;margin-left: 600px; position: relative;"
+                      [useSelectMode]="false"
+                      text={{userName.fullName}} 
+                      icon="aligncenter"
+                      [items]="profileSettings"
+                      displayExpr="name"
+                      keyExpr="id"
+                      (onItemClick)="onItemClick($event)"></dx-drop-down-button>
                   </div>
-
-
-                  <!-- <div class="dx-field-value">
-                  <dx-drop-down-button
-                    style="background-color:white;margin-left: 700px; position: relative;"
-                    [splitButton]="true"
-                    [useSelectMode]="false"
-                    text={{userName.fullName}} 
-                    icon="aligncenter"
-                    [items]="profileSettings"
-                    displayExpr="name"
-                    keyExpr="id"
-                    (onItemClick)="onItemClick($event)"></dx-drop-down-button>
-                </div> -->
-
-
                 </li>
               </ul>
-        <!-- </nav> -->
     </div>
 </nav>

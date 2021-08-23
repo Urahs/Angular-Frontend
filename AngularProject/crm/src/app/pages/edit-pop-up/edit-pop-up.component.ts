@@ -3,6 +3,7 @@ import { Data } from 'src/app/models/Data';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Employee } from 'src/app/models/Employee';
 import { PostService } from 'src/app/services/PostService.service';
+import { CrudService } from 'src/app/services/crud.service';
 
 @Component({
   selector: 'edit-pop-up',
@@ -24,20 +25,21 @@ export class EditPopUpComponent implements OnInit {
   
   constructor(
     public activeModal: NgbActiveModal,
-    private postService: PostService)
+    private crudService: CrudService)
     {
     }
 
   ngOnInit(): void {
-    this.postService.getCustomer(this.employeeId).subscribe((result) => {
+    this.crudService.getCustomer(this.employeeId).subscribe((result) => {
       this.employee = result;
     });
   }
 
   Save(){
-    this.postService.UpdateCustomer(this.employee.customerId, this.employee).subscribe(() => {
-      
+
+    this.crudService.UpdateCustomer(this.employee.customerId, this.employee).subscribe(() => {
     })
+    
     this.activeModal.close('Close click')
   }
 }

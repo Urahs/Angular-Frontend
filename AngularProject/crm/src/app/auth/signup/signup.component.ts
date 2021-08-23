@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -8,9 +8,17 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit, AfterViewInit {
 
-  constructor(public service: AuthService, private toastr: ToastrService) { }
+  imagePath = "../../assets/oyak.png"
+  
+  constructor(public service: AuthService, private toastr: ToastrService, private elementRef: ElementRef) { }
+
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument
+        .body.style.backgroundColor = '#ED1B2E';
+        
+}
 
   ngOnInit() {
     this.service.formModel.reset();
@@ -26,11 +34,11 @@ export class SignupComponent implements OnInit {
           res.errors.forEach((element:any) => {
             switch (element.code) {
               case 'DuplicateUserName':
-                this.toastr.error('Username is already taken','Registration failed.');
+                this.toastr.info('Username is already taken','Registration failed.');
                 break;
 
               default:
-              this.toastr.error(element.description,'Registration failed.');
+              this.toastr.info(element.description,'Registration failed.');
                 break;
             }
           }

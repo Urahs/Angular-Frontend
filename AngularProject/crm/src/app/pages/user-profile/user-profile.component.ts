@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
 export class UserProfileComponent implements OnInit {
   userDetails:any;
 
+  isPopupVisible: boolean = false;
+
+
     constructor(private service: CrudService ) {
     }
   
@@ -22,6 +25,13 @@ export class UserProfileComponent implements OnInit {
         console.log(err);
       },
     );
+  }
+
+  closePopup=()=>{
+    this.isPopupVisible= false;
+    console.log(this.isPopupVisible);
+
+    
   }
 
 }

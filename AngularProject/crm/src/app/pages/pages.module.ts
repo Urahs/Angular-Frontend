@@ -22,6 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DeletePopUpComponent } from './delete-pop-up/delete-pop-up.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PreviewPopUpComponent } from './preview-pop-up/preview-pop-up.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { AssignCustomerComponent } from './assign-customer/assign-customer.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { PreviewPopUpComponent } from './preview-pop-up/preview-pop-up.component
     AddPopUpComponent,
     DeletePopUpComponent,
     UserProfileComponent,
-    PreviewPopUpComponent
+    PreviewPopUpComponent,
+    EmployeeComponent,
+    AssignCustomerComponent
 
   ],
   imports: [
