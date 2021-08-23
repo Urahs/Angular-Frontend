@@ -3,6 +3,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserCustomer } from 'src/app/models/UserCustomer';
 import { CrudService } from 'src/app/services/crud.service';
 
+
 @Component({
   selector: 'app-assign-customer',
   templateUrl: './assign-customer.component.html',
@@ -17,6 +18,7 @@ export class AssignCustomerComponent implements OnInit {
     public activeModal: NgbActiveModal ,
     private crudService: CrudService)
   { }
+
 
   ngOnInit(): void {
   }
@@ -37,6 +39,7 @@ export class AssignCustomerComponent implements OnInit {
 
 
   }
+
 
 
 

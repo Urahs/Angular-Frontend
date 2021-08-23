@@ -40,4 +40,5 @@ export class CrudService {
     postUserCustomer (data: any): Observable<any> {
       return this.httpClient.post<any>(this.apiUrl+'/usercustomer', data, {headers:{'Content-Type':  'application/json'}})   
     }
+
 }

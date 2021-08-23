@@ -146,6 +146,7 @@ export class CustomerComponent implements OnInit {
 
   deleteCustomer(inputData: any){
     this.crudService.deleteCustomer(inputData[1]).subscribe(data => {
+
         console.log(data);
     })   
 }
@@ -158,6 +159,29 @@ OpenDeleteModal(data: any) {
 }
 
 }
+
+
+function getSelectedRowsData(): Employee {
+  throw new Error('Function not implemented.');
+}
+/*
+I used a method call inside of dx-button which triggers ng-modal to open it. But, whenever method is called, program routes to #. I'm very confused about it. Can you please help me?
+
+Here is the code I wrote...
+
+//customer.component.html
+      <dxi-button name="edit" [onClick]= "OpenEditModal"></dxi-button>
+      
+//customer.component.ts
+modalReference: NgbModalRef;
+  constructor(private modalService: NgbModal){}
+
+OpenEditModal(){
+    this.modalReference = this.modalService.open(EditPopUpComponent);
+}
+
+I used this guide to use bootsrap modal: https://ng-bootstrap.github.io/#/components/modal/examples
+*/
 
 
 

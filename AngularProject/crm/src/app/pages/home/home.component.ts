@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         area: 2
     }, {
         country: "Others",
-        area: 55
+        area: 85
     }];
 
   constructor(private elementRef: ElementRef) { 

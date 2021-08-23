@@ -36,12 +36,9 @@ export class EditPopUpComponent implements OnInit {
   }
 
   Save(){
-    this.crudService.UpdateCustomer(this.employee.customerId, this.employee).subscribe((response: any) => {
-      console.log(response);
-  },
-  (err: any) => {
-      console.log(err);
-  })
+
+    this.crudService.UpdateCustomer(this.employee.customerId, this.employee).subscribe(() => {
+    })
     
     this.activeModal.close('Close click')
   }
