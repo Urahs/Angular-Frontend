@@ -1,9 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, enableProdMode, Injectable, OnInit, ViewChild } from '@angular/core';
 import { Employee } from 'src/app/models/Employee';
-import { Data } from 'src/app/models/Data';
-// import { PostService } from 'src/app/services/PostService.service';
-import { PostService } from 'src/app/services/PostService.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
 import { Router } from '@angular/router';
@@ -28,7 +25,7 @@ export class CustomerComponent implements OnInit {
   dataSource: Employee[];
   modalReference: NgbModalRef;
   submitButtonOptions: any;
-  selectedItemKeys: any[] = [];
+  selectedItemData: any[] = [];
 
   constructor(
       private router: Router,
@@ -72,7 +69,7 @@ export class CustomerComponent implements OnInit {
 
   assignCustomer(){
     const modalRef = this.modalService.open(AssignCustomerComponent, {centered:true, size: 'md'});
-    modalRef.componentInstance.selectedCustomerID = this.selectedItemKeys;
+    modalRef.componentInstance.selectedCustomerData = this.selectedItemData;
   }
 
   onToolbarPreparing(e: any) {
@@ -100,7 +97,7 @@ export class CustomerComponent implements OnInit {
   }
 
   selectionChanged(data: any) {
-    this.selectedItemKeys = data.selectedRowKeys;
+    this.selectedItemData=data.selectedRowsData;
   }
 
 

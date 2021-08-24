@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Data } from 'src/app/models/Data';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Employee } from 'src/app/models/Employee';
-import { PostService } from 'src/app/services/PostService.service';
+import { EmployeeService } from 'src/app/services/employee.service';
 import { CrudService } from 'src/app/services/crud.service';
 
 @Component({
