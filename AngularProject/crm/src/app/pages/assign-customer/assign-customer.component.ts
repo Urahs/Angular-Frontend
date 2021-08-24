@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { CustomerAssignmentModel } from 'src/app/models/customerAssignmentModel';
 import { EmployeeModel } from 'src/app/models/employeeModel';
-import { UserCustomer } from 'src/app/models/UserCustomer';
 import { CrudService } from 'src/app/services/crud.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 
@@ -15,7 +14,6 @@ import { EmployeeService } from 'src/app/services/employee.service';
 export class AssignCustomerComponent implements OnInit {
 
   @Input() selectedCustomerData: any[];
-  userCustomer: UserCustomer = new UserCustomer();
   customerRepresentative : EmployeeModel[];
   customerAssignin: CustomerAssignmentModel[]=[];
   customerAssigninObj:CustomerAssignmentModel;
