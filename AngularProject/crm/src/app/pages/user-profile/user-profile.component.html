@@ -8,17 +8,18 @@
     <form action="your-action" >
         <dx-form id="form"
             [formData]="userDetails"
-            [readOnly]="false"
+            [readOnly]="true"
             [showColonAfterLabel]="true"
             [showValidationSummary]="true">
+            
             <dxi-item itemType="group">
-                <dxi-item dataField="email" [disabled]="true">
+                <dxi-item dataField="email" >
                     <dxo-label text="E-mail"></dxo-label>
                 </dxi-item>
-                <dxi-item dataField="userName" [disabled]="true">
+                <dxi-item dataField="userName" >
                     <dxo-label text="Kullanıcı adı"></dxo-label>
                 </dxi-item>
-                <dxi-item dataField="fullName" [disabled]="true">
+                <dxi-item dataField="fullName" >
                     <dxo-label text="İsim Soyisim"></dxo-label>
                 </dxi-item>
             </dxi-item>

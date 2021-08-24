@@ -55,4 +55,8 @@ export class CrudService {
   getEmployee(){
     return this.httpClient.get(this.apiUrl+'/Employees');
   }
+
+  controlUserName(data:any){
+    return this.httpClient.post(this.apiUrl+'/UserProfile/CheckUserName',data,{headers:{'Content-Type':  'application/json'}});
+  }
 }

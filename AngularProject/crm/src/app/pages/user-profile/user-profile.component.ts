@@ -67,7 +67,7 @@ export class UserProfileComponent implements OnInit {
       },
       err => {
         console.log(err);
-        this.toastrService.error("Yanlış şifre girdiniz veya var olan bir kullanıcı ismi almaya çalışıyorsunuz");
+        this.toastrService.error(err.error.message);
       },
       );
   }
@@ -76,13 +76,9 @@ export class UserProfileComponent implements OnInit {
     this.userUpdateProfile={
       formUserName:this.userDetails.userName,
       formEmail:this.userDetails.email,
-      formFullName:this.userDetails.fullName,
-      formNewPassword:""
-    };
-    
-    
+      formFullName:this.userDetails.fullName
+    }; 
   }
-
 
   switchUserDetails(){
     this.userDetails={
@@ -94,9 +90,6 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-  
-
-  //burayı kontrol et gerek yoksa sil
   passwordComparison = () => {
     if(this.userUpdateProfile.formNewPassword == null)
       return "";

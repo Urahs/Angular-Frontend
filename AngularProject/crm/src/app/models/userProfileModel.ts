@@ -3,5 +3,5 @@ export class UserProfileModel{
     formEmail?:string;
     formFullName?:string;
     formPassword?:string;
-    formNewPassword:string="";
+    formNewPassword?:string;
 }

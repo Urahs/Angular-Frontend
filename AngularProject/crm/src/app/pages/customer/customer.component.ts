@@ -101,7 +101,6 @@ export class CustomerComponent implements OnInit {
 
   selectionChanged(data: any) {
     this.selectedItemKeys = data.selectedRowKeys;
-    console.log(data);
   }
 
 
