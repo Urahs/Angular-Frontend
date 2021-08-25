@@ -62,7 +62,6 @@ export class UserProfileComponent implements OnInit {
     this.switchUserDetails();
     this.service.changeUserDetails(this.userDetails).subscribe(
       (data:any)=>{
-        console.log(data);
         this.toastrService.success("Bilgileriniz başarıyla güncellendi");      
       },
       err => {

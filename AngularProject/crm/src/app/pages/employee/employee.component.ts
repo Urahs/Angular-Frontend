@@ -1,6 +1,5 @@
 import { Component, enableProdMode, Injectable, OnInit } from '@angular/core';
-import { Employee } from 'src/app/models/Employee';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { PreviewPopUpComponent } from '../preview-pop-up/preview-pop-up.component';
 import { CrudService } from 'src/app/services/crud.service';
@@ -14,17 +13,7 @@ import { EmployeeModel } from 'src/app/models/employeeModel';
 
 export class EmployeeComponent implements OnInit {
   
-  openPreviewModal: boolean;
-  openEditModal: boolean;
-  dataSource: Employee[];
-  selectedCus!: Employee;
-  deleteId: number;
-  nameOfCus: string;
-  modalReference: NgbModalRef;
-  submitButtonOptions: any;
   selectedItemKeys: any[] = [];
-
-
   tempData: EmployeeModel[];
 
   constructor(
@@ -34,7 +23,6 @@ export class EmployeeComponent implements OnInit {
     )
   {   
     this.OpenPreviewModal = this.OpenPreviewModal.bind(this);
-    this.postMessagePreview = this.postMessagePreview.bind(this);
 
   }
 
@@ -56,22 +44,4 @@ export class EmployeeComponent implements OnInit {
     modalRef.componentInstance.employee = data;
   }
 
-    postMessagePreview(messageFromChild: any){
-        this.openPreviewModal = messageFromChild;
-    }
-
-
-  onLogout() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/signin']);
-  }
-
-  
-
-  deleteRecords() {
-    this.selectedItemKeys.forEach((key) => {
-        console.log(key);
-        
-    });
-  }
 }

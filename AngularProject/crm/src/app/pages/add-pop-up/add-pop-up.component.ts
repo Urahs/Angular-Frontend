@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Data } from 'src/app/models/Data';
-import { Employee } from 'src/app/models/Employee';
+import { CustomerModel } from 'src/app/models/customerModel';
 import { CrudService } from 'src/app/services/crud.service';
 
 
@@ -14,17 +13,12 @@ import { CrudService } from 'src/app/services/crud.service';
 
 export class AddPopUpComponent implements OnInit {
 
-  employee: Employee = {
-    "name" : "",
-    "lastName": "",
-    "dateOfBirth": "",
-    "identificationNumber": "",
-    "customerId": 0
-  };
-  
-  @Input() employeeId: number;
+  customer:CustomerModel= new CustomerModel();
+  district:string;
+  province:string;
+  districtsList:string[]=[];
+  provincesList:string[]=[];
 
-  dataPost:Data=new Data(); 
 
   constructor(
     private crudService: CrudService,
@@ -33,18 +27,50 @@ export class AddPopUpComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    this.getProvinces();
+    
+  }
+
+  getProvinces(){
+    this.crudService.getProvinces().subscribe(
+      (response: any) => {
+          this.provincesList=response;
+          
+      },
+      (err: any) => {
+          console.log(err);
+      }
+    );
   }
   
-  
+  getDistricts(){
+    this.crudService.getDistricts(this.province).subscribe(
+      (response: any) => {
+          this.districtsList=response;
+      },
+      (err: any) => {
+          console.log(err);
+      }
+  );
+  }
+
+  onValueChanged(e:any){
+    if(this.province!=null){
+      this.getDistricts();
+    }
+  }
+
   savePopup(){
-    this.crudService.postData(this.employee).subscribe(//this.dataPost
+    this.customer.province=this.province;
+    this.customer.district=this.district;
+
+    this.crudService.postData(this.customer).subscribe(
         (response: any) => {
-            console.log(response);
         },
         (err: any) => {
             console.log(err);
         }
     );
-}
+  }
 
 }

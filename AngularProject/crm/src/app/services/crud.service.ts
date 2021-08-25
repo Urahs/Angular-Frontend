@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { Employee } from '../models/Employee';
+import { CustomerModel } from '../models/customerModel';
 import { UserProfileModel } from '../models/userProfileModel';
 import { UserDetailsModel } from '../models/userDetailsModel';
 
@@ -17,8 +17,7 @@ export class CrudService {
       return this.httpClient.get(this.apiUrl + '/UserProfile');
     }
     
-    public postData(data: any): Observable<any>{//Observable<any>
-      //   return this.httpClient.post<any>('https://localhost:5001/api/customers', data, {headers: {}});
+    public postData(data: any): Observable<any>{
       return this.httpClient.post<any>(this.apiUrl+'/customers', data, {headers:{'Content-Type':  'application/json'}})   
     }
   
@@ -26,12 +25,12 @@ export class CrudService {
         return this.httpClient.get<any>(this.apiUrl+'/customers');
     }
 
-    UpdateCustomer(cusId: number, data:Employee){
+    UpdateCustomer(cusId: number, data:CustomerModel){
       return this.httpClient.put(this.apiUrl+'/customers/' + cusId, data);
     }
 
-    getCustomer(cusId: number): Observable<Employee>{
-      return this.httpClient.get<Employee>(this.apiUrl+'/customers/' + cusId);
+    getCustomer(cusId: number): Observable<CustomerModel>{
+      return this.httpClient.get<CustomerModel>(this.apiUrl+'/customers/' + cusId);
     }
 
     public deleteCustomer(deleteId: any){
@@ -58,5 +57,12 @@ export class CrudService {
 
   controlUserName(data:any){
     return this.httpClient.post(this.apiUrl+'/UserProfile/CheckUserName',data,{headers:{'Content-Type':  'application/json'}});
+  }
+
+  getDistricts(data:any): Observable<any>{
+    return this.httpClient.get<any>(this.apiUrl+'/Customers/Districts?ProvinceName='+data);
+  }
+  getProvinces(): Observable<any>{
+    return this.httpClient.get<any>(this.apiUrl+'/Customers/Provinces');
   }
 }

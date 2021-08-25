@@ -54,10 +54,9 @@ export class AssignCustomerComponent implements OnInit {
       }
       this.customerAssignin.push(this.customerAssigninObj);
     });
-    
+      
       this.employeeService.postCustomerAssign(this.customerAssignin).subscribe(
-        (data:any)=>{
-          console.log(data);     
+        (data:any)=>{     
         },
         err => {
           console.log(err);

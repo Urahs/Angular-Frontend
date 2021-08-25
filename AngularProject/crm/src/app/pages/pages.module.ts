@@ -23,7 +23,7 @@ import { DeletePopUpComponent } from './delete-pop-up/delete-pop-up.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PreviewPopUpComponent } from './preview-pop-up/preview-pop-up.component';
 import { AssignCustomerComponent } from './assign-customer/assign-customer.component';
-import { DxTextBoxModule,DxValidationGroupModule,DxValidatorModule,DxValidationSummaryModule} from 'devextreme-angular';
+import { DxTextBoxModule,DxValidationGroupModule,DxValidatorModule,DxValidationSummaryModule,DxTextAreaModule} from 'devextreme-angular';
 
 
 @NgModule({
@@ -68,7 +68,8 @@ import { DxTextBoxModule,DxValidationGroupModule,DxValidatorModule,DxValidationS
     DxTextBoxModule,
     DxValidatorModule,
     DxValidationSummaryModule,
-    DxValidationGroupModule
+    DxValidationGroupModule,
+    DxTextAreaModule
   ]
 })
 export class PagesModule { }

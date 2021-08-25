@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Employee } from 'src/app/models/Employee';
 
 @Component({
   selector: 'preview-pop-up',

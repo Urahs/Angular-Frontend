@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, enableProdMode, Injectable, OnInit, ViewChild } from '@angular/core';
-import { Employee } from 'src/app/models/Employee';
+import { CustomerModel } from 'src/app/models/customerModel';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
 import { Router } from '@angular/router';
@@ -20,13 +19,9 @@ import { AssignCustomerComponent } from '../assign-customer/assign-customer.comp
 
 export class CustomerComponent implements OnInit {
   
-  openPreviewModal: boolean;
-  openEditModal: boolean;
-  dataSource: Employee[];
+  dataSource: CustomerModel[];
   modalReference: NgbModalRef;
-  submitButtonOptions: any;
   selectedItemData: any[] = [];
-
   constructor(
       private router: Router,
       private crudService: CrudService,
@@ -34,8 +29,6 @@ export class CustomerComponent implements OnInit {
     )
     {  
       this.OpenPreviewModal = this.OpenPreviewModal.bind(this);
-      this.postMessageEdit = this.postMessageEdit.bind(this);  
-      this.postMessagePreview = this.postMessagePreview.bind(this);
     }
 
   
@@ -48,13 +41,6 @@ export class CustomerComponent implements OnInit {
     modalRef.componentInstance.employee = data;
   }
 
-    postMessagePreview(messageFromChild: any){
-        this.openPreviewModal = messageFromChild;
-    }
-
-    postMessageEdit(messageFromChild: any){
-      this.openEditModal = messageFromChild;
-  }
   
   getCustomers(){
     this.crudService.get().subscribe(
@@ -70,6 +56,11 @@ export class CustomerComponent implements OnInit {
   assignCustomer(){
     const modalRef = this.modalService.open(AssignCustomerComponent, {centered:true, size: 'md'});
     modalRef.componentInstance.selectedCustomerData = this.selectedItemData;
+  }
+
+  selectionChanged(data: any) {
+    this.selectedItemData=data.selectedRowsData;
+    this.updateBtnStates();
   }
 
   onToolbarPreparing(e: any) {
@@ -89,20 +80,25 @@ export class CustomerComponent implements OnInit {
         options: {
             icon: 'card',
             text: "Müşteriyi Ata",
-            //disabled: ((this.selectedItemKeys.length > 0) ? false : true),
-            onClick: this.assignCustomer.bind(this),
+            onInitialized: (args: any) => {
+              this.btnExportInstance = args.component;
+            },
+            disabled: !this.selectedItemData.length,
+            onClick: this.assignCustomer.bind(this)
         }
       }
     );
   }
-
-  selectionChanged(data: any) {
-    this.selectedItemData=data.selectedRowsData;
+  private btnExportInstance: any = null;
+  private updateBtnStates() {
+    if (this.btnExportInstance !== null) {
+      this.btnExportInstance.option({
+        disabled: !this.selectedItemData.length
+      });
+    }
   }
 
-
   OpenAddModal = () => {
-    console.log("zuhaha");
     const modalRef = this.modalService.open(AddPopUpComponent, {centered:true, size: 'lg'});
 
 }
@@ -112,22 +108,8 @@ export class CustomerComponent implements OnInit {
     modalRef.componentInstance.employeeId = data[1];
   }
 
-  
-  onLogout() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/signin']);
-  }
-
-  myCommand(data: any){
-    console.log(data);
-    
-  }
-
   deleteCustomer(inputData: any){
-    this.crudService.deleteCustomer(inputData[1]).subscribe(data => {
-
-        console.log(data);
-    })   
+    this.crudService.deleteCustomer(inputData[1]).subscribe();   
 }
 
 OpenDeleteModal(data: any) {
