@@ -21,7 +21,6 @@ export class PopUpComponent implements OnInit {
   closeModal(){
     this.isPopupVisible = false;
     this.postMessageEvent.emit(false);
-    //console.log(this.isPopupVisible);
   }
 
   ngOnInit(): void {

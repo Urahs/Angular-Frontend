@@ -65,4 +65,7 @@ export class CrudService {
   getProvinces(): Observable<any>{
     return this.httpClient.get<any>(this.apiUrl+'/Customers/Provinces');
   }
+  getCustomerAssignmentRate(): Observable<any>{
+    return this.httpClient.get<any>(this.apiUrl+'/CustomerAssignment/CustomerRate');
+  }
 }
