@@ -5,7 +5,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { TableComponent } from './table/table.component';
 import { LeftsideComponent } from './leftside/leftside.component';
 import { CustomerComponent } from './customer/customer.component';
-import { CustomerresComponent } from './customerres/customerres.component';
+import { EmployeeComponent } from './employee/employee.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
@@ -17,13 +17,13 @@ import { PopUpComponent } from './pop-up/pop-up.component';
 import { EditPopUpComponent } from './edit-pop-up/edit-pop-up.component';
 import { MainComponent } from './main/main.component';
 import { AddPopUpComponent } from './add-pop-up/add-pop-up.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DeletePopUpComponent } from './delete-pop-up/delete-pop-up.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PreviewPopUpComponent } from './preview-pop-up/preview-pop-up.component';
-import { EmployeeComponent } from './employee/employee.component';
 import { AssignCustomerComponent } from './assign-customer/assign-customer.component';
+import { DxTextBoxModule,DxValidationGroupModule,DxValidatorModule,DxValidationSummaryModule,DxTextAreaModule} from 'devextreme-angular';
 
 
 @NgModule({
@@ -33,7 +33,7 @@ import { AssignCustomerComponent } from './assign-customer/assign-customer.compo
     TableComponent,
     LeftsideComponent,
     CustomerComponent,
-    CustomerresComponent,
+    EmployeeComponent,
     FooterComponent,
     HomeComponent,
     ChatbotComponent,
@@ -46,7 +46,6 @@ import { AssignCustomerComponent } from './assign-customer/assign-customer.compo
     PreviewPopUpComponent,
     EmployeeComponent,
     AssignCustomerComponent
-
   ],
   imports: [
     FormsModule,
@@ -65,7 +64,14 @@ import { AssignCustomerComponent } from './assign-customer/assign-customer.compo
     DxCheckBoxModule,
     DxSelectBoxModule,
     DxNumberBoxModule,
-    DxFormModule
+    DxFormModule,
+    DxTextBoxModule,
+    DxValidatorModule,
+    DxValidationSummaryModule,
+    DxValidationGroupModule,
+    DxTextAreaModule,
+    ReactiveFormsModule
+
   ]
 })
 export class PagesModule { }

@@ -27,10 +27,14 @@
               <input class="form-control" formControlName="Email">
               <label class="text-danger" *ngIf="service.formModel.get('Email')?.touched && service.formModel.get('Email')?.errors?.email">
                 E-posta adresi geçersiz.</label>
+                <label class="text-danger" *ngIf="service.formModel.get('Email')?.touched && service.formModel.get('Email')?.errors?.required">
+                  Email alanı boş bırakılamaz.</label>
             </div>
             <div class="form-group">
               <label>İsim Soyisim</label>
               <input class="form-control" formControlName="FullName">
+              <label class="text-danger" *ngIf="service.formModel.get('FullName')?.touched && service.formModel.get('FullName')?.errors?.required">
+                İsim Soyisim alanı boş bırakılamaz.</label>
             </div>
             <div formGroupName="Passwords">
               <div class="form-group required">

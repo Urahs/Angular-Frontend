@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { CrudService } from 'src/app/services/crud.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { CustomerAssignmentModel } from 'src/app/models/customerAssignmentModel';
+import { EmployeeModel } from 'src/app/models/employeeModel';
+import { CrudService } from 'src/app/services/crud.service';
+import { EmployeeService } from 'src/app/services/employee.service';
+
 
 @Component({
   selector: 'app-assign-customer',
@@ -9,28 +13,65 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AssignCustomerComponent implements OnInit {
 
-  simpleProducts: string[] = [
-    "HD Video Player",
-    "SuperHD Video Player",
-    "SuperPlasma 50",
-    "SuperLED 50"
-  ];
+  @Input() selectedCustomerData: any[];
+  customerRepresentative : EmployeeModel[];
+  customerAssignin: CustomerAssignmentModel[]=[];
+  customerAssigninObj:CustomerAssignmentModel;
+  employeeName:string;
+  employeeId:string;
+  myList : string[]=[] ;
   constructor(
-    public activeModal: NgbActiveModal,
-    private crudService: CrudService) {
-     }
+    public activeModal: NgbActiveModal ,
+    private crudService: CrudService,
+    private employeeService:EmployeeService)
+  { 
+    
+  }
 
   ngOnInit(): void {
+    this.crudService.getEmployee().subscribe(
+      (res: any) => {
+        this.customerRepresentative = res;
+        this.customerRepresentative.map(x=> this.myList.push(x.userName!));
+        
+      },
+      (err: any) => {
+        console.log(err);
+      },
+    );
+
   }
 
-  Save(){
-    /* this.crudService.UpdateCustomer(this.employee.customerId, this.employee).subscribe(() => {
-    }) */
-    this.activeModal.close('Close click')
+  Assign(){
+    this.findUserId(this.employeeName);
+    this.selectedCustomerData.forEach(e=>{
+      this.customerAssigninObj={
+        customerId:e.customerId,
+        customerName:e.name,
+        id:this.employeeId,
+        userName:this.employeeName
+        
+      }
+      this.customerAssignin.push(this.customerAssigninObj);
+    });
+      
+      this.employeeService.postCustomerAssign(this.customerAssignin).subscribe(
+        (data:any)=>{     
+        },
+        err => {
+          console.log(err);
+        },
+        );
+    
   }
-  
-}
 
-function getSimpleProducts(): string[] {
-  throw new Error('Function not implemented.');
+  findUserId(name:string){
+    this.customerRepresentative.map(x=> {
+      if(x.userName==name){
+        this.employeeId=x.id!;
+      };
+    });
+  }
+
+
 }

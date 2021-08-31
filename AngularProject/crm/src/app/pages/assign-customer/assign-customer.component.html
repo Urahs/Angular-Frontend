@@ -9,17 +9,26 @@
    <div class="dx-field">
     <div class="dx-field-label">Müşteri temsilcisi seçiniz:</div>
       <div class="dx-field-value">
+        
         <dx-select-box
-            [items]="simpleProducts"
+            [(ngModel)]="employeeName"
+            [items]="myList"  
             placeholder="Müşteri temsilcileri"
-            [showClearButton]="true"
-        ></dx-select-box>
+            [searchEnabled]="true"
+            [showClearButton]="true">
+      </dx-select-box>
      </div>
   </div>
 </div>
 
 
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark" onclick="window.location.reload(false)">Kaydet</button>
+  <button type="button" class="btn btn-outline-dark" (click)="Assign()">Kaydet</button>
   <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Kapat</button>
 </div>
+
+
+
+
+
+<!-- [items]="simpleProducts" -->

@@ -29,7 +29,7 @@ export class SigninComponent implements OnInit , AfterViewInit{
 
   ngOnInit() {
     if (localStorage.getItem('token') != null)
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/signin');
   }
 
   onSubmit(form: NgForm) {

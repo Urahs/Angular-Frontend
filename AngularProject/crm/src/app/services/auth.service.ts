@@ -18,14 +18,24 @@ export class AuthService {
 
   formModel = this.fb.group({
     UserName: ['', Validators.required],
-    Email: ['', Validators.email],
-    FullName: [''],
+    Email: ['',[ Validators.email, Validators.required]],
+    FullName: ['', Validators.required],
     Passwords: this.fb.group({
       Password: ['', [Validators.required, Validators.minLength(4)]],
       ConfirmPassword: ['', Validators.required]
     }, { validator: this.comparePasswords })
 
   });
+
+/*   heroForm = this.fb.group({
+    name: ['', Validators.required],
+    lastName: ['', Validators.required],
+    dateOfBirth: ['', Validators.required],
+    identificationNumber: ['', [Validators.required, Validators.minLength(11)]],
+    il: ['', Validators.required],
+    ilce: ['', Validators.required],
+    adres: ['', Validators.required],
+  }); */
 
   comparePasswords(fb: FormGroup) {
     let confirmPswrdCtrl = fb.get('ConfirmPassword');

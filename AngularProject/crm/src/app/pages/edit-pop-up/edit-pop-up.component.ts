@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Data } from 'src/app/models/Data';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Employee } from 'src/app/models/Employee';
-import { PostService } from 'src/app/services/PostService.service';
+import { CustomerModel } from 'src/app/models/customerModel';
+import { EmployeeService } from 'src/app/services/employee.service';
 import { CrudService } from 'src/app/services/crud.service';
 
 @Component({
@@ -12,16 +11,10 @@ import { CrudService } from 'src/app/services/crud.service';
 })
 export class EditPopUpComponent implements OnInit {
 
-  employee: Employee = {
-    "name" : "",
-    "lastName": "",
-    "dateOfBirth": "",
-    "identificationNumber": "",
-    "customerId": 0
-  };
+  customer: CustomerModel=new CustomerModel();
 
   @Input() employeeId: number;
-  @Output() postEmployeeBack = new EventEmitter<Employee>();
+  @Output() postEmployeeBack = new EventEmitter<CustomerModel>();
   
   constructor(
     public activeModal: NgbActiveModal,
@@ -31,12 +24,13 @@ export class EditPopUpComponent implements OnInit {
 
   ngOnInit(): void {
     this.crudService.getCustomer(this.employeeId).subscribe((result) => {
-      this.employee = result;
+      this.customer = result;
     });
   }
 
   Save(){
-    this.crudService.UpdateCustomer(this.employee.customerId, this.employee).subscribe(() => {
+
+    this.crudService.UpdateCustomer(this.customer.customerId, this.customer).subscribe(() => {
     })
     
     this.activeModal.close('Close click')

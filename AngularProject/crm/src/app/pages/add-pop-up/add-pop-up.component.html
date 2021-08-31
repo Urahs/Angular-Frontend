@@ -10,39 +10,144 @@
  </header>
  <hr>
   <div class="row">
-      <div class="form-group col-md-6">
-        <label for="inputEmail4">İsim</label>
-        <input type="text" class="form-control" id="name" placeholder="İsim"  [(ngModel)]="employee.name" >
+      <div class="form-group col-md-6" >
+        <label for="inputName4">İsim</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="İsim" required minlength="3"
+         [(ngModel)]="customer.name" #name="ngModel" >
+
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+  <div *ngIf="name.errors?.required">
+    Müşteri ismi alanı boş bırakılamaz.
+  </div>
+  <div *ngIf="name.errors?.minlength">
+  </div>
+</div>
       </div>
+
       <div class="form-group col-md-6">
         <label for="inputPassword4">Soyisim</label>
-        <input type="text" class="form-control" id="lastName" placeholder="Soyisim"  [(ngModel)]="employee.lastName" >
-      </div></div>
+        <input type="text" class="form-control" id="lastName" placeholder="Soyisim"  required minlength="2"
+          [(ngModel)]="customer.lastName" #lastName="ngModel">
+        <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert">
+          <div *ngIf="lastName.errors?.required">
+            Müşteri soyismi alanı boş bırakılamaz.
+          </div>
+          <div *ngIf="lastName.errors?.minlength">
+          </div>
+        </div>
+      </div>
+    
+    
+    
+    </div>
       <div class="row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Doğum Günü</label>
-      <input type="text" class="form-control" id="dateOfBirth" placeholder="Doğum Günü"  [(ngModel)]="employee.dateOfBirth">
+      <!-- <label for="inputEmail4">Doğum Günü</label>
+      <label class="text-danger" *ngIf="service.formModel.get('UserName')?.touched && service.formModel.get('UserName')?.errors?.required">
+        Müşteri doğum günü boş bırakılamaz.</label>
+      <input type="text" class="form-control" id="dateOfBirth" placeholder="Doğum Günü"  [(ngModel)]="customer.dateOfBirth"> -->
+      <form action="demo_form.php">
+        <label for="inputEmail4">Doğum Günü</label>
+         <input type="date" name="dateOfBirth" class="form-control" id="dateOfBirth" placeholder="Doğum Günü"  required minlength="1"
+         [(ngModel)]="customer.dateOfBirth"  #dateOfBirth="ngModel">
+     
+      <div *ngIf="dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)" class="alert">
+        <div *ngIf="dateOfBirth.errors?.required">
+          Müşteri doğum günü alanı boş bırakılamaz.
+        </div>
+        <div *ngIf="dateOfBirth.errors?.minlength">
+        </div>
+      </div> </form>
     </div>
+
+
     <div class="form-group col-md-6">
       <label for="inputPassword4">Müşteri Numarası</label>
-      <input type="text" class="form-control" id="identificationNumber" placeholder="ID"  [(ngModel)]="employee.identificationNumber">  
-
-    </div> </div>
+      <input type="text" class="form-control" id="identificationNumber" placeholder="ID"
+      required minlength="11" required maxlength="11"  [(ngModel)]="customer.identificationNumber" #identificationNumber="ngModel">
+       
+       <div *ngIf="identificationNumber.invalid && (identificationNumber.dirty || identificationNumber.touched)" class="alert">
+        <div *ngIf="identificationNumber.errors?.required">
+          Müşteri numarası alanı boş bırakılamaz.
+        </div>
+        <div *ngIf="identificationNumber.errors?.minlength">
+          Müşteri numarası en az 11 karakterli olabilir.
+        </div>
+        <div *ngIf="identificationNumber.errors?.maxlength">
+          Müşteri numarası en çok 11 karakterli olabilir.
+        </div>
+      </div>
+    </div>
+   </div>
     <br>
-                <header>
-                   <h3> Adres bilgileri</h3>
-                </header>
-                <hr>
-              <div class="form-group">
-                <label for="inputAddress">Adres</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="Adres">
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputCity">Şehir</label>
-                  <input type="text" class="form-control" id="inputCity" placeholder="Şehir">
-                </div>
-              </div>
+      <header>
+          <h3> Adres bilgileri</h3>
+      </header>
+      <hr>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">İl</label>
+          <dx-select-box
+            (onValueChanged)="onValueChanged($event)"
+            [(ngModel)]="province"
+            [items]="provincesList"  
+            placeholder="İl Seçiniz"
+            [searchEnabled]="true"
+            #il="ngModel"
+            name="il"
+            id="il"
+            required minlength="1"
+            [showClearButton]="true">
+          </dx-select-box>
+          <div *ngIf="il.invalid && (il.dirty || il.touched)" class="alert">
+            <div *ngIf="il.errors?.required">
+              Müşteri yaşanan il alanı boş bırakılamaz.
+            </div>
+            <div *ngIf="il.errors?.minlength">
+            </div>
+          </div>
+          </div>
+        <div class="form-group col-md-6">
+          <label for="inputDistrict">İlçe</label>
+          <dx-select-box
+            [(ngModel)]="district"
+            [items]="districtsList"  
+            placeholder="İlçe Seçiniz"
+            [searchEnabled]="true"
+            #ilce="ngModel"
+            name="ilce"
+            id="ilce"
+            required minlength="1"
+            [showClearButton]="true">
+          </dx-select-box>
+          <div *ngIf="ilce.invalid && (ilce.dirty || ilce.touched)" class="alert">
+            <div *ngIf="ilce.errors?.required">
+              Müşteri yaşanan ilçe alanı boş bırakılamaz.
+            </div>
+            <div *ngIf="ilce.errors?.minlength">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="left-content">
+        <label for="inputAddress">Adres</label>
+        <dx-text-area
+            [height]="90"
+            #adres="ngModel"
+            name="adres"
+            id="adres"
+            required minlength="5"
+            [(ngModel)]="customer.address">
+        </dx-text-area>
+        <div *ngIf="adres.invalid && (adres.dirty || adres.touched)" class="alert">
+          <div *ngIf="adres.errors?.required">
+            Müşteri adres alanı boş bırakılamaz.
+          </div>
+          <div *ngIf="adres.errors?.minlength">
+            Müşteri adres alanı en az 5 karakterli olmalıdır.
+          </div>
+        </div>
+    </div>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-outline-dark" (click)="savePopup()" onclick="window.location.reload(false)"> Kaydet</button>
