@@ -47,7 +47,7 @@ export class AssignCustomerComponent implements OnInit {
     this.selectedCustomerData.forEach(e=>{
       this.customerAssigninObj={
         customerId:e.customerId,
-        customerName:e.name,
+        customerName:e.name+" "+e.lastName,
         id:this.employeeId,
         userName:this.employeeName
         
@@ -62,7 +62,7 @@ export class AssignCustomerComponent implements OnInit {
           console.log(err);
         },
         );
-    
+        this.activeModal.close('Close click')
   }
 
   findUserId(name:string){

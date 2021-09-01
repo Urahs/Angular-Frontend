@@ -25,12 +25,19 @@
             <div class="form-group">
               <label>E-posta</label>
               <input class="form-control" formControlName="Email">
+              <label class="text-danger" *ngIf="service.formModel.get('Email')?.touched && service.formModel.get('Email')?.errors?.required">
+                E-posta alanı boş bırakılamaz.
+              </label>
               <label class="text-danger" *ngIf="service.formModel.get('Email')?.touched && service.formModel.get('Email')?.errors?.email">
                 E-posta adresi geçersiz.</label>
+              
             </div>
             <div class="form-group">
               <label>İsim Soyisim</label>
               <input class="form-control" formControlName="FullName">
+              <label class="text-danger" *ngIf="service.formModel.get('FullName')?.touched && service.formModel.get('FullName')?.errors?.required">
+                İsim Soyisim alanı boş bırakılamaz.
+              </label>
             </div>
             <div formGroupName="Passwords">
               <div class="form-group required">
@@ -45,7 +52,7 @@
                 <label>Şifre Tekrar</label>
                 <input type="password" class="form-control" formControlName="ConfirmPassword">
                 <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword')?.touched && service.formModel.get('Passwords.ConfirmPassword')?.errors?.required">
-                  Şifre alanı boş bırakılamaz.</label>
+                  Şifre tekrar alanı boş bırakılamaz.</label>
                 <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword')?.touched && service.formModel.get('Passwords.ConfirmPassword')?.errors?.passwordMismatch">
                  Şifreler birbiriyle uyuşmuyor.</label>
               </div>

@@ -19,7 +19,7 @@ export class AuthService {
   formModel = this.fb.group({
     UserName: ['', Validators.required],
     Email: ['', Validators.email],
-    FullName: [''],
+    FullName: ['',Validators.required],
     Passwords: this.fb.group({
       Password: ['', [Validators.required, Validators.minLength(4)]],
       ConfirmPassword: ['', Validators.required]
