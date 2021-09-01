@@ -1,120 +1,140 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, Injectable, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, enableProdMode, Injectable, OnInit, ViewChild } from '@angular/core';
+import { CustomerModel } from 'src/app/models/customerModel';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
+import { Router } from '@angular/router';
+import { DeletePopUpComponent } from '../delete-pop-up/delete-pop-up.component';
+import { PreviewPopUpComponent } from '../preview-pop-up/preview-pop-up.component';
+import { CrudService } from 'src/app/services/crud.service';
+import { AddPopUpComponent } from '../add-pop-up/add-pop-up.component';
+import { DxDataGridComponent } from 'devextreme-angular';
+import { AssignCustomerComponent } from '../assign-customer/assign-customer.component';
+
+
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.css']
 })
+
 export class CustomerComponent implements OnInit {
   
-    
-  openModal: boolean;
-  dataSource: Employee[];
-
-//   dataPost:Data = new Data();
-  dataPost:Data=new Data();  
+  dataSource: CustomerModel[];
+  modalReference: NgbModalRef;
+  selectedItemData: any[] = [];
   constructor(
-    private postService: PostService)
-  {
-    this.savePopup = this.savePopup.bind(this);    
-    this.OpenModal = this.OpenModal.bind(this);
-    this.postMessage = this.postMessage.bind(this);  
-  }
+      private router: Router,
+      private crudService: CrudService,
+      private modalService: NgbModal
+    )
+    {  
+      this.OpenPreviewModal = this.OpenPreviewModal.bind(this);
+    }
 
   
   ngOnInit(): void {
       this.getCustomers();
   }
 
-  OpenModal() {
-    this.openModal = true;
-    console.log(this.openModal);
-    // this.cdr.detectChanges();
-    // this.cdr.markForCheck();
-    }
-
-    postMessage(messageFromChild: any){
-        this.openModal = messageFromChild;
-    }
-
-  getCustomers(){
-    this.postService.get().subscribe(
-        (data) => {
-            console.log(data);
-            this.dataSource = data;
-            
-        },
-        (err) => {
-            console.log(err);
-        }
-    );
-
+  OpenPreviewModal(data: any) {
+    const modalRef = this.modalService.open(PreviewPopUpComponent, {centered:true, size: 'md'});
+    modalRef.componentInstance.customerId = data[1];
   }
 
-
-
-  savePopup(){
-    console.log('on save');
-
-    
-
-    this.postService.postData(this.dataPost).subscribe(//this.dataPost
-        (response) => {
-            console.log(response);
-        },
-        (err) => {
-            console.log(err);
-            
-        }
-    );
-}
-
-
-}
-
-
-@Injectable({
-    providedIn: 'any'
-})
-export class PostService{
-  constructor(private httpClient: HttpClient){}
   
-  public postData(data: any): Observable<any>{//Observable<any>
-    //   return this.httpClient.post<any>('https://localhost:5001/api/customers', data, {headers: {}});
-    return this.httpClient.post<any>('https://localhost:5001/api/customers', data, {headers:{'Content-Type':  'application/json'}});
+  getCustomers(){
+    this.crudService.get().subscribe(
+        (data) => {
+            this.dataSource = data;
+        },
+        (err) => {
+            console.log(err);
+        }
+    );
   }
 
-  get(): Observable<any>{
-      return this.httpClient.get<any>('https://localhost:5001/api/customers');
+  assignCustomer(){
+    const modalRef = this.modalService.open(AssignCustomerComponent, {centered:true, size: 'md'});
+    modalRef.componentInstance.selectedCustomerData = this.selectedItemData;
   }
 
-
-}
-
-export class Employee {
-  constructor(
-    public CustomerId: number,
-    public Name: string,
-    public LastName: string,
-    public IdentificationNumber: string,
-    public DateOfBirth: string
-    ){
+  selectionChanged(data: any) {
+    this.selectedItemData=data.selectedRowsData;
+    this.updateBtnStates();
   }
+
+  onToolbarPreparing(e: any) {
+
+    e.toolbarOptions.items.unshift(
+      {
+        location:"before",
+        widget: 'dxButton',
+        options: {
+          icon : "group",
+          text: "Yeni Müşteri Ekle",
+          onClick: this.OpenAddModal.bind(this)
+        }
+      }, {
+        location:"before",
+        widget: 'dxButton',
+        options: {
+            icon: 'card',
+            text: "Müşteriyi Ata",
+            onInitialized: (args: any) => {
+              this.btnExportInstance = args.component;
+            },
+            disabled: !this.selectedItemData.length,
+            onClick: this.assignCustomer.bind(this)
+        }
+      }
+    );
+  }
+  private btnExportInstance: any = null;
+  private updateBtnStates() {
+    if (this.btnExportInstance !== null) {
+      this.btnExportInstance.option({
+        disabled: !this.selectedItemData.length
+      });
+    }
+  }
+
+  OpenAddModal = () => {
+    const modalRef = this.modalService.open(AddPopUpComponent, {centered:true, size: 'lg'});
+
 }
 
-export class Data{
-    CustomerId?: number;
-    Name: string;
-    LastName: string;
-    DateOfBirth: string;
-    IdentificationNumber: string;
+  OpenEditModal=(data: any)=>{
+    const modalRef = this.modalReference = this.modalService.open(EditPopUpComponent, {size: "lg"});
+    modalRef.componentInstance.employeeId = data[1];
+  }
+
+  deleteCustomer(inputData: any){
+    this.crudService.deleteCustomer(inputData[1]).subscribe(
+      (data) => {
+        console.log(data);
+        
+    },
+    (err) => {
+        console.log(err);
+    }
+    );   
 }
 
-export class State {
-  ID: number;
-  Name: string;
+OpenDeleteModal(data: any) {
+    const modalRef = this.modalService.open(DeletePopUpComponent, {centered:true, size: 'sm'});
+    modalRef.componentInstance.event.subscribe((rec: any) => {
+        if(rec) this.deleteCustomer(data);
+    })
 }
+
+}
+
+
+
+
+
+
+
 
 
 
