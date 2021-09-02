@@ -68,4 +68,8 @@ export class CrudService {
   getCustomerAssignmentRate(): Observable<any>{
     return this.httpClient.get<any>(this.apiUrl+'/CustomerAssignment/CustomerRate');
   }
+
+  getMyCustomers(): Observable<any>{
+    return this.httpClient.get<any>(this.apiUrl+'/UserProfile/MyCustomers');
+  }
 }

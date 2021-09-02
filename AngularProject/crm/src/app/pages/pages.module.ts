@@ -25,6 +25,7 @@ import { PreviewPopUpComponent } from './preview-pop-up/preview-pop-up.component
 import { AssignCustomerComponent } from './assign-customer/assign-customer.component';
 import { DxTextBoxModule,DxValidationGroupModule,DxValidatorModule,DxValidationSummaryModule,
   DxTextAreaModule,DxDateBoxModule} from 'devextreme-angular';
+import { MyCustomersComponent } from './my-customers/my-customers.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { DxTextBoxModule,DxValidationGroupModule,DxValidatorModule,DxValidationS
     UserProfileComponent,
     PreviewPopUpComponent,
     EmployeeComponent,
-    AssignCustomerComponent
+    AssignCustomerComponent,
+    MyCustomersComponent
   ],
   imports: [
     FormsModule,

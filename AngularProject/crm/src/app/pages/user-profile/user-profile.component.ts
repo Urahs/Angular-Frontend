@@ -5,6 +5,7 @@ import { UserProfileModel } from 'src/app/models/userProfileModel';
 import { UserDetailsModel } from 'src/app/models/userDetailsModel';
 import { ToastrService } from 'ngx-toastr';
 import validationEngine from "devextreme/ui/validation_engine"
+import { CustomerModel } from 'src/app/models/customerModel';
 
 @Component({
   selector: 'app-user-profile',
@@ -30,7 +31,7 @@ export class UserProfileComponent implements OnInit {
       },
       err => {
         console.log(err);
-      },
+      }
     );
     
   }
@@ -96,4 +97,7 @@ export class UserProfileComponent implements OnInit {
       return this.userUpdateProfile.formNewPassword
   };
   
+  
+
+
 }
