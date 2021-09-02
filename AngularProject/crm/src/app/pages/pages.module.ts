@@ -10,7 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
 import { DxButtonModule, DxDataGridModule, DxDropDownButtonModule, DxPieChartModule, DxPopupModule, DxScrollViewModule,
-   DxToolbarModule,DxCheckBoxModule, DxSelectBoxModule, DxNumberBoxModule, DxFormModule } from 'devextreme-angular';
+   DxToolbarModule,DxCheckBoxModule, DxSelectBoxModule, DxNumberBoxModule, DxFormModule, DxAccordionModule } from 'devextreme-angular';
 import { AppRoutingModule } from '../app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { PopUpComponent } from './pop-up/pop-up.component';
@@ -23,14 +23,12 @@ import { DeletePopUpComponent } from './delete-pop-up/delete-pop-up.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PreviewPopUpComponent } from './preview-pop-up/preview-pop-up.component';
 import { AssignCustomerComponent } from './assign-customer/assign-customer.component';
-import { DxTextBoxModule,DxValidationGroupModule,DxValidatorModule,DxValidationSummaryModule,
-  DxTextAreaModule,DxDateBoxModule} from 'devextreme-angular';
+import { DxTextBoxModule,DxValidationGroupModule,DxValidatorModule,DxValidationSummaryModule,DxTextAreaModule,DxDateBoxModule} from 'devextreme-angular';
 import { MyCustomersComponent } from './my-customers/my-customers.component';
 
 
 @NgModule({
   declarations: [
-    
     NavbarComponent,
     TableComponent,
     LeftsideComponent,
@@ -51,6 +49,7 @@ import { MyCustomersComponent } from './my-customers/my-customers.component';
     MyCustomersComponent
   ],
   imports: [
+    DxAccordionModule,
     FormsModule,
     CommonModule,
     PagesRoutingModule,

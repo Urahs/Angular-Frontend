@@ -20,6 +20,7 @@ export class MyCustomersComponent implements OnInit {
   getMyCustomers(){
     this.service.getMyCustomers().subscribe(
       (res:any)=>{
+        console.log(res);
         this.myCustomers=res;
       },
       err =>{
