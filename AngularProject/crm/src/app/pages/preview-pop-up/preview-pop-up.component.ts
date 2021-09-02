@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { CustomerModel } from 'src/app/models/customerModel';
+import { CrudService } from 'src/app/services/crud.service';
 
 @Component({
   selector: 'preview-pop-up',
@@ -9,10 +11,14 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class PreviewPopUpComponent implements OnInit {
 
   @Input() isPopupVisible: boolean;
-  @Input() employee: any;
+  @Input() customerId: number;
   @Output() postMessageEvent = new EventEmitter<boolean>();
+  customer: CustomerModel = new CustomerModel();
   
-  constructor( public activeModal: NgbActiveModal){
+  constructor( 
+    public activeModal: NgbActiveModal,
+    public crudService: CrudService)
+  {
     this.isPopupVisible = true;
     this.closeModal = this.closeModal.bind(this);
   }
@@ -23,6 +29,14 @@ export class PreviewPopUpComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.crudService.getCustomer(this.customerId).subscribe(
+      (data) => {
+          this.customer = data;
+      },
+      (err) => {
+          console.log(err);
+      }
+    );
   }
 
 }

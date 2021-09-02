@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { PreviewPopUpComponent } from '../preview-pop-up/preview-pop-up.component';
 import { CrudService } from 'src/app/services/crud.service';
 import { EmployeeModel } from 'src/app/models/employeeModel';
+import { CustomerModel } from 'src/app/models/customerModel';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-employee',
@@ -13,17 +15,17 @@ import { EmployeeModel } from 'src/app/models/employeeModel';
 
 export class EmployeeComponent implements OnInit {
   
-  selectedItemKeys: any[] = [];
   tempData: EmployeeModel[];
+  customerModels: CustomerModel[];
+  headers: ["İsim", "Doğum Tarihi", "Müşteri Numarası"];
 
   constructor(
     private router: Router,
     private crudService: CrudService,
+    private employeeService: EmployeeService,
     private modalService: NgbModal
     )
   {   
-    this.OpenPreviewModal = this.OpenPreviewModal.bind(this);
-
   }
 
   
@@ -39,9 +41,34 @@ export class EmployeeComponent implements OnInit {
       );
   }
 
-  OpenPreviewModal(data: any) {
-    const modalRef = this.modalService.open(PreviewPopUpComponent, {centered:true, size: 'lg'});
-    modalRef.componentInstance.employee = data;
+  
+
+  selectionChanged(e: any){
+    
+    e.component.collapseAll(-1);
+    e.component.expandRow(e.currentSelectedRowKeys[0]);
+
+    this.employeeService.getAssignedCustomers(e.currentSelectedRowKeys[0].id).subscribe(
+      (data:any)=>{
+        this.customerModels = data;
+      },
+      err => {
+        console.log(err);
+      }
+    )
+      
   }
+
+  contentReady(e: any){
+    if (!e.component.getSelectedRowKeys().length){
+      //e.component.selectRowsByIndexes(0);
+    }
+    else{
+      
+    }
+  }
+
+ 
+
 
 }

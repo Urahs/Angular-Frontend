@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   profileSettings: SimpleObject[] = [
     { value: 1, name: "Profile", icon: "user" },
     // { value: 4, name: "Messages", icon: "email", badge: "5" },
-    { value: 2, name: "Müşterilerim", icon: "group" },
+    // { value: 2, name: "Friends", icon: "group" },
     { value: 3, name: "Exit", icon: "runner"}
 ];
 
@@ -44,8 +44,6 @@ export class NavbarComponent implements OnInit {
       this.onLogout(); 
     else if(e.itemData.name==="Profile")
       this.router.navigate(['/main/user-profile']);
-    else if(e.itemData.name ==="Müşterilerim")
-      this.router.navigate(['/main/my-customers']);
 	}
 
   onLogout() {

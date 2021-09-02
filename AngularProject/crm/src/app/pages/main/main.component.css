@@ -9,23 +9,10 @@
 .push-navbar-md {
     padding-left: 225px;
 }
-footer {
-    position: relative;
-    bottom: 0;
-    top: 100%;
-    width: 100%;
-    background-color: #DADADA;
-  }
 
-/* .footer {
-    position:static;
+.footer {
+    position:fixed;
     bottom: 0%;
     width: 100%;
     padding-left: 225px;
-} */
-
-/* @media (max-width: 800px) {
-    .push-md {
-        padding-left: 218px;
-    }
-} */
+}

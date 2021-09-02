@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxButtonModule, DxDataGridModule, DxDropDownButtonModule, DxPieChartModule} from 'devextreme-angular';
+import { DxButtonModule, DxDataGridModule, DxDropDownButtonModule, DxListModule, DxPieChartModule} from 'devextreme-angular';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
@@ -13,6 +13,7 @@ import { DxoPopupModule, DxoToolbarModule } from 'devextreme-angular/ui/nested';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './guards/auth.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 const routes: Routes = [];
@@ -22,6 +23,8 @@ const routes: Routes = [];
     AppComponent
   ],
   imports: [
+    DxListModule,
+    FullCalendarModule,
     FormsModule,
     PagesModule,
     AuthModule,

@@ -8,5 +8,4 @@ export class CustomerModel {
   district: string;
   address: string;
   assignmentStatus: boolean;
-
 }

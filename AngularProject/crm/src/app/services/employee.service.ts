@@ -14,4 +14,12 @@ export class EmployeeService{
   postCustomerAssign (data: any): Observable<any> {
     return this.httpClient.post<any>(this.apiUrl+'/customerassignment', data, {headers:{'Content-Type':  'application/json'}})
   }
+
+  //get customers who is assigned an employee
+  getAssignedCustomers(data:any): Observable<any>{
+    return this.httpClient.get<any>(this.apiUrl+'/Employees/AssignedCustomers?UserId='+data);
   }
+
+
+
+}
