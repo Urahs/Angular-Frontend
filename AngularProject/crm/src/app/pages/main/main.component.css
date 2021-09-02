@@ -11,14 +11,8 @@
 }
 
 .footer {
-    position:static;
+    position:fixed;
     bottom: 0%;
     width: 100%;
     padding-left: 225px;
 }
-
-/* @media (max-width: 800px) {
-    .push-md {
-        padding-left: 218px;
-    }
-} */

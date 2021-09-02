@@ -10,7 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
 import { DxButtonModule, DxDataGridModule, DxDropDownButtonModule, DxPieChartModule, DxPopupModule, DxScrollViewModule,
-   DxToolbarModule,DxCheckBoxModule, DxSelectBoxModule, DxNumberBoxModule, DxFormModule, DxDateBoxModule, DxListModule, DxCalendarModule } from 'devextreme-angular';
+   DxToolbarModule,DxCheckBoxModule, DxSelectBoxModule, DxNumberBoxModule, DxFormModule, DxDateBoxModule, DxListModule, DxCalendarModule, DxAccordionModule } from 'devextreme-angular';
 import { AppRoutingModule } from '../app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { PopUpComponent } from './pop-up/pop-up.component';
@@ -24,7 +24,6 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PreviewPopUpComponent } from './preview-pop-up/preview-pop-up.component';
 import { AssignCustomerComponent } from './assign-customer/assign-customer.component';
 import { DxTextBoxModule,DxValidationGroupModule,DxValidatorModule,DxValidationSummaryModule,DxTextAreaModule} from 'devextreme-angular';
-import { AssignedCustomersComponent } from './assigned-customers/assigned-customers.component';
 
 
 @NgModule({
@@ -41,16 +40,15 @@ import { AssignedCustomersComponent } from './assigned-customers/assigned-custom
     PopUpComponent,
     EditPopUpComponent,
     MainComponent,
-    AssignedCustomersComponent,
     AddPopUpComponent,
     DeletePopUpComponent,
     UserProfileComponent,
     PreviewPopUpComponent,
     EmployeeComponent,
-    AssignCustomerComponent,
-    AssignedCustomersComponent
+    AssignCustomerComponent
   ],
   imports: [
+    DxAccordionModule,
     DxCalendarModule,
     DxListModule,
     DxButtonModule,

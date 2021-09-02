@@ -55,6 +55,13 @@ export class CrudService {
     return this.httpClient.get(this.apiUrl+'/Employees');
   }
 
+  getAssignedCustomers(){
+    return this.httpClient.get(this.apiUrl+'/Customers/Assigned')
+  }
+  getUnassignedCustomers(){
+    return this.httpClient.get(this.apiUrl+'/Customers/Unassigned')
+  }
+
   controlUserName(data:any){
     return this.httpClient.post(this.apiUrl+'/UserProfile/CheckUserName',data,{headers:{'Content-Type':  'application/json'}});
   }

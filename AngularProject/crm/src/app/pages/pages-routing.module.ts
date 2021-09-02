@@ -13,7 +13,6 @@ import { SigninComponent } from '../auth/signin/signin.component';
 import { SignupComponent } from '../auth/signup/signup.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { EmployeeComponent } from './employee/employee.component';
-import { AssignedCustomersComponent } from './assigned-customers/assigned-customers.component';
 
 const routes: Routes = [
   {path:"main",
@@ -24,7 +23,6 @@ const routes: Routes = [
     {path: "home", component: HomeComponent,canActivate:[LoginGuard]},
     {path: "chatbot",component: ChatbotComponent,canActivate:[LoginGuard]},
     {path: "user-profile",component: UserProfileComponent,canActivate:[LoginGuard]},
-    {path: "assigned-customers",component: AssignedCustomersComponent,canActivate:[LoginGuard]}
 ]},
 ];
 
