@@ -9,11 +9,22 @@
    <div class="dx-field">
     <div class="dx-field-label">Müşteri temsilcisi seçiniz:</div>
       <div class="dx-field-value">
-        
         <dx-select-box
             [(ngModel)]="employeeName"
             [items]="myList"  
             placeholder="Müşteri temsilcileri"
+            [searchEnabled]="true"
+            [showClearButton]="true">
+      </dx-select-box>
+     </div>
+  </div>
+  <div class="dx-field">
+    <div class="dx-field-label">Müşteri iş durumu seçiniz:</div>
+      <div class="dx-field-value">
+        <dx-select-box
+            [(ngModel)]="transactionTypeName"
+            [items]="transactions"  
+            placeholder="İşlem seçiniz"
             [searchEnabled]="true"
             [showClearButton]="true">
       </dx-select-box>

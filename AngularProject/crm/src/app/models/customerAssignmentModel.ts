@@ -3,4 +3,6 @@ export class CustomerAssignmentModel{
     userName:string;
     customerId:string;
     customerName:string;
+    transactionType: string;
+    workCondition: string;
 }

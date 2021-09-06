@@ -17,10 +17,9 @@ export class SimpleObject {
 })
 export class NavbarComponent implements OnInit {
   profileSettings: SimpleObject[] = [
-    { value: 1, name: "Profile", icon: "user" },
-    // { value: 4, name: "Messages", icon: "email", badge: "5" },
+    { value: 1, name: "Profil", icon: "user" },
     { value: 2, name: "Müşterilerim", icon: "group" },
-    { value: 3, name: "Exit", icon: "runner"}
+    { value: 3, name: "Çıkış", icon: "runner"}
 ];
 
   profileInfo:NavbarProfileInfoModel;
@@ -40,9 +39,9 @@ export class NavbarComponent implements OnInit {
     );
   }
 	onItemClick(e: { itemData: { name: any; }; }) {
-    if ( e.itemData.name === "Exit")
+    if ( e.itemData.name === "Çıkış")
       this.onLogout(); 
-    else if(e.itemData.name==="Profile")
+    else if(e.itemData.name==="Profil")
       this.router.navigate(['/main/user-profile']);
     else if(e.itemData.name ==="Müşterilerim")
       this.router.navigate(['/main/my-customers']);

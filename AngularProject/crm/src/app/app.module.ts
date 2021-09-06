@@ -13,7 +13,6 @@ import { DxoPopupModule, DxoToolbarModule } from 'devextreme-angular/ui/nested';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './guards/auth.interceptor';
 import { ToastrModule } from 'ngx-toastr';
-import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 const routes: Routes = [];
@@ -24,7 +23,6 @@ const routes: Routes = [];
   ],
   imports: [
     DxListModule,
-    FullCalendarModule,
     FormsModule,
     PagesModule,
     AuthModule,

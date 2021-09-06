@@ -76,6 +76,10 @@ export class CrudService {
     return this.httpClient.get<any>(this.apiUrl+'/CustomerAssignment/CustomerRate');
   }
 
+  getResultedCustomers(): Observable<any>{
+    return this.httpClient.get<any>("https://localhost:5001/api/Customers/Resulted");
+  }
+
   getMyCustomers(): Observable<any>{
     return this.httpClient.get<any>(this.apiUrl+'/UserProfile/MyCustomers');
   }

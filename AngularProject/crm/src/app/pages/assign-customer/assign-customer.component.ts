@@ -6,6 +6,7 @@ import { CrudService } from 'src/app/services/crud.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 
 
+
 @Component({
   selector: 'app-assign-customer',
   templateUrl: './assign-customer.component.html',
@@ -13,11 +14,20 @@ import { EmployeeService } from 'src/app/services/employee.service';
 })
 export class AssignCustomerComponent implements OnInit {
 
+transactions: string[] = [
+  "Kredi işlemleri",
+  "Para yatırma",
+  "Para çekme" ,
+  "Hisse senedi işlemleri",
+  "Sigorta ve emeklilik"
+]
+ 
   @Input() selectedCustomerData: any[];
   customerRepresentative : EmployeeModel[];
   customerAssignin: CustomerAssignmentModel[]=[];
   customerAssigninObj:CustomerAssignmentModel;
   employeeName:string;
+  transactionTypeName:string;
   employeeId:string;
   myList : string[]=[] ;
   constructor(
@@ -49,8 +59,10 @@ export class AssignCustomerComponent implements OnInit {
         customerId:e.customerId,
         customerName:e.name+" "+e.lastName,
         id:this.employeeId,
-        userName:this.employeeName
-        
+        userName:this.employeeName,
+        transactionType:this.transactionTypeName,
+        workCondition: "İşleme alındı"
+
       }
       this.customerAssignin.push(this.customerAssigninObj);
     });

@@ -73,6 +73,7 @@ export class AddPopUpComponent implements OnInit {
   savePopup(){
     this.customer.province=this.province;
     this.customer.district=this.district;
+    this.customer.assignmentStatus="Unassigned";
     this.changeDateFormat();
 
     this.crudService.postData(this.customer).subscribe(

@@ -19,11 +19,10 @@ import { AssignCustomerComponent } from '../assign-customer/assign-customer.comp
 
 export class CustomerComponent implements OnInit {
   
-  dataSource: any[] = [0,1];
+  dataSource: any[] = [0,1,2,3];
   modalReference: NgbModalRef;
   selectedItemData: any[] = [];
   flag: number;
-  gridTitles: string[] = ["Atama Bekleyen Müşteriler", "Atanan Müşteriler"];
 
 
   constructor(
@@ -47,9 +46,17 @@ export class CustomerComponent implements OnInit {
 
   
   getCustomers(){
+    this.crudService.get().subscribe(
+      (data) => {
+        this.dataSource[0] = data;
+      },
+      (err) => {
+          console.log(err);
+      }
+  );
     this.crudService.getUnassignedCustomers().subscribe(
         (data) => {
-          this.dataSource[0] = data;
+          this.dataSource[1] = data;
         },
         (err) => {
             console.log(err);
@@ -57,18 +64,26 @@ export class CustomerComponent implements OnInit {
     );
     this.crudService.getAssignedCustomers().subscribe(
       (data) => {
-        this.dataSource[1] = data;
+        this.dataSource[2] = data;
       },
       (err) => {
           console.log(err);
       }
-    )
+    ); 
+    this.crudService.getResultedCustomers().subscribe(
+      (data) => {
+        this.dataSource[3] = data;
+      },
+      (err) => {
+          console.log(err);
+      }
+  );
   }
 
 
   onToolbarPreparing(e: any, grid: any) {
 
-    if(grid == this.dataSource[0])
+    if(grid == this.dataSource[0] || grid == this.dataSource[1])
       {
         this.flag = 1;
 
@@ -81,7 +96,9 @@ export class CustomerComponent implements OnInit {
               text: "Yeni Müşteri Ekle",
               onClick: this.OpenAddModal.bind(this)
             }
-          }, {
+          }, 
+          
+          {
             location:"before",
             widget: 'dxButton',
             options: {
@@ -96,6 +113,7 @@ export class CustomerComponent implements OnInit {
           }
         );
       }  
+      
       else{
         this.flag = 0;
       }

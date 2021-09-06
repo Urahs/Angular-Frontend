@@ -7,5 +7,5 @@ export class CustomerModel {
   province: string;
   district: string;
   address: string;
-  assignmentStatus: boolean;
+  assignmentStatus: string;
 }
