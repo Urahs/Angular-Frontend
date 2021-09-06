@@ -57,6 +57,8 @@ export class CustomerComponent implements OnInit {
     this.crudService.getUnassignedCustomers().subscribe(
         (data) => {
           this.dataSource[1] = data;
+          console.log(data);
+          
         },
         (err) => {
             console.log(err);
@@ -83,20 +85,11 @@ export class CustomerComponent implements OnInit {
 
   onToolbarPreparing(e: any, grid: any) {
 
-    if(grid == this.dataSource[0] || grid == this.dataSource[1])
+    if(grid == this.dataSource[1])
       {
         this.flag = 1;
 
         e.toolbarOptions.items.unshift(
-          {
-            location:"before",
-            widget: 'dxButton',
-            options: {
-              icon : "group",
-              text: "Yeni Müşteri Ekle",
-              onClick: this.OpenAddModal.bind(this)
-            }
-          }, 
           
           {
             location:"before",
@@ -113,8 +106,23 @@ export class CustomerComponent implements OnInit {
           }
         );
       }  
-      
-      else{
+      else if(grid == this.dataSource[0]){
+        this.flag = 0;
+
+        e.toolbarOptions.items.unshift(
+          {
+            location:"before",
+            widget: 'dxButton',
+            options: {
+              icon : "group",
+              text: "Yeni Müşteri Ekle",
+              onClick: this.OpenAddModal.bind(this)
+            }
+          }         
+          
+        );
+      }
+      else if(grid == this.dataSource[2] || grid == this.dataSource[3]){
         this.flag = 0;
       }
 

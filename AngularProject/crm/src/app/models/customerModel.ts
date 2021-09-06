@@ -8,4 +8,6 @@ export class CustomerModel {
   district: string;
   address: string;
   assignmentStatus: string;
+  transactionType: string;
+  workCondition: string;
 }
