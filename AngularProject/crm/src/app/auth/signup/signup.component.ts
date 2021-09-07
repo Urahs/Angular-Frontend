@@ -29,16 +29,16 @@ export class SignupComponent implements OnInit, AfterViewInit {
       (res: any) => {
         if (res.succeeded) {
           this.service.formModel.reset();
-          this.toastr.success('New user created!', 'Registration successful.');
+          this.toastr.success('Yeni kullanıcı oluşturuldu!', 'Kayıt işlemi başarılı.');
         } else {
           res.errors.forEach((element:any) => {
             switch (element.code) {
               case 'DuplicateUserName':
-                this.toastr.error('Username is already taken','Registration failed.');
+                this.toastr.info('Bu kullanıcı adı başkası tarafından kullanılıyor.','Lütfen başka bir kullanıcı adı seçin.');
                 break;
 
               default:
-              this.toastr.error(element.description,'Registration failed.');
+              this.toastr.info(element.description,'Kayıt işlemi başarısız.');
                 break;
             }
           }

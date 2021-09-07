@@ -29,7 +29,7 @@ export class SigninComponent implements OnInit , AfterViewInit{
 
   ngOnInit() {
     if (localStorage.getItem('token') != null)
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/signin');
   }
 
   onSubmit(form: NgForm) {
@@ -40,7 +40,7 @@ export class SigninComponent implements OnInit , AfterViewInit{
       },
       err => {
         if (err.status == 400)
-          this.toastr.error('Gerçersiz kullanıcı adı ya da şifre.', 'Giriş başarısız.');
+          this.toastr.info('Gerçersiz kullanıcı adı ya da şifre.', 'Giriş başarısız.');
         else
           console.log(err);
       }

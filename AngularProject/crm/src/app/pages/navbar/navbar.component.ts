@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/User';
 import { CrudService } from 'src/app/services/crud.service';
 import { Observable } from 'rxjs';
+import { NavbarProfileInfoModel } from 'src/app/models/navbarProfileInfoModel';
 
 export class SimpleObject {
   value: number | string;
@@ -17,17 +17,21 @@ export class SimpleObject {
 })
 export class NavbarComponent implements OnInit {
   profileSettings: SimpleObject[] = [
-    { value: 1, name: "Profile", icon: "user" },
-    // { value: 4, name: "Messages", icon: "email", badge: "5" },
-    // { value: 2, name: "Friends", icon: "group" },
-    { value: 3, name: "Exit", icon: "runner"}
+    { value: 1, name: "Profil", icon: "user" },
+    { value: 2, name: "Müşterilerim", icon: "group" },
+    { value: 3, name: "Çıkış", icon: "runner"}
 ];
-  userName:any;
-  constructor(private router: Router, private service: CrudService) { }
+
+  profileInfo:NavbarProfileInfoModel;
+  profileName:string;
+
+  constructor(private router: Router, private service: CrudService) {  }
+
   ngOnInit(): void {
     this.service.getUserProfile().subscribe(
-      res => {
-        this.userName = res;
+      (res:any) => {
+        this.profileInfo = res;
+        this.profileName=this.profileInfo.fullName;
       },
       err => {
         console.log(err);
@@ -35,10 +39,12 @@ export class NavbarComponent implements OnInit {
     );
   }
 	onItemClick(e: { itemData: { name: any; }; }) {
-    if ( e.itemData.name === "Exit")
+    if ( e.itemData.name === "Çıkış")
       this.onLogout(); 
-    else if(e.itemData.name==="Profile")
+    else if(e.itemData.name==="Profil")
       this.router.navigate(['/main/user-profile']);
+    else if(e.itemData.name ==="Müşterilerim")
+      this.router.navigate(['/main/my-customers']);
 	}
 
   onLogout() {

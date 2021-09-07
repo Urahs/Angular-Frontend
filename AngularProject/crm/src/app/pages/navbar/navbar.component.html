@@ -1,15 +1,13 @@
 <nav class="navbar navbar-light" style="background-color: #ED1B2E;">
   <div class="container">
-      <!-- <nav class="navbar"> -->
               <ul class="navbar-nav">
                 <li>
                     <div class="dx-field-value">
-                      <!-- margin-left: 700px; -->
                     <dx-drop-down-button
-                      style="background-color:white;margin-left: 500px; position: relative;"
-                      [splitButton]="true"
+                      style="background-color:white;margin-left: 600px; position: relative;"
                       [useSelectMode]="false"
-                      text={{userName.fullName}} 
+                      [dropDownOptions]="{width: 130}"
+                      text={{profileName}} 
                       icon="aligncenter"
                       [items]="profileSettings"
                       displayExpr="name"
@@ -18,6 +16,5 @@
                   </div>
                 </li>
               </ul>
-        <!-- </nav> -->
     </div>
 </nav>

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Employee } from 'src/app/models/Employee';
+import { CustomerModel } from 'src/app/models/customerModel';
 
 @Component({
   selector: 'pop-up',
@@ -10,7 +10,7 @@ import { Employee } from 'src/app/models/Employee';
 export class PopUpComponent implements OnInit {
 
   @Input() isPopupVisible: boolean;
-  @Input() employee: Employee;
+  @Input() employee: CustomerModel;
   @Output() postMessageEvent = new EventEmitter<boolean>();
   
   constructor( public activeModal: NgbActiveModal){
@@ -21,7 +21,6 @@ export class PopUpComponent implements OnInit {
   closeModal(){
     this.isPopupVisible = false;
     this.postMessageEvent.emit(false);
-    //console.log(this.isPopupVisible);
   }
 
   ngOnInit(): void {
