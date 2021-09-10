@@ -19,7 +19,6 @@ export class MyCustomersComponent implements OnInit {
   selectedItemData: any[] = [];
   flag: number;
   modalReference: NgbModalRef;
-  gridTitles: string[] = ["İlgilendiğiniz Müşteriler", "Sonuçlandırılan Müşteriler"];
   OpenAddModal: any;
   assignCustomer: any;
 
@@ -35,8 +34,7 @@ export class MyCustomersComponent implements OnInit {
   getMyCustomers(){
     this.service.getMyCustomers().subscribe(
       (res:any)=>{
-        console.log(res);
-        this.myCustomers=res;
+        this.dataSource[0]=res;
       },
       err =>{
         console.log(err);
