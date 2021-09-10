@@ -25,11 +25,11 @@ export class MyCustomersComponent implements OnInit {
   dataSource: any[] = [0,1];
   myCustomers:CustomerModel[]=[];
   customerAssignmentModel : CustomerAssignmentModel;
+
   crudService: any;
   selectedItemData: any[] = [];
   flag: number;
   modalReference: NgbModalRef;
-  gridTitles: string[] = ["İlgilendiğiniz Müşteriler", "Sonuçlandırılan İşlemler"];
   OpenAddModal: any;
   assignCustomer: any;
 
@@ -38,45 +38,20 @@ export class MyCustomersComponent implements OnInit {
     private modalService: NgbModal) 
     { this.OpenPreviewModal = this.OpenPreviewModal.bind(this);}
   
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
     this.getMyCustomers();
     this.getMyHistory();
   }
 
-
   getMyCustomers(){
-
-    return new Promise((resolve:any) => {
-      
-      this.service.getMyCustomers().subscribe(
-        (res:any)=>{
-          this.myCustomers = res;
-          this.myCustomers.forEach(element => {
-            const trueData: MyCustomers = new MyCustomers();
-            trueData.name = element.name;
-            trueData.lastName = element.lastName;
-            trueData.dateOfBirth = element.dateOfBirth;
-            trueData.identificationNumber = element.identificationNumber;
-            trueData.customerId = element.customerId;
-            this.service.getSpecificCustomerAssignment(element.customerId).subscribe(
-              (res: any) => {
-                trueData.transactionType = res.transactionType;
-                this.trueDataArray.push(trueData);
-              }
-            );
-          }
-          );
-          this.dataSource[0] = this.trueDataArray;
-        },
-        err =>{
-          console.log(err);
-        }
-      );
-
-      
-    });
-
-    
+    this.service.getMyCustomers().subscribe(
+      (res:any)=>{
+        this.dataSource[0]=res;
+      },
+      err =>{
+        console.log(err);
+      }
+    );
   }
 
   
@@ -97,6 +72,7 @@ export class MyCustomersComponent implements OnInit {
   OpenPreviewModal(data: any) {
     const modalRef = this.modalService.open(PreviewPopUpComponent, {centered:true, size: 'md'});
     modalRef.componentInstance.customerId = data[0];
+
   }
 
   OpenEditModal=(data: any)=>{
@@ -130,38 +106,6 @@ export class MyCustomersComponent implements OnInit {
         
       }
     )
-    
-    /* this.service.getUserProfile().subscribe(
-      (data: any) => {
-        this.employeeName = data;
-
-        this.service.getEmployee().subscribe(
-          (res: any) => {
-            this.employees = res;
-            this.findUserId(this.employeeName);
-
-            this.service.getMyHistory().subscribe(
-              (res: any) => {
-                res.forEach((element: any) => {
-                  if (element.userId == this.employeeId) {
-                    this.processHistoryModel.id = element.customerId;
-                    this.processHistoryModel.transactionType = element.transactionType;
-                    this.processHistoryModel.workCondition = element.workCondition;
-                    this.proccessHistory.push(this.processHistoryModel);
-                    console.log(this.processHistoryModel);
-                    console.log("aa");
-                    
-                  }
-                });
-              }
-            )
-
-          }
-        )
-
-
-      }
-    ) */
   }
 
 
@@ -174,7 +118,5 @@ export class MyCustomersComponent implements OnInit {
       };
     });
   }
-
-
 
 }
