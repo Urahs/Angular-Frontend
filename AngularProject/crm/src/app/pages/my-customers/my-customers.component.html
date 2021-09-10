@@ -1,52 +1,3 @@
-<!-- <div class="card shadow mb-5">
-    <div class="card-header py-3" >
-        <h6 class="m-0 font-weight-bold" style="color: #ED1B2E; text-align: center;"><font size="+3" >İlgilendiğiniz Müşteriler</font></h6>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <div id="data-grid-demo">
-                <dx-data-grid 
-                    id="gridContainer"
-                    [dataSource]="myCustomers"
-                    keyExpr="customerId"
-                    [showBorders]="true">
-                    
-                    <dxo-search-panel [visible]="true"></dxo-search-panel>
-                    <dxo-paging [enabled]="false"></dxo-paging>
-                    <dxo-editing 
-                        mode="cell">
-                    </dxo-editing>
-                    
-                    <dxi-column dataField="customerId" caption="Müşteri No" [width]="100"></dxi-column>
-                    <dxi-column dataField="name" caption="İsim"></dxi-column>
-                    <dxi-column dataField="lastName" caption="Soyisim"></dxi-column>
-                    <dxi-column dataField="identificationNumber" [width]="170" caption="TC Kimlik"></dxi-column>
-                    <dxi-column
-                        dataField="province"
-                        caption="Şehir"
-                        [width]="125">
-                    </dxi-column>
-                    <dxi-column
-                        dataField="dateOfBirth"
-                        caption="Doğum tarihi"
-                        dataType="date">
-                    </dxi-column>
-                    <dxi-column
-                        dataField="address"
-                        [visible]="false">
-                        <dxo-form-item
-                            [colSpan]="2"
-                            editorType="dxTextArea"
-                            [editorOptions]="{ height: 100 }">
-                        </dxo-form-item>
-                    </dxi-column>
-                </dx-data-grid>
-            </div>
-        </div>
-    </div>
-</div>         -->
-
-
 <dx-accordion
 #accordion
 [dataSource]="dataSource"
@@ -83,7 +34,8 @@
                         <dxi-column dataField="dateOfBirth" caption="Doğum Tarihi"></dxi-column>
                         <dxi-column dataField="identificationNumber" caption="Kimlik Numarası" ></dxi-column>
                         <dxi-column dataField="transactionType" caption="İşlem Türü"></dxi-column>
-                        <dxi-column dataField="" caption="İşlem Durumu" *ngIf = "grid === dataSource[1]"></dxi-column>
+                        <dxi-column dataField="workCondition" caption="İşlem Durumu" *ngIf = "grid === dataSource[1]"></dxi-column>
+                        <dxi-column dataField="note" caption="İşlem Notu" *ngIf = "grid === dataSource[1]"></dxi-column>
     
                         <dxi-column *ngIf = "grid === dataSource[0]" type="buttons" [width]="110">
                             <dxi-button template="myCommand">

@@ -8,6 +8,7 @@ import { EditPopUpComponent } from '../edit-pop-up/edit-pop-up.component';
 import { CustomerAssignmentModel } from 'src/app/models/customerAssignmentModel';
 import { MyCustomers } from 'src/app/models/myCustomers';
 import { AccomplishComponent } from '../accomplish/accomplish.component';
+import { ProcessHistory } from 'src/app/models/processHistory';
 
 @Component({
   selector: 'app-my-customers',
@@ -16,7 +17,10 @@ import { AccomplishComponent } from '../accomplish/accomplish.component';
 })
 export class MyCustomersComponent implements OnInit {
 
-  
+  historyArray: any[];
+  employeeName: string;
+  employees: any[];
+  employeeId: string;
   trueDataArray: MyCustomers[] = [];
   dataSource: any[] = [0,1];
   myCustomers:CustomerModel[]=[];
@@ -35,14 +39,15 @@ export class MyCustomersComponent implements OnInit {
     { this.OpenPreviewModal = this.OpenPreviewModal.bind(this);}
   
   async ngOnInit(): Promise<void> {
-    console.log("1");
-    await this.getMyCustomers();
+    this.getMyCustomers();
+    this.getMyHistory();
   }
 
 
   getMyCustomers(){
 
-    return new Promise(resolve => {
+    return new Promise((resolve:any) => {
+      
       this.service.getMyCustomers().subscribe(
         (res:any)=>{
           this.myCustomers = res;
@@ -101,6 +106,73 @@ export class MyCustomersComponent implements OnInit {
 
   OpenAccomplishModal(data: any) {
     const modalRef = this.modalService.open(AccomplishComponent, {centered:true, size: 'md'});
+    modalRef.componentInstance.customerData = data;
+  }
+
+  getMyHistory(){
+
+    this.service.getUserProfile().subscribe(
+      (res: any) => {
+        this.employeeName = res.userName;
+        this.service.getEmployee().subscribe(
+          (data: any) => {
+            this.employees = data;
+            this.findUserId(this.employeeName);
+            this.service.getMyHistory(this.employeeId).subscribe(
+              (input: any) => {
+                this.historyArray = input;
+                //console.log(input);
+                this.dataSource[1] = this.historyArray;
+              }
+            )
+          }
+        )  
+        
+      }
+    )
+    
+    /* this.service.getUserProfile().subscribe(
+      (data: any) => {
+        this.employeeName = data;
+
+        this.service.getEmployee().subscribe(
+          (res: any) => {
+            this.employees = res;
+            this.findUserId(this.employeeName);
+
+            this.service.getMyHistory().subscribe(
+              (res: any) => {
+                res.forEach((element: any) => {
+                  if (element.userId == this.employeeId) {
+                    this.processHistoryModel.id = element.customerId;
+                    this.processHistoryModel.transactionType = element.transactionType;
+                    this.processHistoryModel.workCondition = element.workCondition;
+                    this.proccessHistory.push(this.processHistoryModel);
+                    console.log(this.processHistoryModel);
+                    console.log("aa");
+                    
+                  }
+                });
+              }
+            )
+
+          }
+        )
+
+
+      }
+    ) */
+  }
+
+
+
+
+  findUserId(name:string){
+    this.employees.map(x=> {
+      if(x.userName==name){
+        this.employeeId=x.id!;
+      };
+    });
   }
 
 

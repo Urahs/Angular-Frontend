@@ -15,6 +15,7 @@
               <dxo-label text="İşlem durumu"></dxo-label>
               <dx-select-box
                 [items] = "workConditions"
+                [(ngModel)] = "workConditionsName"
                 placeholder="İşlem durumu seçiniz"
                 [searchEnabled]="true"
                 [showClearButton]="true">
@@ -48,6 +49,6 @@
   </div>  
   <div class="modal-footer">
     <dx-button id="button" width="90px" text="Vazgeç" type="danger" (onClick)="activeModal.close('Close click')"></dx-button>
-    <dx-button id="button" width="90px" text="Kaydet" type="success" ></dx-button>
+    <dx-button id="button" width="90px" text="Kaydet" type="success" (onClick)="Assign()"></dx-button>
   </div>
 </div>

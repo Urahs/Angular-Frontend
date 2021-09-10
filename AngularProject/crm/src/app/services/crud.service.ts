@@ -84,12 +84,20 @@ export class CrudService {
     return this.httpClient.get<any>(this.apiUrl+'/UserProfile/MyCustomers');
   }
 
+  getMyHistory(data: any): Observable<any>{
+    return this.httpClient.get<any>(this.apiUrl + "/UserProfile/History?userId=" + data);
+  }
+
   getCustomerAssignment(): Observable<any>{
     return this.httpClient.get<any>(this.apiUrl+'/CustomerAssignment');
   }
 
   getSpecificCustomerAssignment(cusId: number): Observable<CustomerModel>{
     return this.httpClient.get<CustomerModel>(this.apiUrl+'/CustomerAssignment/' + cusId);
+  }
+
+  postUserHistory(data: any){
+    return this.httpClient.post(this.apiUrl + "/UserProfile/History", data);
   }
 
 }

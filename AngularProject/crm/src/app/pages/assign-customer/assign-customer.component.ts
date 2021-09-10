@@ -43,7 +43,6 @@ transactions: string[] = [
       (res: any) => {
         this.customerRepresentative = res;
         this.customerRepresentative.map(x=> this.myList.push(x.userName!));
-        
       },
       (err: any) => {
         console.log(err);
@@ -62,7 +61,6 @@ transactions: string[] = [
         userName:this.employeeName,
         transactionType:this.transactionTypeName,
         workCondition: "İşleme alındı"
-
       }
       this.customerAssignin.push(this.customerAssigninObj);
     });
